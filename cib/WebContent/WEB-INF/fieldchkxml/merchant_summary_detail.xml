@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="merchant_summary">
+		<field name="postingDate" label="Posting_Date" required="yes">
+			<format type="date" />
+		</field>
+	</group>
+	<group name="merchant_detail">
+		<field name="date" label="Date" required="yes">
+			<format type="date" />
+		</field>
+	</group>
+</fieldchecking>

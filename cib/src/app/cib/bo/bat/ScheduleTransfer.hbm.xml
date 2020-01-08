@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Oct 10 10:14:35 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.bat">
+
+    <class name="ScheduleTransfer" table="SCHEDULE_TRANSFER">
+        <id name="scheduleId" column="SCHEDULE_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corporaitonId" column="CORPORAITON_ID" type="java.lang.String" />
+        <property name="beneficiaryType" column="BENEFICIARY_TYPE" type="java.lang.String" />
+        <property name="transId" column="TRANS_ID" type="java.lang.String" />
+        <property name="frequnceType" column="FREQUNCE_TYPE" type="java.lang.String" />
+        <property name="frequnceDays" column="FREQUNCE_DAYS" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="scheduleName" column="SCHEDULE_NAME" type="java.lang.String" />
+        <!-- add by long_zg 2014-05-06 for CR188 -->
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        
+        <property name="endDate" column="END_DATE" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

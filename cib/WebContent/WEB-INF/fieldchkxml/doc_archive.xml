@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fieldchecking>
+	<group name="statement">
+		<field name="dateFrom" label="date_from" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[rangeType]=="date" &amp;&amp; [dateFrom]!="" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "") || (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+        </field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+		</field>
+	</group>
+</fieldchecking>

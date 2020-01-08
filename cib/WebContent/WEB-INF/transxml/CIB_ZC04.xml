@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->
+<transaction>
+	<packet-to-host> 
+		<string name="CI_NO" length="10" encoding="EBCDIC" default=" "/>
+        <string name="AC_TYP" length="2" encoding="EBCDIC" default=" "/>
+        <string name="TURN_KEY" length="40" encoding="EBCDIC" default=" "/>
+	</packet-to-host>
+	<packet-from-host>
+		<string name="NEXT_KEY" length="40" encoding="EBCDIC"/>
+		<number name="INTERNAL_COUNTER" length="2" encoding="EBCDIC" default="1"/>
+		<sectionloop name="ACCOUNT_LIST" countfield="INTERNAL_COUNTER">
+			<number name="ACCOUNT_NO" length="32" encoding="EBCDIC"/>
+			<decimal name="OUTSTANDING_AMOUNT" length="16,2" encoding="EBCDIC"/>
+			<string name="ACCOUNT_STATUS" length="1" encoding="EBCDIC"/>
+			<string name="CURRENCY_CODE" length="3" encoding="EBCDIC"/> 
+			<number name="PRODUCT_NO" length="3" encoding="EBCDIC"/> 
+		</sectionloop>
+ 	</packet-from-host>
+</transaction>

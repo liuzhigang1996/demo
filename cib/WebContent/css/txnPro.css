@@ -1,0 +1,76 @@
+.table_header{
+	border: 1px solid  #9A9A9A;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px 40px;
+}
+
+.table_content{
+	border: 1px solid  #9A9A9A;
+	text-align: center;
+	padding: 5px 40px;
+}
+
+.myHref{
+	padding: 0 5px;
+}
+.myHref:LINK {
+	text-decoration: underline;
+}
+.myTitle{
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
+	width: 15%;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+.menu_2nd{
+	font-size: 10px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.desciption{
+	display: inline-block;
+	margin-left: 10px;
+	float: left;
+	width: 80%;
+	margin-bottom: 10px;
+}
+.loginDesciption{
+	display: inline-block;
+	margin-left: 10px;
+	float: left;
+	width: 80%;
+	margin-bottom: 10px;
+	border: 1px solid  #9A9A9A;
+	height: auto;
+	padding: 10px;
+}
+.myTextarea{
+	width: 100%;
+	overflow: hidden;
+	resize:none;
+	FONT-SIZE: 10pt;
+    COLOR: #000000;
+    line-height: 25px;
+    FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif";
+}
+.myButton{
+	background-color: #4876FF;
+	border-radius: 5px;
+	color:white;
+	border: 0;
+	text-align: center;
+	padding: 5px 30px;
+	cursor: pointer;
+	margin: 20px 50px;
+}
+.myButton2{
+	background-color: #4876FF;
+	border-radius: 5px;
+	color:white;
+	border: 0;
+	cursor: pointer;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="transferTemplate">
+		<field name="fromAccount" label="FromAccount" required="yes">
+			<format type="String" />
+		</field>
+		<field name="toAccount" label="ToAccount" required="yes">
+			<format type="String" />
+		</field>
+		<field name="transferAmount" label="Amount" required="yes">
+			<format type="String" />
+		</field>
+	</group>
+</fieldchecking>

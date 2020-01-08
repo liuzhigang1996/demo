@@ -1,0 +1,615 @@
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib uri='/WEB-INF/neturbo.tld' prefix='set' %>
+<html><!-- InstanceBegin template="/Templates/normal.dwt.jsp" codeOutsideHTMLIsLocked="false" -->
+<set:loadrb file="app.cib.resource.bat.schedule_transfer_bank">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Corporation Banking</title>
+<!-- InstanceEndEditable -->
+<link rel="stylesheet" type="text/css" href="/cib/css/page.css">
+<SCRIPT language=JavaScript src="/cib/javascript/common.js?v=20130117"></SCRIPT>
+<SCRIPT language=JavaScript src="/cib/javascript/messages.js"></SCRIPT>
+<SCRIPT language=JavaScript src="/cib/javascript/fieldcheck.js"></SCRIPT>
+<!-- InstanceBeginEditable name="javascirpt" -->
+<SCRIPT language=JavaScript src="/cib/javascript/prototype.js"></SCRIPT>
+<SCRIPT language=JavaScript src="/cib/javascript/jsax2.js"></SCRIPT>
+<SCRIPT language=JavaScript src="/cib/javascript/calendar.js"></SCRIPT>
+<script language=JavaScript>
+// add by li_zd at 20171117 for mul-language
+var language ="<%=session.getAttribute("Locale$Of$Neturbo")%>";
+
+function pageLoad(){
+	if(language == "en_US"){
+		document.getElementById("showENG").style.display = "block";
+	}else{
+		document.getElementById("showCHN").style.display = "block";
+	}
+	var myDayType = '<set:data name="dayType"/>';
+	if(myDayType==''){
+		myDayType = '<set:data name="frequenceType"/>';
+	}
+	putFieldValues("dayType", myDayType);
+	if (myDayType=="2"){
+		putFieldValues("frequenceWeekDays", "<set:data name='week0' />");
+		putFieldValues("frequenceWeekDays", "<set:data name='week1' />");
+		putFieldValues("frequenceWeekDays", "<set:data name='week2' />");
+		putFieldValues("frequenceWeekDays", "<set:data name='week3' />");
+		putFieldValues("frequenceWeekDays", "<set:data name='week4' />");
+	}
+	if (myDayType=="3"){
+		var myMonthType = '<set:data name="month_type"/>';
+		var myDesignedDay = '<set:data name="designed_day"/>';
+		var myFreqDays = '<set:data name="frequenceDays"/>';
+		if (myMonthType=='' ? myFreqDays : myMonthType=="1"){
+			putFieldValues("month_type", myMonthType=='' ? myFreqDays : myMonthType);
+		} else if (myMonthType=='' ? myFreqDays : myMonthType=="-1"){
+			putFieldValues("month_type", myMonthType=='' ? myFreqDays : myMonthType);
+		} else {
+			putFieldValues("month_type", "0");
+			putFieldValues("designed_day", myDesignedDay=='' ? myFreqDays : myDesignedDay);
+		}
+	}
+	if(myDayType=="4"){
+		var myDaysPerMonth = '<set:data name="days_per_month"/>';
+		var myFreqDays = '<set:data name="frequenceDays"/>';
+		putFieldValues("days_per_month", myDaysPerMonth=='' ? myFreqDays : myDaysPerMonth);
+	}
+	//modified by lzg for GAPMC-EB-001-0050
+	//changeFromAcc("<set:data name='fromAccount' />");
+	//changeToAcc("<set:data name='toAccount' />");
+	if(!"<set:data name='fromAccount' />" == ""){
+		//changeFromAcc("<set:data name='fromAccount' />");
+		var fromAccount = document.getElementById("fromAccount");
+		var fromCurrency = document.getElementById("fromCurrency");
+		for(var i=0;i<fromAccount.options.length;i++){
+    		if(fromAccount[i].value=='<set:data name='fromAccount' />'){  
+        		fromAccount[i].selected=true;   
+    		}  
+		}  
+		showFromCcyList(fromAccount, fromCurrency,'getFromCcy', fromAccount.value);
+		if(!"<set:data name='fromCurrency' />" == ""){
+			for(var i=0;i<fromCurrency.options.length;i++){
+	    		if(fromCurrency[i].value=='<set:data name='fromCurrency' />'){  
+	        		fromCurrency[i].selected=true;   
+	    		}  
+			}  
+		}
+		changeFromCcy(fromCurrency.value);
+	}
+	if(!"<set:data name='toAccount' />" == ""){
+		var toAccount = document.getElementById("toAccount");
+		var toCurrency = document.getElementById("toCurrency");
+		for(var i=0;i<toAccount.options.length;i++){
+    		if(toAccount[i].value=='<set:data name='toAccount' />'){  
+        		toAccount[i].selected=true;   
+    		}  
+		}
+		showToCcyList(toAccount, toCurrency,'getToCcy', toAccount.value);
+		if(!"<set:data name='toCurrency' />" == ""){
+			for(var i=0;i<toCurrency.options.length;i++){
+		    	if(toCurrency[i].value=='<set:data name='toCurrency' />'){
+		        	toCurrency[i].selected=true;   
+	    		}  
+			}  
+		}
+		changeToCcy(toCurrency.value);
+	}
+	//modified by lzg end
+	setTimeout(
+		function(){
+			if('<set:data name="toAccount"/>' == ''){
+			} else if('<set:data name="toAccount"/>' == '0'){
+				otherAcc('<set:data name="toAccount2"/>');
+			} else {
+				changeToAccList('<set:data name="toAccount"/>');
+			}
+		},
+		500
+	);
+}
+function doSubmit() {
+    // if(Beneficiary_Name()){
+	//alert(getFieldValue(document.form1.eleme//nts['frequenceWeekDays']));
+	//add by linrui 20190723
+    if(!remarkLength(document.getElementById("remark").value)){
+        return false;
+    }
+    //end
+	//add by linrui for mul-ccy
+	document.getElementById("toCurrency").value= document.getElementById("showToCurrency").innerHTML;
+	if(validate_schedule_bank(document.getElementById("form1"))){
+		//add by hjs
+		var schName = document.form1.scheduleName.value;
+		for(i=0; i<schName.length; i++) {
+			if(schName.charAt(i) == '#') {
+				alert('<set:label name="err.bat.ScheduleNameError" rb="app.cib.resource.common.errmsg"/>');
+				document.form1.scheduleName.focus();
+				document.form1.scheduleName.select();
+				return;
+			}
+		}
+		if(document.getElementById("showToCurrency").innerHTML == ""){
+			alert("<set:label name="To_Acc_Not_Available" defaultvalue = "To account not available, can not submit this transactions"/>");
+		}else{
+			if (document.getElementById("showToCurrency").innerHTML =='JPY' || document.getElementById("showToCurrency").innerHTML =='KRW') {
+			if (!checkInteger($('transferAmount').value)) {
+				alert('<set:label name="err.txn.DecimalNotAllowed" rb="app.cib.resource.common.errmsg"/>');
+				$('transferAmount').select();
+				return false;
+			}
+		 }
+			if (document.getElementById("showFromCurrency").innerHTML =='JPY' || document.getElementById("showFromCurrency").innerHTML =='KRW') {
+			if (!checkInteger($('debitAmount').value)) {
+				alert('<set:label name="err.txn.DecimalNotAllowed" rb="app.cib.resource.common.errmsg"/>');
+				$('debitAmount').select();
+				return false;
+			}
+					}
+			setFormDisabled('form1');
+			document.getElementById("form1").submit();
+		}
+	}
+	//} else {
+	// alert('<set:label name="Name_Is_Error" defaultvalue="The amount that you input is error"/>');
+	//}
+}
+function checkInteger(amt) {
+	if (amt.indexOf('.') > 0) {
+		return false;
+	} else {
+		return true;
+	}
+}
+function changeToAccList(toAcc){
+	if (toAcc=='0') {
+		document.getElementById("toAccount2").disabled = false;
+		document.getElementById("toAccount2").value = "";
+		document.getElementById("showToCurrency").innerHTML = "";
+		document.getElementById("beneficiaryName").style.display = "";
+	} else {
+		document.getElementById("toAccount2").disabled = true;
+		document.getElementById("beneficiaryName").style.display = "none";
+		document.getElementById("toAccount2").value = toAcc;
+		changeToAcc(toAcc);
+	}
+}
+function changeFromAcc(fromAcc){
+	var fromAccount = document.getElementById("fromAccount");
+	var from_ccy = fromAccount.options[fromAccount.selectedIndex].innerHTML;
+	var arr = from_ccy.split("-");
+	from_ccy = arr[1].substring(1,4);
+	fromAcc = arr[0].replace(/(^\s*)|(\s*$)/g, "");
+	if (fromAcc != '0' && fromAcc != '') { //modify by hjs
+		//add by linrui for mul-ccy		
+		document.getElementById("fromCurrency").value= from_ccy;
+		var url = '/cib/jsax?serviceName=AccInTxnService&showFromAcc=' + fromAcc + '&from_ccy=' + from_ccy  + '&language=' + language;//mod by li_zd at 20171117 for mul-language
+   		//registerElement('showAmount');
+   		//registerElement('showFromCurrency');
+		getMsgToElement(url, fromAcc, '',
+			// modify by hjs 20070209
+			function(){$("showAmountArea").style.display = "block";},
+			false,language);
+	}else{
+		document.getElementById("showAmountArea").style.display = "none";
+	}
+}
+function changeToAcc(toAcc){
+	var toAccount = document.getElementById("toAccount");
+	var to_ccy = toAccount.options[toAccount.selectedIndex].innerHTML;
+	var arr = to_ccy.split("-");
+	to_ccy = arr[1].substring(1,4);
+	//add by linrui for mul-ccy
+	toAcc = arr[0].replace(/(^\s*)|(\s*$)/g, "");
+	if (toAcc != '0' && toAcc != '') {//modify by hjs
+		//add by linrui for mul-ccy
+		document.getElementById("toCurrency").value= to_ccy;
+		document.getElementById("showToCurrency").innerHTML = "";
+		var url = '/cib/jsax?serviceName=AccInTxnService&showToAcc=' + toAcc + '&language=' + language + '&to_ccy=' + to_ccy;//mod by li_zd at 20171117 for mul-language
+   		//registerElement('showToCurrency');
+		getMsgToElement(url, toAcc, '', null,true,language);
+	}
+}
+function otherAcc(toAcc){
+	if ((toAcc != null) && (toAcc != '')) {
+		var url = '/cib/jsax?serviceName=AccInTxnService&accType=other&showToAcc=' + toAcc + '&language=' + language;//mod by li_zd at 20171117 for mul-language
+   		//registerElement('showToCurrency');
+		getMsgToElement(url, toAcc, '', null,true,language);
+	}
+}
+//hjs
+var varId = '';
+function changeFrequence(oId) {
+	if(oId != varId ) {
+		init();
+		if (oId == 'dayType2') {
+			var s1 = document.getElementsByName("frequenceWeekDays");
+			if (s1 != null) {
+				for (i=0; i<s1.length; i++) {
+					s1[i].disabled = false;
+				}
+			}
+		}
+		if (oId == 'dayType3') {
+			var s2 = document.getElementsByName("month_type");
+			if (s2 != null) {
+				for (i=0; i<s2.length; i++) {
+					s2[i].disabled = false;
+				}
+			}
+			document.form1.designed_day.disabled = false;
+		}
+		if (oId == 'dayType4') {
+			document.form1.days_per_month.disabled = false;
+		}
+		varId  = oId;
+	}
+}
+function init() {
+	var s1 = document.getElementsByName("frequenceWeekDays");
+	if (s1 != null) {
+		for (i=0; i<s1.length; i++) {
+			s1[i].checked = false;
+			s1[i].disabled = true;
+		}
+	}
+	var s2 = document.getElementsByName("month_type");
+	if (s2 != null) {
+		for (i=0; i<s2.length; i++) {
+			s2[i].checked = false;
+			s2[i].disabled = true;
+		}
+	}
+	document.form1.designed_day.value = '';
+	document.form1.days_per_month.value = '';
+	document.form1.designed_day.disabled = true;
+	document.form1.days_per_month.disabled = true;
+}
+function initDesignedDay() {
+	document.form1.designed_day.value='';
+	document.form1.designed_day.disabled = true;
+}
+function initMonthType() {
+	document.form1.designed_day.disabled = false;
+}
+
+//add by lzg for GAPMC-EB-001-0050
+function getParams(originSelect, targetSelect) {
+	var targetType = 'targetType=object';
+	var targetId = 'targetId=' + originSelect.id;
+	var originValue = 'originValue=' + originSelect.value;
+	var subListId = 'subListId=' + targetSelect.id;
+
+	var params = '';
+	params = params + targetType + '&' + targetId + '&' + originValue + '&' + subListId;
+	return params;
+}
+//get ccy list from fromacct
+function showFromCcyList(originSelect, targetSelect, action, fromAcc){
+	//clearAll();
+	//action check ccy
+	document.getElementById("fromAccount").value= fromAcc;
+	if ((originSelect.value != null) && (originSelect.value != '')) {
+		   var params = getParams(originSelect, targetSelect);
+		   var url = '/cib/jsax?serviceName=AccInTxnService&action='+action+'&'+ params+ '&showFromAcc=' + fromAcc +'&language='+language;
+		   getMsgToSelect(url,'', null, false,language);
+	}
+	
+	document.getElementById("showAmountArea").style.display = "none";
+	
+	//add by lzg 20190612
+	var fromCurrency = document.getElementById("fromCurrency");
+	if(fromCurrency.options.length == 2){
+		fromCurrency[1].selected = true;
+		changeFromCcy(fromCurrency[1].value);
+	}
+	//add by lzg end
+  	
+}
+function showToCcyList(originSelect, targetSelect,action, toAcct){
+	//action check ccy
+	document.getElementById("toAccount").value= toAcct;
+	if ((originSelect.value != null) && (originSelect.value != '')) {
+		   var params = getParams(originSelect, targetSelect);
+		   var url = '/cib/jsax?serviceName=AccInTxnService&action='+action+'&'+ params+ '&showToAcc=' + toAcct +'&language=' + language;
+		   getMsgToSelect(url,'', null, false,language);
+		   
+	}
+	
+	//add by lzg 20190612
+	var toCurrency = document.getElementById("toCurrency");
+	if(toCurrency.options.length == 2){
+		toCurrency[1].selected = true;
+		changeToCcy(toCurrency[1].value);
+	}
+	//add by lzg end
+  	
+}
+//get from acct balance
+function changeFromCcy(fromCcy){
+	var action = 'fromCcy';
+	var fromAcct = document.getElementById("fromAccount").value ;
+	document.getElementById("fromCurrency").value= fromCcy;
+	if (fromAcct != '0' && fromAcct != '') { 
+		//add by linrui for mul-ccy		
+		var url = '/cib/jsax?serviceName=AccInTxnService&action='+action+ '&showFromAcc=' + fromAcct + '&fromCcy=' + fromCcy +'&language='+language;
+		getMsgToElement(url, fromAcct, '', null,false,language);
+		document.getElementById("showAmountArea").style.display = "block";
+				
+	}else{
+		document.getElementById("showAmountArea").style.display = "none";
+	}
+}
+//show showToCcy Amt Dev
+function changeToCcy(toCcy){
+	var action = 'toCcy';
+	//add by linrui for mul-ccy		
+	document.getElementById("toCurrency").value= toCcy;
+	var url = '/cib/jsax?serviceName=AccInTxnService&action='+action+ '&showToCcy=' + toCcy +'&language='+language;
+	//getMsgToElement(url, fromAcc, '', null,false,language);
+	getMsgToElement(url, toCcy, '', null,true,language);			
+	
+}
+//add by lzg end
+//add by linrui 2190723
+function remarkLength(str){
+	var strLength = str.replace(/[\u4e00-\u9fa5]/g,"***").length;
+	if(strLength>120){
+		//alert(strLength);
+		alert('<set:label name="err.sys.reference.maxerror" rb="app.cib.resource.common.errmsg"/>');
+		return false;
+	}
+	return true;
+	
+}
+//end
+</script>
+<!-- InstanceEndEditable --><!-- InstanceParam name="page_action" type="text" value="/cib/scheduleTransferBANK.do" --><!-- InstanceParam name="help_href" type="text" value="#" --><!-- InstanceParam name="resource_file" type="text" value="app.cib.resource.bat.schedule_transfer_bank" -->
+</head>
+<body class="body1" onLoad="pageLoad();">
+<div name="pageheader" id="pageheader">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" height="18" class="navigationbar"><!-- InstanceBeginEditable name="section_navbar" --><set:label name="navigationTitleDetail" defaultvalue="BANK Online Banking >Transfer > Transfer Templates"/><!-- InstanceEndEditable --></td>
+    <td class="buttonprint" style="background-image:url(images/button-print_<%=session.getAttribute("Locale$Of$Neturbo")%>.gif)"><a href="#" onClick="printPage('pageheader');"><img src="/cib/images/shim.gif" width="61" height="18" border="0"></a></td>
+	<!--
+    <td class="buttonhelp"><a href="#"><img src="/cib/images/shim.gif" width="36" height="18" border="0"></a></td>
+	-->
+  </tr>
+  <tr>
+    <td colspan="3"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+  <tr bgcolor="EDC64A">
+    <td colspan="3"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="3"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+  <tr bgcolor="white">
+    <td colspan="3"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+</table>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="40">
+  <tr>
+    <td class="title1" nowrap><!-- InstanceBeginEditable name="section_title" --><set:label name="functionTitleModify" defaultvalue="TRANSFER Templates Edit"/><!-- InstanceEndEditable --></td>
+    <td width="100%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="1" bgcolor="white"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="19" class="topborderlong"><img src="/cib/images/table_top_long.gif" width="100%" height="19"></td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor="#999999"><table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+        <tr>
+          <td width="1%"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+          <td>
+		  <form action="/cib/scheduleTransferBANK.do" method="post" name="form1" id="form1">
+		    <!-- InstanceBeginEditable name="sectioncontent" -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><set:messages width="100%" cols="1" align="center"/> <set:fieldcheck name="schedule_bank" form="form1" file="schedule_transfer_BANK" /> </td>
+                </tr>
+              </table>
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="groupseperator"><set:label name="Fill_Info" defaultvalue="Fill the following Information"/></td>
+                </tr>
+              </table>
+              
+              <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                <tr  >
+                  <td class="label1"><span class = "xing">*</span><set:label name="Schedule_Name" defaultvalue="Schedule Name"/></td>
+                  <td class="content1" colspan="3"><input id="scheduleName" name="scheduleName" type="text" value="<set:data name='scheduleName'/>" size="20" maxlength="20"></td>
+                </tr>
+                <tr class="greyline" >
+                  <td class="label1" rowspan="4"><span class = "xing">*</span><set:label name="Frequence" defaultvalue="Frequence"/></td>
+                  <td class="label1"><input type="radio" name="dayType" id="dayType1" value="1" onClick="changeFrequence(this.id);"></td>
+                  <td class="label1"><set:label name="Daily" defaultvalue="Daily (Work Day Only)"/></td>
+                </tr>
+                <tr class="greyline" >
+                  <td class="label1"><input type="radio" name="dayType" id="dayType2" value="2" onClick="changeFrequence(this.id);"></td>
+                  <td class="label1"><set:label name="Weekly" defaultvalue="Weekly"/>--- <set:rblist file="app.cib.resource.bat.week"><set:rbcheckbox name="frequenceWeekDays"/></set:rblist></td>
+                </tr>
+                <tr class="greyline" >
+			           <td class="label1"><input type="radio" name="dayType" id="dayType3" value="3" onClick="changeFrequence(this.id);" ></td>
+                    <td class="label1"><set:label name="Monthly" defaultvalue="Monthly"/>---<input id="month_type" type="radio" name="month_type" value="1" onClick="initDesignedDay();"><set:label name="Start_of_month" defaultvalue="Start of month"/><input id="month_type" type="radio" name="month_type" value="-1" onClick="initDesignedDay();"><set:label name="End_of_month" defaultvalue="End of month"/><input id="month_type" type="radio" name="month_type" value="0" onClick="initMonthType();"><set:label name="Designated_Day" defaultvalue="Designated Day "/>&nbsp;<input id="designed_day" name="designed_day" type="text" value="<set:data name='designed_day'/>" size="8" maxlength="8" onClick="">
+                        (1-31)</td>
+                 </tr>
+                <tr class="greyline" >
+                  <td class="label1"><input type="radio" name="dayType" id="dayType4" value="4" onClick="changeFrequence(this.id);"></td>
+                  <td class="label1"><set:label name="Days_per_month" defaultvalue="Days per month"/>---
+                    <input id="days_per_month" name="days_per_month" type="text" value="<set:data name='days_per_month'/>" size="20" maxlength="20">
+                    <set:label name="dayInfo" defaultvalue="Days separated with commas"/></td>
+                </tr>
+                <tr>
+                  <td class="label1"><span class = "xing">*</span><set:label name="Transfer_End_Date" defaultvalue="Transfer End Date"/></td>
+                  <td class="content1" colspan="3"><input id="endDate" name="endDate" type="text" value="<set:data name='endDate' format="date" pattern="dd/MM/yyyy"/>" size="10" maxlength="10"><img src="/cib/images/datetime.gif" width="16" height="16" align="absmiddle" style="cursor:hand" onClick= "{scwShow(document.getElementById('endDate'), this,language)};" > </td>
+                </tr>  
+              </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                <tr>
+                  <td colspan="4" class="groupinput">&nbsp;</td>
+                </tr>
+                <tr class="greyline">
+                  <td colspan="4"  class="label1"><span>&nbsp;&nbsp;</span><b><set:label name="Transfer_From" defaultvalue="Transfer From"/></b></td>
+                </tr>
+                <tr>
+                  <td width="20%" valign="top" class="label1"><span class = "xing">*</span><set:label name="From_Account" defaultvalue="Account Number"/></td>
+                  <td class="content1" colspan="3" >
+                   <!-- modified by lzg for GAPMC-EB-001-0050 -->
+                  <!--<select id="fromAccount" name="fromAccount" nullable="0" onChange="changeFromAcc(this.value)">
+				<option selected value="" selected><set:label name="select_account" defaultvalue="----- Select  an Account ------"/></option>
+                  <set:list name="transferuser"> <option value="<set:listdata  name='ACCOUNT_NO' />" 
+                          <set:listselected key='ACCOUNT_INFO' equals='selectFromAcct'  output='selected'/> > <set:listdata  name='ACCOUNT_INFO' />
+                      </option>
+                  </set:list>
+                </select>
+                    <div name="showAmountArea" id="showAmountArea" style="display: none">
+                      <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td>Available Balance :&nbsp;</td>
+                          <td><div name="showAmount" id="showAmount"></div></td>
+                        </tr>
+                      </table>
+                    </div></td>
+                </tr>
+                -->
+                <select id="fromAccount" name="fromAccount" nullable="0" onChange="showFromCcyList(this, $('fromCurrency'),'getFromCcy', this.value);">
+				<option selected value="" selected><set:label name="select_account" defaultvalue="----- Select  an Account ------"/></option>
+                  <set:list name="transferuser"> <option  value="<set:listdata  name='ACCOUNT_NO' />" 
+                          <set:listselected key='ACCOUNT_NO' equals='selectFromAcct'  output='selected'/> > <set:listdata  name='ACCOUNT_NO' />
+                      </option>
+                  </set:list>
+                  </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="label1"><span class = "xing">*</span><set:label name="From_ccy" defaultvalue="From Currency"/></td>
+                  <td class="content1" colspan="3" ><table><tr><td><select name="fromCurrency" id="fromCurrency" nullable="0"  onChange="changeFromCcy(this.value);">
+                      <option  value="" selected><set:label name="select_ccy" defaultvalue="----Please select Currency----"/></option>
+                    </select>  </td></tr></table>
+                    
+                    <div name="showAmountArea" id="showAmountArea" style="display: none"><table border="0" cellpadding="0" cellspacing="0">
+                    <tr><td><set:label name="availd_balance" defaultvalue="Available Balance :"/>&nbsp;</td><td> <div name="showAmount"  format="amount" id="showAmount" ></div></td></tr></table></div>
+                  </td>
+               </tr>
+               <%-- modified by lzg end --%>
+                <tr class="greyline">
+                  <td colspan="4"  class="label1"><span>&nbsp;&nbsp;</span><b><set:label name="Transfer_To" defaultvalue="Transfer To"/></b></td>
+                </tr>
+                <tr >
+                  <td class="label1"><span class = "xing">*</span><set:label name="To_Account" defaultvalue="Account Number"/></td>
+                  <td class="content1" colspan="3" >
+                  <!-- modified by lzg for GAPMC-EB-001-0050 -->
+                  <!--<select id="toAccount" name="toAccount" nullable="0" onChange="changeToAccList(this.value);">
+				 <option value="0" selected><set:label name="other_account" defaultvalue="----- Other Accounts ------"/></option>
+				   <set:list name="transferuser"> <option value="<set:listdata  name='ACCOUNT_NO' />" 
+                           <set:listselected key='ACCOUNT_INFO' equals='selectToAcct'  output='selected'/> > <set:listdata  name='ACCOUNT_INFO' />
+                      </option>
+                  </set:list>
+				  </select>
+				  -->
+				  <select id="toAccount" name="toAccount" nullable="0" onChange="showToCcyList(this, $('toCurrency'),'getToCcy', this.value);">
+				 <option value="0" selected><set:label name="select_account" defaultvalue="----- Select  an Account ------"/></option>
+				   <set:list name="transferuser"> <option  value="<set:listdata  name='ACCOUNT_NO' />" 
+                           <set:listselected key='ACCOUNT_NO' equals='selectToAcct'  output='selected'/> > <set:listdata  name='ACCOUNT_NO' />
+                      </option>
+                  </set:list>
+				  </select>
+				  <!-- modified by lzg end -->
+                  </td>
+                </tr>
+                <!-- modified by lzg 20190522 -->
+                <!--<tr>
+                  <td class="label1"></td>
+                  <td width="50%" class="content1" colspan="3"><input name="toAccount2" type="text" id="toAccount2" value="<set:data name='toAccount2'/>" size="20" maxlength="12" onChange="otherAcc(this.value)"></td>
+                </tr>
+                --><tr class="greyline">
+                  <td valign="top" class="label1"></td>
+                  <td class="content1" colspan="3" ><b><set:label name="Transfer_Amount_Info1" defaultvalue="You either input the actual amount of funds to be transferred OR the amount to be debited from the selected account above" /></b></td>
+                </tr>
+                
+                <!-- add by linrui 20181105 -->
+                <!-- modified by lzg 20190522 -->
+			  <!--<tr  id="beneficiaryName" style='display:"";'>
+                <td valign="top" class="label1"><set:label name="To_Name" defaultvalue="Beneficiary Name"/></b></td>
+				<td class="content1" colspan="3"><input name="toName" type="text" id="toName" value="<set:data name='toName'/>" size="60" maxlength="60" ></td>
+			  </tr>
+			  -->
+			  <!-- modified by lzg end -->
+			  <!-- end -->
+                
+                <tr >
+                  <td valign="top" class="label1"><span class = "xing">*</span><set:label name="Transfer_Amount" defaultvalue="Transfer Amount"/></td>
+                  <td width="40%" class="label1"><set:label name="Amount_to_be_Transferred" defaultvalue="Amount to be Transferred"/></td>
+                  <td width="5%" align="right" class="content1"><div name="showToCurrency" id="showToCurrency"><set:data name="toCurrency" db="rcCurrencyCBS"/></div></td>
+                  <td width="40%" class="content1"><input id="transferAmount" name="transferAmount" type="text" value="<set:data name='transferAmount' format='amount'/>" size="20" maxlength="20" onFocus ="document.form1.debitAmount.value='';"></td>
+                </tr>
+                <tr class="greyline">
+                  <td></td>
+                  <td width="50%" class="label1"><set:label name="Transfer_Info1" defaultvalue="Amount to be debited from the selected account above"/></td>
+                  <td align="right" class="content1"><div name="showFromCurrency" id="showFromCurrency"><set:data name="fromCurrency"/></div></td>
+                  <td class="content1"><input id="debitAmount" name="debitAmount" type="text" value="<set:data name='debitAmount' format='amount'/>" size="20" maxlength="20" onFocus="document.form1.transferAmount.value='';"></td>
+                </tr>
+                <tr >
+                  <td class="label1"><span>&nbsp;&nbsp;</span><set:label name="Remark" defaultvalue="Remark"/></td>
+                  <td class="content1" colspan="3"><input id="remark" name="remark" type="text" value="<set:data name='remark'/>" size="60" maxlength="120"></td>
+                </tr>
+              </table>
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="groupseperator">&nbsp;</td>
+                </tr>
+              </table>
+               <!-- add by lzg 20190612 -->
+               <%@ include file="/common/transferTips.jsp" %>
+              <!-- add by lzg end -->
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td height="40" colspan="2" class="sectionbutton"><input id="submit1" name="submit1" type="button" value="<set:label name='buttonOK' defaultvalue=' OK ' />" tabindex="3"  onClick="doSubmit();">
+<!--                    <input id="bottonReset" name="bottonReset" type="reset" onClick="document.getElementById('showAmountArea').style.display='none';" value="<set:label name='buttonReset' defaultvalue='Reset'/>"> -->
+                    <input id="ActionMethod" name="ActionMethod" type="hidden" value="edit">
+                    <input id="fromCurrency" name="fromCurrency" type="hidden" value="">	
+				    <input id="toCurrency" name="toCurrency" type="hidden" value="">
+				    <!-- add by lzg 20190731 -->
+				<input id="language" name = "language" type = "hidden" value = "">
+				<!-- add by lzg end -->
+				    <!-- add by lzg 20190624 for pwc-->
+					<set:singlesubmit/>
+				  <!-- add by lzg end -->
+                   </td>
+                </tr>
+              </table>
+              <!-- InstanceEndEditable -->
+		  </form>
+		  </td>
+          <td width="1%"><img src="/cib/images/shim.gif" width="10" height="1"></td>
+      </table></td>
+    <td align="right" width="1%"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+  <tr bgcolor="999999">
+    <td><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+  <tr>
+    <td colspan="3"><img src="/cib/images/shim.gif" width="1" height="1"></td>
+  </tr>
+  <tr bgcolor="white">
+    <td colspan="3"><img src="/cib/images/shim.gif" width="1" height="2"></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="/cib/images/shim.gif" width="12" height="12"></td>
+  </tr>
+</table>
+</body>
+</set:loadrb>
+<!-- InstanceEnd --></html>

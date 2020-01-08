@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="add">
+		<field name="corpIds" label="Corp_Id" required="yes">
+			<format type="string"/>
+		</field>
+	</group>
+</fieldchecking>

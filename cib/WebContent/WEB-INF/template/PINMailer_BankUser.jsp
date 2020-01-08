@@ -1,0 +1,2 @@
+<%corpId%>	
+<%userName%>  <%userPassword%>

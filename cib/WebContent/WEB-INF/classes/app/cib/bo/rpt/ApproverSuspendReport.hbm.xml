@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Nov 27 10:54:33 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.rpt">
+
+    <class name="ApproverSuspendReport" table="APPROVER_SUSPEND_REPORT">
+        <id name="reportId" column="REPORT_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="transId" column="TRANS_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="transType" column="TRANS_TYPE" type="java.lang.String" />
+        <property name="subType" column="SUB_TYPE" type="java.lang.String" />
+        <property name="operationType" column="OPERATION_TYPE" type="java.lang.String" />
+        <property name="originalStatus" column="ORIGINAL_STATUS" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

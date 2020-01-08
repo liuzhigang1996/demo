@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Aug 21 10:49:24 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.flow">
+
+    <class name="FlowWork" table="FLOW_WORK">
+        <id name="workId" column="WORK_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="workCreator" column="WORK_CREATOR" type="java.lang.String" />
+        <property name="workCreatorName" column="WORK_CREATOR_NAME" type="java.lang.String" />
+        <property name="workCreateTime" column="WORK_CREATE_TIME" type="java.util.Date" />
+        <property name="approveLevel" column="APPROVE_LEVEL" type="java.lang.String" />
+        <property name="levelFinishCount" column="LEVEL_FINISH_COUNT" type="java.lang.Integer" />
+        <property name="assignedDealer" column="ASSIGNED_DEALER" type="java.lang.String" />
+        <property name="workDealer" column="WORK_DEALER" type="java.lang.String" />
+        <property name="workDealerName" column="WORK_DEALER_NAME" type="java.lang.String" />
+        <property name="dealBeginTime" column="DEAL_BEGIN_TIME" type="java.util.Date" />
+        <property name="dealEndTime" column="DEAL_END_TIME" type="java.util.Date" />
+        <property name="dealAction" column="DEAL_ACTION" type="java.lang.String" />
+        <property name="dealMemo" column="DEAL_MEMO" type="java.lang.String" />
+        <property name="workStatus" column="WORK_STATUS" type="java.lang.String" />
+ 
+        <many-to-one name="flowProcess" column="PROC_ID" class="FlowProcess" />
+    </class>
+    
+</hibernate-mapping>

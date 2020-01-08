@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="stop_check">
+	<field name="chequeNumber" label="Cheque_Number" required="yes">
+		<format type="numonly" />
+		<reject prompt="ChequeNumber_Checking">[chequeNumber]=="0"</reject>
+	</field>
+	<!--<field name="currentAccount" label="Account" required="yes">
+			<format type="numonly" />
+	</field>
+	-->
+	<field name="currentAccount" label="Account" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("currentAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="currentAccountCcy" label="From_ccy" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("currentAccountCcy").selectedIndex == 0</reject>
+		</field>
+		<!-- mod by linrui 20190514 -->
+	
+	<field name="amount" label="Amount" required="no">
+		<format type="amount" />
+		<reject prompt="Amount_Checking">[amount]&lt;0  <!-- || [amount]==0 --></reject>
+	</field>	
+	<field name="issueDate" label="Issue_date" required="no">
+	   <format type="date" />
+	</field>
+	<field name="expiryDate" label="Expiry_date" required="no">
+	  <format type="date" />
+	</field>
+	<field name="reason" label="Reason_for_stop" required="yes">
+		<format type="string" />
+	</field>
+	<field name="stopReason" label="Reason_for_stop" required="no">
+		<format type="string" />
+		<reject prompt="Specific_Reason">document.getElementsByName("reason")[0].checked &amp;&amp; document.getElementById("stopReason").selectedIndex == 0</reject>
+	</field>
+	<field name="stopOtherReason" label="Reason_for_stop" required="no">
+		<format type="string" />
+		<reject prompt="Other_Reason">document.getElementsByName("reason")[1].checked &amp;&amp; document.getElementById("stopOtherReason").value==''</reject>
+	</field>
+		
+	</group>
+	
+</fieldchecking>

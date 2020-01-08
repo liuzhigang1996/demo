@@ -1,0 +1,13 @@
+[PropertyInfo]
+corpId,String,false,false, , ,true,<default>
+groupId,String,false,false, , ,true,<default>
+hashValue,int,false,false, , ,false,<default>
+permissionId,String,false,false, , ,true,<default>
+permissionResource,String,false,false, , ,true,<default>
+permissionType,String,false,false, , ,true,<default>
+roleId,String,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

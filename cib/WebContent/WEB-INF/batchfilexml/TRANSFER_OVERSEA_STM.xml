@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-mapping table_header="FILE_REQUEST" table_detail="TRANSFER_OVERSEA_STM" line_length="900">
+	<string name="RECORD_ID" length="1" encoding="ASCII" />
+	<sectionif name="BH" key="RECORD_ID" isvalue="H">
+		<string name="ORDER_DATE"   length="8" encoding="ASCII"/> 
+		<string name="FROM_ACCOUNT"   length="12" encoding="ASCII"/>
+		<string name="TO_CURRENCY"   length="3" encoding="ASCII"/>   
+		<decimal name="TO_AMOUNT"   length="16,2" encoding="ASCII"/>
+		<decimal name="TOTAL_NUMBER"   length="5" encoding="ASCII"/>
+		<string name="CORP_ID"   length="11" encoding="ASCII"/>
+		<string name="BATCH_REFERENCE"   length="20" encoding="ASCII"/>
+		<string name="BATCH_STATUS"   length="10" encoding="ASCII"/>  
+		<skip name="FILLER"   length="814" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="BD" key="RECORD_ID" isvalue="D">
+	    <string name="NETWORK_TYPE"   length="1" encoding="ASCII"/>
+		<string name="BENBANK_SWIAB"   length="11" encoding="ASCII"/>
+		<decimal name="TRANSFER_AMOUNT"   length="16,2" encoding="ASCII"/>
+		<string name="BENEFICIARY_COUNTRY"   length="2" encoding="ASCII"/>
+		<string name="BENEFICIARY_NAME"   length="35" encoding="ASCII"/>
+		<string name="BENEFICIARY_NAME2"   length="35" encoding="ASCII"/>
+		<string name="TO_ACCOUNT"   length="32" encoding="ASCII"/>
+		<string name="BENEFICIARY_BANK"   length="35" encoding="ASCII"/>
+	    <string name="BENEFICIARY_BANK_ADD1"   length="35" encoding="ASCII"/>
+		<string name="BENEFICIARY_BANK_ADD2"   length="35" encoding="ASCII"/>
+		<string name="BENEFICIARY_BANK_ADD3"   length="35" encoding="ASCII"/>
+		<string name="CHARGE_BY"   length="1" encoding="ASCII"/>
+		<string name="CHARGE_ACCOUNT"   length="10" encoding="ASCII"/>
+		<string name="SENDER_REFERENCE"   length="40" encoding="ASCII"/>
+		<string name="BANK_CODE"   length="10" encoding="ASCII"/>
+		<string name="CHIPS_VID"   length="7" encoding="ASCII"/>
+		<string name="INTERMEDIARY_BANK"   length="35" encoding="ASCII"/>
+		<string name="INTE_BANK_ACCOUNT"   length="35" encoding="ASCII"/>
+		<string name="INTE_BANK_SWIFT"   length="11" encoding="ASCII"/>
+		<string name="INTE_BANK_ADD1"   length="35" encoding="ASCII"/>
+		<string name="INTE_BANK_ADD2"   length="35" encoding="ASCII"/>
+		<string name="INTE_BANK_ADD3"   length="35" encoding="ASCII"/>
+		<string name="MESSAGE1"   length="35" encoding="ASCII"/>
+		<string name="MESSAGE2"   length="35" encoding="ASCII"/>
+		<string name="MESSAGE3"   length="35" encoding="ASCII"/>
+		<string name="MESSAGE4"   length="25" encoding="ASCII"/>
+		<string name="RECORD_TYPE"   length="1" encoding="ASCII"/>
+		<string name="SPBANK_CODE"   length="35" encoding="ASCII"/>
+		<string name="BENEFICIARY_NAME3"   length="35" encoding="ASCII"/>
+		<string name="BENEFICIARY_NAME4"   length="35" encoding="ASCII"/>
+		<skip name="FILLER"   length="137" encoding="ASCII"/>
+	</sectionif>
+	<sectionif name="FT" key="RECORD_ID" isvalue="T">
+		<string name="END_OF_FILE"   length="1" encoding="ASCII"/>
+		<skip name="FILLER"   length="898" encoding="ASCII"/>
+	</sectionif>
+</data-mapping>
+

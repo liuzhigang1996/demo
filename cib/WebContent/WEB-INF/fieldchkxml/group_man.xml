@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="group_man">
+		<field name="groupName" label="User_Group_Name" required="yes">
+			<format type="string"/>
+		</field>
+		<field name="item_accountList" label="Account_List" required="yes">
+			<format type="string"/>
+		</field>
+	</group>
+</fieldchecking>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Fri Dec 08 17:07:39 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="TxnSignData" table="TXN_SIGN_DATA">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="userName" column="USER_NAME" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="certAltName" column="CERT_ALT_NAME" type="java.lang.String" />
+        <property name="certDn" column="CERT_DN" type="java.lang.String" />
+        <property name="action" column="ACTION" type="java.lang.String" />
+        <property name="workId" column="WORK_ID" type="java.lang.String" />
+        <property name="procId" column="PROC_ID" type="java.lang.String" />
+        <property name="txnType" column="TXN_TYPE" type="java.lang.String" />
+        <property name="transId" column="TRANS_ID" type="java.lang.String" />
+        <property name="signFields" column="SIGN_FIELDS" type="java.lang.String" />
+        <property name="signData" column="SIGN_DATA" type="java.lang.String" />
+        <property name="signResult" column="SIGN_RESULT" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="actionTime" column="ACTION_TIME" type="java.util.Date" />
+        <property name="actionResult" column="ACTION_RESULT" type="java.lang.String" />
+    </class>
+
+</hibernate-mapping>

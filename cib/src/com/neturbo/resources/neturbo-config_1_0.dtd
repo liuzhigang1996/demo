@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!ENTITY % BeanName "CDATA">
+<!ENTITY % Boolean "(true|false|yes|no)">
+<!ENTITY % ClassName "CDATA">
+<!ENTITY % Integer "CDATA">
+<!ENTITY % Location "#PCDATA">
+<!ENTITY % PropName "CDATA">
+<!ENTITY % RequestPath "CDATA">
+<!ENTITY % RequestScope "(request|session)">
+<!ENTITY % FieldFormat "(date|time|amount|double|numeric|phoneno|email)">
+<!ENTITY % PoolType "(none|neturbo|container)">
+<!ELEMENT neturbo-config (neturbo-datasources?, neturbo-forms?, global-forwards?, neturbo-actions?)>
+<!ATTLIST neturbo-config
+	id ID #IMPLIED
+>
+<!ELEMENT neturbo-datasources (datasource*)>
+<!ATTLIST neturbo-datasources
+	id ID #IMPLIED
+>
+<!ELEMENT datasource (set-property*)>
+<!ATTLIST datasource
+	id ID #IMPLIED
+	key %BeanName; #IMPLIED
+	poolType %PoolType; #IMPLIED
+	type %ClassName; #IMPLIED
+	autoCommit %Boolean; #IMPLIED
+	description CDATA #IMPLIED
+	driverClass %ClassName; #IMPLIED
+	initialContext CDATA #IMPLIED
+	loginTimeout %Integer; #IMPLIED
+	maxCount %Integer; #IMPLIED
+	minCount %Integer; #IMPLIED
+	password CDATA #IMPLIED
+	readOnly %Boolean; #IMPLIED
+	url CDATA #IMPLIED
+	user CDATA #IMPLIED
+	defaultDataSource %Boolean; #IMPLIED
+>
+<!ELEMENT neturbo-forms (form*)>
+<!ATTLIST neturbo-forms
+	id ID #IMPLIED
+	type %ClassName; "com.neturbo.base.action.ActionFormBean"
+>
+<!ELEMENT form (icon?, display-name?, description?, set-property*)>
+<!ATTLIST form
+	id ID #IMPLIED
+	name %BeanName; #REQUIRED
+	bean %ClassName; #REQUIRED
+	defaultForm %Boolean; #IMPLIED
+>
+<!ELEMENT global-forwards (forward*)>
+<!ATTLIST global-forwards
+	id ID #IMPLIED
+	type %ClassName; "com.neturbo.base.action.ActionForward"
+>
+<!ELEMENT forward (icon?, display-name?, description?, set-property*)>
+<!ATTLIST forward
+	id ID #IMPLIED
+	className %ClassName; #IMPLIED
+	name CDATA #REQUIRED
+	input %RequestPath; #IMPLIED
+	permission %PropName; #IMPLIED
+	path %RequestPath; #REQUIRED
+	redirect %Boolean; #IMPLIED
+>
+<!ELEMENT check-fields (field*)>
+<!ELEMENT field EMPTY>
+<!ATTLIST field
+	name %PropName; #REQUIRED
+	label %PropName; #REQUIRED
+	fixlen %Integer; #IMPLIED
+	maxlen %Integer; #IMPLIED
+	minlen %Integer; #IMPLIED
+	format %FieldFormat; #IMPLIED
+	required %Boolean; #IMPLIED
+>
+<!ELEMENT neturbo-actions (action*)>
+<!ATTLIST neturbo-actions
+	id ID #IMPLIED
+	type %ClassName; "com.neturbo.base.action.ActionMapping"
+>
+<!ELEMENT action (icon?, display-name?, description?,set-property*, forward*, check-fields?)>
+<!ATTLIST action
+	id ID #IMPLIED
+	fid CDATA #IMPLIED
+	name %RequestPath; #REQUIRED
+	forward %RequestPath; #IMPLIED
+	include %RequestPath; #IMPLIED
+	input %RequestPath; #IMPLIED
+	form %BeanName; #IMPLIED
+	scope %RequestScope; #IMPLIED
+	bean %ClassName; #IMPLIED
+	defaultAction %Boolean; #IMPLIED
+	permission %PropName; #IMPLIED
+	syslog %Boolean; #IMPLIED
+	clearTxnSession %PropName; #IMPLIED
+	txnSession %PropName; #IMPLIED
+>
+<!ELEMENT set-property EMPTY>
+<!ATTLIST set-property
+	id ID #IMPLIED
+	property %PropName; #REQUIRED
+	value CDATA #REQUIRED
+>
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST description
+	id ID #IMPLIED
+>
+<!ELEMENT display-name (#PCDATA)>
+<!ATTLIST display-name
+	id ID #IMPLIED
+>
+<!ELEMENT icon (small-icon?, large-icon?)>
+<!ATTLIST icon
+	id ID #IMPLIED
+>
+<!ELEMENT large-icon (%Location;)>
+<!ATTLIST large-icon
+	id ID #IMPLIED
+>
+<!ELEMENT small-icon (%Location;)>
+<!ATTLIST small-icon
+	id ID #IMPLIED
+>

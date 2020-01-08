@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Jul 17 10:29:13 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="BillPayment" table="BILL_PAYMENT">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="batchId" column="BATCH_ID" type="java.lang.String" />
+        <property name="payType" column="PAY_TYPE" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="fromAccount" column="FROM_ACCOUNT" type="java.lang.String" />
+        <property name="category" column="CATEGORY" type="java.lang.String" />
+        <property name="merchant" column="MERCHANT" type="java.lang.String" />
+        <property name="billType" column="BILL_TYPE" type="java.lang.String" />
+        <property name="billNo1" column="BILL_NO1" type="java.lang.String" />
+        <property name="billNo2" column="BILL_NO2" type="java.lang.String" />
+        <property name="billNo3" column="BILL_NO3" type="java.lang.String" />
+        <property name="billName" column="BILL_NAME" type="java.lang.String" />
+        <property name="currency" column="CURRENCY" type="java.lang.String" />
+        <property name="transferAmount" column="TRANSFER_AMOUNT" type="java.lang.Double" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="detailResult" column="DETAIL_RESULT" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

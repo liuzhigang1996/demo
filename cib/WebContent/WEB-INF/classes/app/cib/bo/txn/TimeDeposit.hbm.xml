@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Jul 25 15:34:27 CST 2006                       -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="TimeDeposit" table="TIME_DEPOSIT">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="tdType" column="TD_TYPE" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="currentAccount" column="CURRENT_ACCOUNT" type="java.lang.String" />
+        <!-- add by linrui for mul-ccy 20190326 -->
+        <property name="currentAccountCcy" column="CURRENT_ACCOUNT_CCY" type="java.lang.String" />
+        <property name="tdAccount" column="TD_ACCOUNT" type="java.lang.String" />
+        <property name="currency" column="CURRENCY" type="java.lang.String" />
+        <property name="principal" column="PRINCIPAL" type="java.lang.Double" />
+        <property name="valueDate" column="VALUE_DATE" type="java.util.Date" />
+        <property name="maturityDate" column="MATURITY_DATE" type="java.util.Date" />
+        <property name="term" column="TERM" type="java.lang.String" />
+        <property name="productionNo" column="PRODUCTION_NO" type="java.lang.String" />
+        <property name="cifNo1" column="CIF_NO1" type="java.lang.String" />
+        <property name="shortName" column="SHORT_NAME" type="java.lang.String" />
+        <property name="defaultRate" column="DEFAULT_RATE" type="java.lang.Double" />
+        <property name="interest" column="INTEREST" type="java.lang.Double" />
+        <property name="penalty" column="PENALTY" type="java.lang.Double" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="instCd" column="INST_CD" type="java.lang.String" />
+        <property name="netCreditAmount" column="NET_CREDIT_AMOUNT" type="java.lang.Double" />
+    </class>
+    
+</hibernate-mapping>

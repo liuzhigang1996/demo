@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Fri Dec 29 23:27:14 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.srv">
+
+    <class name="ReqStopCheque" table="REQ_STOP_CHEQUE">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="batchId" column="BATCH_ID" type="java.lang.String" />
+        <property name="currentAccount" column="CURRENT_ACCOUNT" type="java.lang.String" />
+        <property name="chequeNumber" column="CHEQUE_NUMBER" type="java.lang.String" />
+        <property name="issueDate" column="ISSUE_DATE" type="java.lang.String" />
+        <property name="amount" column="AMOUNT" type="java.lang.Double" />
+        <property name="expiryDate" column="EXPIRY_DATE" type="java.lang.String" />
+        <property name="beneficiaryName" column="BENEFICIARY_NAME" type="java.lang.String" />
+        <property name="stopReason" column="STOP_REASON" type="java.lang.String" />
+        <property name="filler" column="FILLER" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="problemType" column="PROBLEM_TYPE" type="java.lang.String" />
+        <property name="reasonFlag" column="REASON_FLAG" type="java.lang.String" />
+        <property name="lineNo" column="LINE_NO" type="java.lang.Integer" />
+        <property name="detailResult" column="DETAIL_RESULT" type="java.lang.String" />
+        <!-- add by linrui 20190514 for mul-ccy -->
+        <property name="currentAccountCcy" column="ACCOUNT_CCY" type="java.lang.String" />
+        
+    </class>
+    
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="bank_draft_check">
+		<field name="uploadFile" label="choose_file" required="yes">
+	</field>
+	</group>
+	<group name="cash_order_check">
+		<field name="uploadFile" label="choose_file" required="yes">
+	</field>
+	</group>
+	<group name="protection_cheque_check">
+		<field name="uploadFile" label="choose_file" required="yes">
+	</field>
+	</group>
+	<group name="stop_cheque_check">
+		<field name="uploadFile" label="choose_file" required="yes">
+	</field>
+	</group>
+	
+</fieldchecking>

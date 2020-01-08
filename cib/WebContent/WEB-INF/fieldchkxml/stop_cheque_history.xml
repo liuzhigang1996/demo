@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+   <group name="history">
+	    <field name="chequeNumber" label="Cheque_Number" required="no">
+			<format type="numonly" />
+		</field>
+		<field name="begin_time" label="Begin_time">
+		     <format type="date" />
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([begin_time])>getDateValue([end_time]) &amp;&amp; [end_time] != '')|| (([begin_time]=='') &amp;&amp; ([end_time]=='')))</reject>
+		</field>
+		<field name="end_time" label="End_time">
+		     <format type="date" />
+		</field>
+	</group>
+	
+</fieldchecking>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Fri Dec 29 23:22:10 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.bat">
+
+    <class name="PayrollRec" table="PAYROLL_REC">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="payrollId" column="PAYROLL_ID" type="java.lang.String" />
+        <property name="referenceNo" column="REFERENCE_NO" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="fromAccount" column="FROM_ACCOUNT" type="java.lang.String" />
+        <property name="toAccount" column="TO_ACCOUNT" type="java.lang.String" />
+        <property name="creditAmount" column="CREDIT_AMOUNT" type="java.lang.Double" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="filler" column="FILLER" type="java.lang.String" />
+        <property name="problemType" column="PROBLEM_TYPE" type="java.lang.String" />
+        <property name="lineNo" column="LINE_NO" type="java.lang.Integer" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="detailResult" column="DETAIL_RESULT" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

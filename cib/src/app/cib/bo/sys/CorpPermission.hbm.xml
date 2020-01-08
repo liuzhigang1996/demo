@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Sep 26 18:57:28 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="CorpPermission" table="CORP_PERMISSION">
+        <id name="permissionId" column="PERMISSION_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="roleId" column="ROLE_ID" type="java.lang.String" />
+        <property name="groupId" column="GROUP_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="permissionResource" column="PERMISSION_RESOURCE" type="java.lang.String" />
+        <property name="permissionType" column="PERMISSION_TYPE" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="version" column="VERSION" type="java.lang.Integer" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

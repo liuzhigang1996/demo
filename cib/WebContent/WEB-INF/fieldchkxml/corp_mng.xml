@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="pref_entry">
+		<field name="corpId" label="Corp_Id" required="yes">
+			<format type="string" maxlen="12"/>
+		</field>
+	</group>
+	<group name="new_corp">
+		<field name="cifNo" label="Cif_No" required="yes"><!-- update by linrui 20180211 -->
+			<format type="string" maxlen="10"/>
+		</field>
+		<!-- modified by lzg 20190618 -->
+		<field name="corpName" label="Corp_Name" required="yes">
+			<format type="string"/>
+		</field>
+		
+		<!-- modified by lzg end -->
+		<field name="corpType" label="corp_type">
+			<format type="string"/>
+			<reject prompt="type_seleted">[corpType]=="0"</reject>
+		</field>
+		<field name="authenticationMode" label="AUTHENTICATION_MODE">
+			<format type="string"/>
+			<reject prompt="authentication_seleted">[authenticationMode]=="0"</reject>
+		</field>
+		<!-- modified by lzg 20190618-->
+		<!--<field name="timeZone" label="Time_Zone" required="yes">
+			<format type="integer"/>
+		</field>
+		-->
+		<!-- modified by lzg end -->
+		<!-- add by lzg 20190618 -->
+		<field name="fullName" label="Full Name" required="yes">
+			<format type="string"/>
+		</field>
+		<field name="commercialRegistryNo" label="Commercial Registry No." required="yes">
+			<format type="string"/>
+		</field>
+		<field name="telephone" label="Telephone" required="yes">
+			<format type="string"/>
+		</field>
+		
+		<!-- add by lzg end -->
+		<field name="email" label="Email" >
+			<format type="email"/>
+		</field>
+		<field name="rep1Email" label="Email" >
+			<format type="email"/>
+		</field>
+		<field name="rep2Email" label="Email" >
+			<format type="email"/>
+		</field>
+		<field name="rep1IdIssueDate" label="ID_Issue_date">
+		     <format type="date" />
+		</field>
+		<field name="rep2IdIssueDate" label="ID_Issue_date">
+		     <format type="date" />
+		</field>
+	</group>
+</fieldchecking>

@@ -1,0 +1,261 @@
+a:link {
+	color: #000000;
+	text-decoration: underline;
+}
+a:visited {
+	color: #000000;
+	text-decoration: underline;
+}
+a:hover {
+	color: #0000FF;
+	text-decoration: underline;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+TD{
+	FONT-SIZE: 10pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.title1 {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 12pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif";
+	PADDING:0px 0px 0px 10px;
+}
+
+TD.menu1_o {
+	BACKGROUND:url('../images/menu_tag_center_o.png') 0px 0px;
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt; 
+	COLOR: #ffffff; 
+	line-height: 14px;
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.menu1_c {
+	BACKGROUND:url('../images/menu_tag_center.png') 0px 0px;
+	PADDING:3px 0px 5px 0px;
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt; 
+	COLOR: #ffffff; 
+	line-height: 14px;
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.rmenu1_o {
+	BACKGROUND:url('../images/menu_tag_right_o.png') 0px 0px no-repeat;
+}
+TD.rmenu1_c {
+	BACKGROUND:url('../images/menu_tag_right.png') 0px 0px no-repeat;
+}
+TD.lmenu1_o {
+	BACKGROUND:url('../images/menu_tag_left_o.png') 0px 0px no-repeat;
+}
+TD.lmenu1_c {
+	BACKGROUND:url('../images/menu_tag_left.png') 0px 0px no-repeat;
+}
+
+TD.menu1_o A:link {
+	COLOR: #002D72; TEXT-DECORATION: none
+}
+TD.menu1_o A:visited {
+	COLOR: #002D72; TEXT-DECORATION: none
+}
+TD.menu1_o A:hover {
+	COLOR: #002D72; TEXT-DECORATION: underline
+}
+TD.menu1_c A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+TD.menu1_c A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+TD.menu1_c A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+
+TD.menu2_b {
+	background-image: url(../images/menu2_tag_center.png);
+}
+
+TD.menu2_clock {
+	PADDING:3px 0px 0px 20px;
+	VERTICAL-ALIGN: TOP;
+	WHITE-SPACE: nowrap;
+	FONT-SIZE: 8pt; 
+	COLOR: #000000;
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif";
+	background-image: url(../images/menu2_tag_clock.gif);
+}
+
+TD.topmenu_clock {
+	PADDING:0px 0px 0px 12px;
+	FONT-SIZE: 9pt;
+	FONT-WEIGHT: bold; 
+ 	COLOR: #ffffff; 
+ 	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"}
+
+TD.menu2_d {
+	background-image: url(../images/menu2_tag_del.gif);
+}
+
+TD.menu2_c {
+	PADDING:2px 0px 0px 0px;
+	VERTICAL-ALIGN: TOP;
+	WHITE-SPACE: nowrap;
+	FONT-SIZE: 9pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif";
+	background-image: url(../images/menu2_tag_center.png);
+}
+
+TD.menu2_o {
+	PADDING:2px 0px 0px 0px;
+	VERTICAL-ALIGN: TOP;
+	WHITE-SPACE: nowrap;
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt; 
+	COLOR: #002D72;
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif";
+	background-image: url(../images/menu2_tag_center_o.png);
+}
+
+TD.rmenu2_o {
+	BACKGROUND:url('../images/menu2_tag_right_o.png') 0px 0px no-repeat;
+}
+TD.rmenu2_c {
+	BACKGROUND:url('../images/menu2_tag_center.png') 0px 0px no-repeat;
+}
+TD.lmenu2_o {
+	BACKGROUND:url('../images/menu2_tag_left_o.png') 0px 0px no-repeat;
+}
+TD.lmenu2_c {
+	BACKGROUND:url('../images/menu2_tag_center.png') 0px 0px no-repeat;
+}
+
+TD.menu2_o A {
+	COLOR: #002D72; TEXT-DECORATION: none;
+}
+TD.menu2_o A:visited {
+	COLOR: #002D72; TEXT-DECORATION: none;
+}
+TD.menu2_o A:hover {
+	COLOR: #002D72; TEXT-DECORATION: underline;
+}
+TD.menu2_c A {
+	COLOR: #000000; TEXT-DECORATION: none;
+}
+TD.menu2_c A:visited {
+	COLOR: #002D72; TEXT-DECORATION: none;FONT-WEIGHT: bold;FONT-SIZE: 9pt;
+}
+TD.menu2_c A:hover {
+	COLOR: #002D72; TEXT-DECORATION: none;FONT-WEIGHT: bold;FONT-SIZE: 9pt;TEXT-DECORATION: underline;
+}
+
+TD.userinfo_title {
+	FONT-SIZE: 9pt; 
+	FONT-WEIGHT: bold; 
+	COLOR: #001682; 
+}
+
+TD.userinfo {
+	FONT-SIZE: 9pt; 
+	COLOR: #001682; 
+	white-space: nowrap;
+}
+
+
+TD.help1 {
+	BACKGROUND-COLOR: #31669c;
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 10pt; 
+	COLOR: #ffffff; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+TD.help1 A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+TD.help1 A:hover {
+	TEXT-DECORATION: underline
+}
+
+TD.bottom1_c {
+	PADDING:3px 3px 0px 3px;
+	VERTICAL-ALIGN: TOP;
+	WHITE-SPACE: nowrap;
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.copyright {
+	FONT-SIZE: 8pt; 
+	COLOR: #CCCCCC; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.welcometitle {
+	FONT-SIZE: 10pt; 
+	FONT-WEIGHT: bold; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.welcometitle1 {
+	FONT-SIZE: 10pt; 
+	FONT-WEIGHT: bold; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+TD.welcometitle2 {
+	FONT-SIZE: 10pt;
+	COLOR: #FFFFFF;
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif";
+	background-image: url(../images/welcome_bar1.gif);
+	background-color: #999999;
+}
+
+A.message:link {
+	FONT-SIZE: 8pt; COLOR: #FF0000; FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+A.message:visited {
+	FONT-SIZE: 8pt; COLOR: #FF0000; FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+TD.topmenu {
+	FONT-SIZE: 9pt;
+	FONT-WEIGHT: bold; 
+ 	/*COLOR: #FF0000; */
+ 	COLOR: #FF0000; 
+ 	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+TD.topleftbox {
+	FONT-SIZE: 9pt; 
+	COLOR: #004080; 
+	WHITE-SPACE: nowrap;
+	PADDING:0px 0px 0px 0px;
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+TD.toptext {
+	FONT-SIZE: 9pt; 
+	FONT-WEIGHT: bold; 
+	COLOR: #ffffff; 
+	FONT-FAMILY: "Arial","Verdana", "Arial", "Helvetica", "sans-serif"
+}
+TD.topmenu A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+TD.topmenu A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="add">
+		<!--<field name="accountNo" label="Current_Account" required="true" />-->
+		<field name="accountNo" label="Current_Account" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("accountNo").selectedIndex == 0</reject>
+		</field>
+		<field name="payCurrency" label="From_ccy" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("payCurrency").selectedIndex == 0</reject>
+			<!-- Add by long_zg 2019-05-31 UAT6-464 COB：COB：申請支票報錯，交易記錄也不見了 begin -->
+			<reject prompt="CurrencyNoAllow">document.getElementById("payCurrency").value != 'HKD' &amp;&amp; document.getElementById("payCurrency").value != 'MOP' </reject>
+			<!-- Add by long_zg 2019-05-31 UAT6-464 COB：COB：申請支票報錯，交易記錄也不見了 end -->
+		</field>
+		<!-- mod by linrui 20190514 -->
+		
+		<field name="noOfBook" label="No_Of_Books" required="true">
+			<format maxlen="2" type="numonly" />
+			<reject prompt="No_Of_Books_Large">
+			[noOfBook] &gt; 10
+			</reject>
+			<reject prompt="No_Of_Books_Invaild">
+			[noOfBook] == 0
+			</reject>
+		</field>
+		<field name="pickupBranchCode" label="Pickup_Branch" required="true" />
+	</group>
+</fieldchecking>

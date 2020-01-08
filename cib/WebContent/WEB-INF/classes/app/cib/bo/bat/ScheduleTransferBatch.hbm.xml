@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Oct 30 14:50:53 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.bat">
+
+    <class name="ScheduleTransferBatch" table="SCHEDULE_TRANSFER_BATCH">
+        <id name="batchId" column="BATCH_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="scheduleId" column="SCHEDULE_ID" type="java.lang.String" />
+        <property name="scheduleName" column="SCHEDULE_NAME" type="java.lang.String" />
+        <property name="scheduleDate" column="SCHEDULE_DATE" type="java.lang.String" />
+        <property name="scheduleTime" column="SCHEDULE_TIME" type="java.lang.String" />
+        <property name="corporaitonId" column="CORPORAITON_ID" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="beneficiaryType" column="BENEFICIARY_TYPE" type="java.lang.String" />
+        <property name="frequnceType" column="FREQUNCE_TYPE" type="java.lang.String" />
+        <property name="frequnceDays" column="FREQUNCE_DAYS" type="java.lang.String" />
+        <property name="transId" column="TRANS_ID" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="headerResult" column="HEADER_RESULT" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

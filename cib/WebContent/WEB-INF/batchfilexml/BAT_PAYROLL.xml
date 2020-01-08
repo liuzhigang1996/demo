@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data-mapping table_header="PAYROLL" table_detail="PAYROLL_REC" line_length="64">
+
+	<string name="RECORD_ID" length="1" encoding="ASCII" />
+	<sectionif name="FH" key="RECORD_ID" isvalue="A">
+		<string name="ORIGINATOR_AC_NO"   length="13" encoding="ASCII"/>     
+		<string name="GROUP_ID"  length="2" encoding="ASCII"/>   
+		<string name="START_VALUE_DATE"   length="6" encoding="ASCII"/>     
+		<string name="END_VALUE_DATE"  length="6" encoding="ASCII"/>    
+		<string name="VOLUME_NO"   length="2" encoding="ASCII"/>         
+		<skip name="FILLER"   length="34" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="BH" key="RECORD_ID" isvalue="H">
+		<string name="BATCH_NO"   length="3" encoding="ASCII"/>     
+		<string name="BATCH_DATE"  length="6" encoding="ASCII"/>   
+		<string name="TOTAL_NUMBER"  length="5" encoding="ASCII"/>    
+		<decimal name="TOTAL_AMOUNT"   length="16,2" encoding="ASCII"/>         
+		<skip name="FILLER"   length="33" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="BD" key="RECORD_ID" isvalue="D">
+		<string name="TO_ACCOUNT"   length="13" encoding="ASCII"/>     
+		<string name="REFERENCE_NO"  length="20" encoding="ASCII"/>   
+		<decimal name="CREDIT_AMOUNT"   length="16,2" encoding="ASCII"/>     
+		<skip name="FILLER"   length="14" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="FT" key="RECORD_ID" isvalue="Z">
+		<string name="END_OF_FILE_INDICATOR"   length="1" encoding="ASCII"/>     
+	</sectionif>
+			
+	<skip name="END_OF_LINE" length="1"/>     
+</data-mapping>

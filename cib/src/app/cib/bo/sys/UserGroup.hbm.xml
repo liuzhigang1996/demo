@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Sep 28 16:58:55 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="UserGroup" table="USER_GROUP">
+        <id name="groupId" column="GROUP_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="roleId" column="ROLE_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="groupName" column="GROUP_NAME" type="java.lang.String" />
+        <property name="groupDesc" column="GROUP_DESC" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="version" column="VERSION" type="java.lang.Integer" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Wed Sep 13 14:41:45 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="TransferMacau" table="TRANSFER_MACAU">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="recordType" column="RECORD_TYPE" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="fromAccount" column="FROM_ACCOUNT" type="java.lang.String" />
+        <property name="toAccount" column="TO_ACCOUNT" type="java.lang.String" />
+        <property name="beneficiaryName1" column="BENEFICIARY_NAME1" type="java.lang.String" />
+        <property name="beneficiaryName2" column="BENEFICIARY_NAME2" type="java.lang.String" />
+        <property name="beneficiaryBank" column="BENEFICIARY_BANK" type="java.lang.String" />
+        <property name="transferAmount" column="TRANSFER_AMOUNT" type="java.lang.Double" />
+        <property name="debitAmount" column="DEBIT_AMOUNT" type="java.lang.Double" />
+        <property name="requestType" column="REQUEST_TYPE" type="java.lang.String" />
+        <property name="transferDate" column="TRANSFER_DATE" type="java.util.Date" />
+        <property name="chargeBy" column="CHARGE_BY" type="java.lang.String" />
+        <property name="chargeAccount" column="CHARGE_ACCOUNT" type="java.lang.String" />
+        <property name="messsage" column="MESSSAGE" type="java.lang.String" />
+        <property name="messsage2" column="MESSSAGE2" type="java.lang.String" />
+        <property name="messsage3" column="MESSSAGE3" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="inputAmountFlag" column="INPUT_AMOUNT_FLAG" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="toCurrency" column="TO_CURRENCY" type="java.lang.String" />
+        <property name="fromCurrency" column="FROM_CURRENCY" type="java.lang.String" />
+        <property name="chargeAmount" column="CHARGE_AMOUNT" type="java.lang.Double" />
+        <property name="exchangeRate" column="EXCHANGE_RATE" type="java.lang.Double" />
+        <property name="chargeCurrency" column="CHARGE_CURRENCY" type="java.lang.String" />
+        <property name="commissionAmount" column="COMMISSION_AMOUNT" type="java.lang.Double" />
+        <property name="taxAmount" column="TAX_AMOUNT" type="java.lang.Double" />
+        <property name="handlingAmount" column="HANDLING_AMOUNT" type="java.lang.Double" />
+        <property name="swiftAmount" column="SWIFT_AMOUNT" type="java.lang.Double" />
+        <property name="chargeOur" column="CHARGE_OUR" type="java.lang.Double" />
+        <property name="hostresponseCode" column="HOSTRESPONSE_CODE" type="java.lang.String" />
+        <property name="hosterrorCode" column="HOSTERROR_CODE" type="java.lang.String" />
+        
+        <!-- Add by heyongjiang 20100804 -->
+        <property name="purposeCode" column="PURPOSE_CODE" type="java.lang.String" />
+        <property name="otherPurpose" column="OTHER_PURPOSE" type="java.lang.String" />
+        <property name="proofOfPurpose" column="PROOF_OF_PURPOSE" type="java.lang.String" />
+        <!-- Add by heyongjiang 20100804 end -->
+        
+        <!-- Add by heyj 20190529 -->
+        <property name="endDate" column="END_DATE" type="java.lang.String" />
+        
+        <!-- add by lzg 20190613 -->
+        <property name="serialNumber" column="SERIAL_NUMBER" type="java.lang.String" />
+        
+        <!-- Add by lzg 20190618 -->
+        <property name="showExchangeRate" column="SHOW_EXCHANGERATE" type="java.lang.Double" />
+    </class>
+    
+</hibernate-mapping>

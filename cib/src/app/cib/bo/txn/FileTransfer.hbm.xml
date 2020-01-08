@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Jul 17 10:29:27 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="FileTransfer" table="FILE_TRANSFER">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="beneficiaryType" column="BENEFICIARY_TYPE" type="java.lang.String" />
+        <property name="frequnceType" column="FREQUNCE_TYPE" type="java.lang.String" />
+        <property name="frequnceDays" column="FREQUNCE_DAYS" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

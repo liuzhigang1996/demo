@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<time-table>
+  <transaction id="ZC01">
+    <open DAY_OF_WEEK="0" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="1" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="2" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="3" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="4" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="5" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="6" from="09:00:00" to="22:00:00" />
+  </transaction>
+  <transaction id="ZC02">
+    <open DAY_OF_WEEK="0" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="1" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="2" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="3" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="4" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="5" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="6" from="09:00:00" to="22:00:00" />
+  </transaction>
+  <transaction id="ZC03">
+    <open DAY_OF_WEEK="0" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="1" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="2" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="3" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="4" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="5" from="09:00:00" to="22:00:00" />
+    <open DAY_OF_WEEK="6" from="09:00:00" to="22:00:00" />
+  </transaction>
+</time-table>

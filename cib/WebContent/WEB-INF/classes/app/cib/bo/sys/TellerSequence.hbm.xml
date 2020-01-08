@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Sun Aug 06 15:30:12 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="TellerSequence" table="TELLER_SEQUENCE">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="teller" column="TELLER" type="java.lang.String" />
+        <property name="currentSequence" column="CURRENT_SEQUENCE" type="java.lang.Integer" />
+        <property name="effectiveDate" column="EFFECTIVE_DATE" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

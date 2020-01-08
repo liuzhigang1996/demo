@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="corpUser">
+		<!-- modified by lzg 20190704 -->
+		<!--<field name="userId" label="User_Id" required="yes">
+			<format type="string" />
+		</field>
+		-->
+		<field name="userId" label="User_Id">
+			<format type="engmust" />
+			<reject prompt="userId_Length_Reject">[userId].length &lt; 8 || [userId].length &gt; 16</reject>
+		</field>
+		<!-- modified by lzg end -->
+		<!-- modified by lzg 20190618 -->
+		<field name="userName" label="User_Name" required="yes">
+			<format type="string"/>
+		</field>
+		
+		<!--<field name="title" label="Title" required="yes">
+			<format type="string"/>
+		</field>
+		--><!-- modified by lzg end -->
+		<!-- add by lzg 20190618 -->
+		<field name="fullName" label="Full_Name" required="yes">
+			<format type="string"/>
+		</field>
+		<field name="idNo" label="ID_NO" required="yes">
+			<format type="string"/>
+		</field>
+		<!-- add by lzg end -->
+		<field name="email" label="Email" required="yes">
+			<format type="email"/>
+		</field>
+		<field name="idIssueDate" label="ID_Issue_date">
+		     <format type="date" />
+		</field>
+		<!--<field name="certInfo1" label="Cert_Info1">
+			<format type="string"/>
+			<reject prompt="Approver_CerInfo1">[roleId] == "2" &amp; [authenticationMode] == "C" &amp; [certInfo1]==""</reject>
+		</field>
+		-->
+		<field name="authLevel" label="Authoriztion_Level"> 
+			<format type="string"/>
+			<reject prompt="AuthLevel_Required">[roleId]=="2" &amp; [authLevel]==""</reject>
+		</field>
+		<!-- Modify by long_zg 2019-05-22 UAT6-245 COB：四種轉賬的名稱需要更改 begin -->
+		<!--
+		<field name="limit1" label="Own_Accounts">
+			<format type="amount"/>
+			<reject prompt="Own_Accounts_Required">[roleId]=="1" &amp; [limit1]==""</reject>
+		</field>
+		<field name="limit2" label="Accounts_BANK">
+			<format type="amount"/>
+			<reject prompt="Accounts_BANK_Required">[roleId]=="1" &amp; [limit2]==""</reject>
+		</field>
+		<field name="limit3" label="Accounts_Macau">
+			<format type="amount"/>
+			<reject prompt="Accounts_Macau_Required">[roleId]=="1" &amp; [limit3]==""</reject>
+		</field>
+		<field name="limit4" label="Accounts_Overseas">
+			<format type="amount"/>
+			<reject prompt="Accounts_Overseas_Required">[roleId]=="1" &amp; [limit4]==""</reject>
+		</field>
+		-->
+		<field name="limit1" label="TO_MY_ACCOUNT">
+			<format type="amount"/>
+			<reject prompt="TO_MY_ACCOUNT_Required">[roleId]=="1" &amp; [limit1]==""</reject>
+		</field>
+		<field name="limit2" label="TO_MDB_BANK_ACCOUNT">
+			<format type="amount"/>
+			<reject prompt="TO_MDB_BANK_ACCOUNT_Required">[roleId]=="1" &amp; [limit2]==""</reject>
+		</field>
+		<field name="limit3" label="TO_LOCAL_BANK_ACCOUNT">
+			<format type="amount"/>
+			<reject prompt="TO_LOCAL_BANK_ACCOUNT_Required">[roleId]=="1" &amp; [limit3]==""</reject>
+		</field>
+		<field name="limit4" label="TO_OVERSEAS_BANK_ACCOUNT">
+			<format type="amount"/>
+			<reject prompt="TO_OVERSEAS_BANK_ACCOUNT_Required">[roleId]=="1" &amp; [limit4]==""</reject>
+		</field>
+		<!-- Modify by long_zg 2019-05-22 UAT6-245 COB：四種轉賬的名稱需要更改 end -->
+		
+		<!--<field name="limit5" label="Corp_Fund_Alloc">
+			<format type="amount"/>
+			<reject prompt="Corp_Fund_Alloc_Required">[roleId]=="1" &amp; [limit5]==""</reject>
+		</field>
+		<field name="limit6" label="Bill_Payment">
+			<format type="amount"/>
+			<reject prompt="Bill_Payment_Required">[roleId]=="1" &amp; [limit6]==""</reject>
+		</field>
+		--><field name="limit7" label="Time_Deposit">
+			<format type="amount"/>
+			<reject prompt="Time_Deposit_Required">[roleId]=="1" &amp; [limit7]==""</reject>
+		</field>
+		<!--<field name="limit8" label="Payroll">
+			<format type="amount"/>
+			<reject prompt="Payroll_Required">[roleId]=="1" &amp; [limit8]==""</reject>
+		</field>
+		<field name="limit9" label="Bank_Draft">
+			<format type="amount"/>
+			<reject prompt="Bank_Draft_Required">[roleId]=="1" &amp; [limit9]==""</reject>
+		</field>
+		<field name="limit10" label="Cashier_Order">
+			<format type="amount"/>
+			<reject prompt="Cashier_Order_Required">[roleId]=="1" &amp; [limit10]==""</reject>
+		</field>
+		--><!-- modified by lzg 20190624 -->
+		<!-- modify by long_zg 2014-04-03 for CR204 Apply OTP to BOB begin -->
+		<!--<field name="mobile" label="Mobile_Telephone">
+			<format type="numonly"/>
+			<reject prompt="Mobile_Telephone_Required">([roleId]=="2" || ([otpLogin]=="Y" &amp; [authenticationMode]=="C")) &amp; [mobile]==""</reject>
+		</field>
+		-->
+		<field name="mobile" label="Mobile_Telephone" required="yes">
+			<format type="string"/>
+		</field>
+		<!-- modified by lzg end -->
+		<!--<field name="mobile" label="Mobile_Telephone">
+			<format type="numonly"/>
+			<reject prompt="Mobile_Country_Code_Required">[roleId]=="2"</reject> 
+			<reject prompt="Mobile_Country_Code_Invalid">!(/^\d{0,3}$/).test([mobileCountryCode])</reject>
+		</field>
+		<field name="mobile" label="Mobile_Telephone">
+			<format type="numonly"/>
+		 	<reject prompt="Mobile_Area_Code_Required">[roleId]=="2"</reject> 
+			<reject prompt="Mobile_Area_Code_Invalid">!(/^\d{0,3}$/).test([mobileAreaCode])</reject>
+		</field>
+		--><!-- modify by long_zg 2014-04-03 for CR204 Apply OTP to BOB end -->
+
+	</group>
+</fieldchecking>

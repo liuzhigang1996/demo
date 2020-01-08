@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->
+<transaction>
+	<packet-to-host> 
+		<string name="transactionType" length="1" encoding="EBCDIC"  />
+        <string name="sendType" length="1" encoding="EBCDIC"  />
+        <string name="phoneNO" length="20" encoding="EBCDIC"  />
+        <string name="email" length="50" encoding="EBCDIC"  />
+        <string name="customerNO" length="8" encoding="EBCDIC"  />
+        <string name="accountNO" length="15" encoding="EBCDIC"  />
+        <string name="SMStemplateID" length="20" encoding="EBCDIC"  />
+        <string name="EMAILtemplateID" length="20" encoding="EBCDIC"  />
+        <number name="SendDate" length="8" encoding="EBCDIC"  />
+        <number name="SendTime" length="6" encoding="EBCDIC"  />
+        <number name="messageLength" length="6" encoding="EBCDIC"  />
+        <string name="filler" length="45" encoding="EBCDIC"  />
+        <string name="opt" length="10" encoding="EBCDIC"  />
+        <string name="channel" length="10" encoding="UTF-8"  />
+        <string name="action" length="20" encoding="EBCDIC"  />
+        <string name="count" length="10" encoding="EBCDIC"  />
+        <string name="transactionName" length="50" encoding="UTF-8"  />
+        <string name="accountNO" length="20" encoding="EBCDIC"  />
+        <string name="currency" length="10" encoding="EBCDIC"  />
+        <string name="amount" length="20" encoding="EBCDIC"  />
+        <string name="date" length="10" encoding="EBCDIC"  />
+        <string name="time" length="10" encoding="EBCDIC"  />
+        <string name="bussinessReference" length="30" encoding="EBCDIC"  />
+        <string name="remark" length="60" encoding="EBCDIC"  />
+        <string name="var01" length="10" encoding="EBCDIC"  />
+        <string name="var02" length="10" encoding="EBCDIC"  />
+        <string name="var03" length="10" encoding="EBCDIC"  />
+        <string name="var04" length="10" encoding="EBCDIC"  />
+        <string name="var05" length="20" encoding="EBCDIC"  />
+        <string name="var06" length="20" encoding="EBCDIC"  />
+        <string name="var07" length="20" encoding="EBCDIC"  />
+        <string name="var08" length="20" encoding="EBCDIC"  />
+        <string name="var09" length="50" encoding="EBCDIC"  />
+        <string name="var10" length="50" encoding="EBCDIC"  />
+	</packet-to-host>  		 
+	<packet-from-host>
+ 	</packet-from-host>
+</transaction>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+    <group name="templateList">
+		<field name="transId" label="SELECT_TEMPLATE" required="yes">
+		</field>
+	</group>
+</fieldchecking>

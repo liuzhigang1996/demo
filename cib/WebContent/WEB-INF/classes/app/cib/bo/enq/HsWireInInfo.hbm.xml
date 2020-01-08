@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Sep 05 12:24:41 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.enq">
+
+    <class name="HsWireInInfo" table="HS_WIRE_IN_INFO">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="referenceNo" column="REFERENCE_NO" type="java.lang.String" />
+        <property name="corporationId" column="CORPORATION_ID" type="java.lang.String" />
+        <property name="receivedDate" column="RECEIVED_DATE" type="java.lang.String" />
+        <property name="receivedTime" column="RECEIVED_TIME" type="java.lang.String" />
+        <property name="swiftSender" column="SWIFT_SENDER" type="java.lang.String" />
+        <property name="orderingCustomerName" column="ORDERING_CUSTOMER_NAME" type="java.lang.String" />
+        <property name="orderingCustomerName2" column="ORDERING_CUSTOMER_NAME2" type="java.lang.String" />
+        <property name="currency" column="CURRENCY" type="java.lang.String" />
+        <property name="amount" column="AMOUNT" type="java.lang.Double" />
+        <property name="beneficiaryAccount" column="BENEFICIARY_ACCOUNT" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="swiftSession" column="SWIFT_SESSION" type="java.lang.String" />
+        <property name="bankReferenceNo" column="BNU_REFERENCE_NO" type="java.lang.String" />
+        <property name="orderingCustomerInfo1" column="ORDERING_CUSTOMER_INFO1" type="java.lang.String" />
+        <property name="orderingCustomerInfo2" column="ORDERING_CUSTOMER_INFO2" type="java.lang.String" />
+        <property name="orderingCustomerInfo3" column="ORDERING_CUSTOMER_INFO3" type="java.lang.String" />
+        <property name="orderingCustomerInfo4" column="ORDERING_CUSTOMER_INFO4" type="java.lang.String" />
+        <property name="orderingCustomerInfo5" column="ORDERING_CUSTOMER_INFO5" type="java.lang.String" />
+        <property name="beneficiaryCustomer1" column="BENEFICIARY_CUSTOMER1" type="java.lang.String" />
+        <property name="beneficiaryCustomer2" column="BENEFICIARY_CUSTOMER2" type="java.lang.String" />
+        <property name="beneficiaryCustomer3" column="BENEFICIARY_CUSTOMER3" type="java.lang.String" />
+        <property name="beneficiaryCustomer4" column="BENEFICIARY_CUSTOMER4" type="java.lang.String" />
+        <property name="beneficiaryCustomer5" column="BENEFICIARY_CUSTOMER5" type="java.lang.String" />
+        <property name="remittanceInformation1" column="REMITTANCE_INFORMATION1" type="java.lang.String" />
+        <property name="remittanceInformation2" column="REMITTANCE_INFORMATION2" type="java.lang.String" />
+        <property name="remittanceInformation3" column="REMITTANCE_INFORMATION3" type="java.lang.String" />
+        <property name="remittanceInformation4" column="REMITTANCE_INFORMATION4" type="java.lang.String" />
+        <property name="valueDate" column="VALUE_DATE" type="java.lang.String" />
+        <property name="detailsOfCharges" column="DETAILS_OF_CHARGES" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

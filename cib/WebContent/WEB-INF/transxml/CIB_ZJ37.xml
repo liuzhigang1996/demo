@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->    
+<transaction> 
+	<packet-to-host>
+		<string name="FIELD_PRESENT_BYTE1" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE2" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE3" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE4" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE5" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE6" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE7" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE8" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE9" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE10" length="1" encoding="ASCII" default="0B00000000"/>
+		   <string name="REQ_REF" length="16" encoding="EBCDIC"/>
+		   <string name="CIF_NO_1"            length="10"    encoding="EBCDIC"/>
+    <string name="ACC_NO"              length="12"    encoding="EBCDIC"/> 
+    <decimal name="PRINCIPAL_AMT1"       comp3length="16,2"    encoding="COMP3"/> 
+    <number name="PERIOD" comp3length="3" encoding="COMP3"/>   
+    <string name="PRODUCT_TYPE"        length="8"    encoding="EBCDIC"/> 
+    <string name="FOREIGN_CCY_CODE"    length="3"    encoding="EBCDIC"/>   
+    <string name="INST_CD"    length="1"    encoding="EBCDIC"/> <!-- add by linrui add inst_cd -->  
+ 
+ 
+	</packet-to-host>  	  	 
+	<packet-from-host>
+    <string name="ACCOUNT_NO" length="15" encoding="EBCDIC"/>   
+ 	</packet-from-host>
+</transaction>

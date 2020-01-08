@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+    <group name="templateInBANK">
+		<field name="fromAccount" label="From_Account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="fromCurrency" label="From_ccy" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromCurrency").selectedIndex == 0</reject>
+		</field>
+		<field name="toAccount" label="To_Account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("toAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="toCurrency" label="To_ccy" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("toCurrency").selectedIndex == 0</reject>
+		</field>
+		<field name="transferAmount" label="To_Amount" >
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;10 &amp;&amp; [debitAmount]&lt;10 </reject>
+		</field>
+		<field name="debitAmount" label="Transfer_Info1" >
+			<format type="amount" />
+		</field>
+		<field name="toName" label="To_Name">
+		    <format type="string" />
+		    <reject prompt="Name_Justify">[toAccount]==0 &amp;&amp; [toName]==""</reject>
+		</field>
+	</group>
+</fieldchecking>

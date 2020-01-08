@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="login">
+	    <field name="cifNo" label="CIF_NO" required="yes">
+			<format type="string" />
+		</field>
+		<field name="loginId" label="Login_Id" required="yes">
+			<format type="string" />
+		</field>
+		<field name="password" label="PIN" required="yes">
+			<format type="string" />
+			<reject prompt="Password_Range">([password].length &lt; 8) || ([password].length &gt; 20)</reject>
+		</field>
+		
+		
+		<!-- Add by long_zg 2019-05-16 for otp login -->
+		<field name="otp" label="OTP">
+			<format type="string" />
+			<reject prompt="OTP_REQUIRED">[otpLogin]=="Y" &amp; [otp] ==""</reject>
+		</field>
+		<!-- Add by long_zg 2019-05-16 for otp end -->
+	</group>
+	<group name="changePin">
+		<field name="oldPassword" label="Initail_PIN" required="yes">
+			<format type="String" />
+		</field>
+        <field name="newPassword" label="New_PIN" required="yes">
+			<format type="String" />
+			<reject prompt="Password_Info1">[newPassword]==[oldPassword]</reject>
+			<reject prompt="Password_Range">([newPassword].length &lt; 8) || ([newPassword].length &gt; 20)</reject>
+			<reject prompt="Password_Upper_Lower">(parseInt([checkUpperNum]) &lt; pin_upper) || (parseInt([checkLowerNum]) &lt; pin_lower)</reject>
+			
+			<!-- add by long_zg 2015-06-24 for CR210 New policy to BOB/BOL password -->
+			<reject prompt="Char_Num_Only">checkCharNum([newPassword])</reject>
+			<reject prompt="Password_UserId_Same">([newPassword].toLowerCase()  == [userId].toLowerCase())</reject>
+			<reject prompt="Password_UserId_Reverse_Same">([newPassword].toLowerCase()  == ([userId].split('').reverse().join('')).toLowerCase())</reject>
+			<reject prompt="Password_Include_IdNo">((''!=[idNo]) &amp;&amp; (-1 != [newPassword].toLowerCase() .indexOf((eliminate([idNo])).toLowerCase())))</reject>
+			
+		</field>
+		<field name="confirmPassword" label="New_PIN_Confirm" required="yes">
+			<format type="String" />
+			<depend prompt="Password_Info">[newPassword]==[confirmPassword]</depend>
+		</field>
+	</group>
+	<group name="changePin2">
+        <field name="newSecurityCode" label="New_S_Code" required="yes">
+			<format type="String" />
+			<reject prompt="SecurityCode_Range">([newSecurityCode].length &lt; pin2_min) || ([newSecurityCode].length &gt; pin2_max)</reject>
+			<reject prompt="SecurityCode_Upper_Lower">(parseInt([checkUpperNum]) &lt; pin2_upper) || (parseInt([checkLowerNum]) &lt; pin2_lower)</reject>
+			
+			<!-- add by long_zg 2015-06-24 for CR210 New policy to BOB/BOL password -->
+			<reject prompt="Char_Num_Only">checkCharNum([newSecurityCode])</reject>
+			<reject prompt="Password_UserId_Same">([newSecurityCode].toLowerCase()  == [userId].toLowerCase())</reject>
+			<reject prompt="Password_UserId_Reverse_Same">([newSecurityCode].toLowerCase()  == ([userId].split('').reverse().join('')).toLowerCase())</reject>
+			<reject prompt="Password_Include_IdNo">((''!=[idNo]) &amp;&amp; (-1 != [newSecurityCode].toLowerCase() .indexOf((eliminate([idNo])).toLowerCase())))</reject>
+		</field>
+		<field name="confirmSecurityCode" label="New_S_Code_Confirm" required="yes">
+			<format type="String" />
+			<depend prompt="SecurityCode_Info">[newSecurityCode]==[confirmSecurityCode]</depend>
+		</field>
+		<field name="OldSecurityCode" label="Old Security Code" required="yes">
+			<format type="String" />
+		</field>
+	</group>
+	<group name="inputSecurityCode">
+        <field name="securityCode" label="security_code" required="yes">
+			<format type="String" />
+		</field>
+		<field name="OldSecurityCode" label="Old Security Code" required="yes">
+			<format type="String" />
+		</field>
+		
+	</group>
+
+	<group name="bank_changePin">
+		<field name="oldPassword" label="Initail_PIN" required="yes">
+			<format type="String" minlen="6" />
+		</field>
+        <field name="newPassword" label="New_PIN" required="yes">
+			<format type="String" minlen="6" />
+			<reject prompt="Password_Info1">[newPassword]==[oldPassword]</reject>
+		</field>
+		<field name="confirmPassword" label="New_PIN_Confirm" required="yes">
+			<format type="String" />
+			<depend prompt="Password_Info">[newPassword]==[confirmPassword]</depend>
+		</field>
+	</group>
+</fieldchecking>

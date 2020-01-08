@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Mar 01 15:49:52 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.bnk">
+
+    <class name="TxnLimit" table="TXN_LIMIT">
+        <id name="limitId" column="LIMIT_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="afterModifyId" column="AFTER_MODIFY_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="txnType" column="TXN_TYPE" type="java.lang.String" />
+        <property name="account" column="ACCOUNT" type="java.lang.String" />
+        <property name="currency" column="CURRENCY" type="java.lang.String" />
+        <property name="limit1" column="LIMIT1" type="java.lang.Double" />
+        <property name="limit2" column="LIMIT2" type="java.lang.Double" />
+        <property name="limit3" column="LIMIT3" type="java.lang.Double" />
+        <property name="limit4" column="LIMIT4" type="java.lang.Double" />
+        <property name="limit5" column="LIMIT5" type="java.lang.Double" />
+        <property name="limit6" column="LIMIT6" type="java.lang.Double" />
+        <property name="limit7" column="LIMIT7" type="java.lang.Double" />
+        <property name="limit8" column="LIMIT8" type="java.lang.Double" />
+        <property name="limit9" column="LIMIT9" type="java.lang.Double" />
+        <property name="limit10" column="LIMIT10" type="java.lang.Double" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

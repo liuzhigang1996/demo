@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->
+<transaction>
+	<packet-to-host> 
+		<string name="SERV_CD" length="7" encoding="EBCDIC" />
+        <string name="FILE_NM" length="30" encoding="EBCDIC" />
+	</packet-to-host>  		 
+	<packet-from-host>
+	<number name="AC_DATE" length="8" encoding="EBCDIC"/>
+	<number name="JRN_NO" length="9" encoding="EBCDIC"/>
+ 	</packet-from-host>
+</transaction>

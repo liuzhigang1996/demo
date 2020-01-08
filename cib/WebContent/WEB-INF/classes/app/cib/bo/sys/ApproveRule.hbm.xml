@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Mar 01 14:32:51 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="ApproveRule" table="APPROVE_RULE">
+        <id name="ruleId" column="RULE_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="txnType" column="TXN_TYPE" type="java.lang.String" />
+        <property name="currency" column="CURRENCY" type="java.lang.String" />
+        <property name="ruleType" column="RULE_TYPE" type="java.lang.String" />
+        <property name="singleLevel" column="SINGLE_LEVEL" type="java.lang.String" />
+        <property name="fromAmount" column="FROM_AMOUNT" type="java.lang.Double" />
+        <property name="toAmount" column="TO_AMOUNT" type="java.lang.Double" />
+        <property name="levelA" column="LEVEL_A" type="java.lang.Integer" />
+        <property name="levelD" column="LEVEL_D" type="java.lang.Integer" />
+        <property name="levelC" column="LEVEL_C" type="java.lang.Integer" />
+        <property name="levelB" column="LEVEL_B" type="java.lang.Integer" />
+        <property name="levelE" column="LEVEL_E" type="java.lang.Integer" />
+        <property name="levelF" column="LEVEL_F" type="java.lang.Integer" />
+        <property name="levelG" column="LEVEL_G" type="java.lang.Integer" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+        <property name="afterModifyId" column="AFTER_MODIFY_ID" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

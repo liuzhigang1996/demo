@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<request-checkers>
+<request-checker id="XssCheck" class="app.cib.util.RequestCheckerXss">
+</request-checker>
+<request-checker id="SqlCheck" class="app.cib.util.RequestCheckerSql">
+	<config>
+		<condition-list>
+			<condition>
+				<parameter>merchantGroup</parameter>
+			</condition>
+			<condition>
+				<parameter>targetId</parameter>
+			</condition>
+		</condition-list>
+	</config>
+</request-checker>
+<!-- add by linrui for account ccy 20190613 -->
+<request-checker id="AcctCcyCheck" class="app.cib.util.RequestChkAcctCcy">
+	<config>
+		<condition-list>
+		<condition>              <!-- 3-1 -->
+			<action>transferInBANK</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              <!-- 3-1 -->
+			<action>transferInBANK2</action> 
+			<method>add</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- add by lzg 20190613 -->
+		
+		<!-- transferInBank3rd -->
+		<condition>              
+			<action>transferInBANK3rd</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferInBANK3rd2</action> 
+			<method>add</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- transferInBank3rd end -->
+		
+		<!-- transferInMacau -->
+		<condition>              
+			<action>transferInMacau</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- transferInMacau end-->
+		
+		<!-- transferInOversea -->
+		<condition>              
+			<action>transferInOversea</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- transferInOversea end -->
+		
+		<!-- transferTemplateInBank and transferTemplateInBank3rd -->
+		<condition>              
+			<action>transferTemplate</action> 
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplate2</action> 
+			<method>transferTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplate3</action> 
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplate4</action> 
+			<method>addTemplate</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplate5</action> 
+			<method>transferTemplate</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplate6</action> 
+			<method>editTemplate</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- transferTemplateInBank and transferTemplateInBank3rd end-->
+		
+		<!-- transferTemplateInMacau -->
+		<condition>              
+			<action>transferTemplateInMacau</action> 
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplateInMacau2</action> 
+			<method>transferTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplateInMacau3</action> 
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- transferTemplateInMacau end-->
+		
+		<!-- transferTemplateInOversea -->
+		<condition>              
+			<action>transferTemplateInOversea</action> 
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplateInOversea2</action> 
+			<method>transferTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>transferTemplateInOversea3</action> 
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- transferTemplateInOversea end -->
+		
+		<!-- timeDeposit -->
+		<condition>              
+			<action>timeDeposit</action> 
+			<method>addTimeDeposit</method>
+			<field>currentAccount</field>
+			<ccyField>currentAccountCcy</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>timeDeposit2</action> 
+			<method>withdrawTimeDeposit</method>
+			<field>currentAccount</field>
+			<ccyField>currentAccountCcy</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- timeDeposit end -->
+		
+		<!-- cheque -->
+		<condition>              
+			<action>stopChequeRequest</action> 
+			<method>stop</method>
+			<field>currentAccount</field>
+			<ccyField>currentAccountCcy</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>chequeBookRequest</action> 
+			<method>add</method>
+			<field>accountNo</field>
+			<ccyField>payCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- cheque end -->
+		
+		<!-- scheduleTransferBANK -->
+		<condition>              
+			<action>scheduleTransferBANK</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>scheduleTransferBANK2</action> 
+			<method>edit</method>
+			<field>fromAccount</field>
+			<ccyField>fromCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>scheduleTransferBANK3</action> 
+			<method>add</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<condition>              
+			<action>scheduleTransferBANK4</action> 
+			<method>edit</method>
+			<field>toAccount</field>
+			<ccyField>toCurrency</ccyField>
+			<check>checkAccountCurrency</check>
+		</condition>
+		<!-- scheduleTransferBANK end -->
+		<!-- add by lzg end -->
+		
+		
+		</condition-list>
+	</config>
+</request-checker>
+<!-- end -->
+<request-checker id="AccountCheck" class="app.cib.util.RequestCheckerAccount">
+	<config>
+		<condition-list>
+		<condition>              <!-- 3-1 -->
+			<action>transferInBANK</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<!-- #add by long_zg 2019-05-16 for 3rd -->
+		<condition>              <!-- 3-1 -->
+			<action>transferInBANK3rd</action> 
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		
+		<condition>                      <!-- 3-2 -->
+			<action>transferInMacau</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!-- 3-3 -->
+			<action>transferInOversea</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!-- 3-3 Deduct Charges -->
+			<action>transferInOversea</action>
+			<method>add</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!-- 3-4-1-fund transfer-->
+			<action>transferTemplate</action>
+			<method>transferTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-1-add to list-->
+			<action>transferTemplate</action>
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-1-edit-->
+			<action>transferTemplate</action>
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!-- 3-4-2-fund transfer-->
+			<action>transferTemplateInMacau</action>
+			<method>transferTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-2-add to list-->
+			<action>transferTemplateInMacau</action>
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-2-edit-->
+			<action>transferTemplateInMacau</action>
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!-- 3-4-3-fund transfer-->
+			<action>transferTemplateInOversea</action>
+			<method>transferTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-3-fund transfer Deduct Charges-->
+			<action>transferTemplateInOversea</action>
+			<method>transferTemplate</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-3-add to list-->
+			<action>transferTemplateInOversea</action>
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-3-add to list Deduct Charges-->
+			<action>transferTemplateInOversea</action>
+			<method>addTemplate</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!-- 3-4-3-edit-->
+			<action>transferTemplateInOversea</action>
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!-- 3-4-3-edit Deduct Charges-->
+			<action>transferTemplateInOversea</action>
+			<method>editTemplate</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		 <!-- 3-5-->
+	<!-- 	<condition>                    
+			<action>transferHistory</action>
+			<method>listHistory</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		-->
+			
+		<condition>                     <!--5-1 add Transfer from Account Number -->
+			<action>corpDelivery</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--5-1 add Company -->
+			<action>corpDelivery</action>
+			<method>add</method>
+			<field>toCorporation</field>
+			<check>checkCorp</check>
+		</condition>
+		<condition>                     <!--5-1 add Transfer To Account Number -->
+			<action>corpDelivery</action>
+			<method>add</method>
+			<field>toAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!--5-1 Company -->
+			<action>jsax</action>
+			<method>CorpAccListService</method>
+			<field>corpId</field>
+			<check>checkCorp</check>
+		</condition>
+		 <condition>                     <!--5-2 Transfer From Company -->
+			<action>corpSubsidiaryTransfer</action>
+			<method>add</method>
+			<field>fromCorporation</field>
+			<check>checkCorp</check>
+		</condition>
+		 <condition>                     <!--5-2 Transfer From Account Number -->
+			<action>corpSubsidiaryTransfer</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--5-2 Transfer To Company -->
+			<action>corpSubsidiaryTransfer</action>
+			<method>add</method>
+			<field>toCorporation</field>
+			<check>checkCorp</check>
+		</condition>
+		 <condition>                     <!--5-2 Transfer To Account Number -->
+			<action>corpSubsidiaryTransfer</action>
+			<method>add</method>
+			<field>toAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!--5-3 Transfer From Company -->
+			<action>corpRepatriate</action>
+			<method>add</method>
+			<field>fromCorporation</field>
+			<check>checkCorp</check>
+		</condition>
+		 <condition>                     <!--5-3 Transfer From Account Number -->
+			<action>corpRepatriate</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		 <condition>                     <!--5-3 Transfer To Account Number -->
+			<action>corpRepatriate</action>
+			<method>add</method>
+			<field>toAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		 <condition>                     <!--5-4 Transfer To Company -->
+			<action>corpHistory</action>
+			<method>listHistory</method>
+			<field>fromCorporation</field>
+			<check>checkCorp</check>
+		</condition>
+		 <condition>                     <!--5-4 Transfer To Account Number -->
+			<action>corpHistory</action>
+			<method>listHistory</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+	    <condition>                     <!--6-1 add item-->
+			<action>templatePayment</action>
+			<method>addTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	    <condition>                     <!--6-1 edit-->
+			<action>templatePayment</action>
+			<method>editTemplate</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	    <condition>                     <!--6-1 pay-->
+			<action>billPayment</action>
+			<method>frequentPayment</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+	    <condition>                     <!--6-1 batch pay-->
+			<action>templatePayment</action>
+			<method>batchPayment</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	    <condition>                     <!--6-2-->
+			<action>billPayment</action>
+			<method>generalPayment</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	    <condition>                     <!--6-3-->
+			<action>billPayment</action>
+			<method>cardPayment</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--6-4-->
+			<action>billPayment</action>
+			<method>taxPayment</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	    <condition>                     <!--6-5-->
+			<action>billPayment</action>
+			<method>list</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	    <condition>                     <!--6-6-->
+			<action>templatePayment</action>
+			<method>listBatchPaymentHistory</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+				
+	   <condition>                     <!--7-2-->
+			<action>timeDeposit</action>
+			<method>addTimeDeposit</method>
+			<field>currentAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                     <!--7-3-->
+			<action>timeDeposit</action>
+			<method>withdrawTimeDeposit</method>
+			<field>currentAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!--7-3-->
+			<action>timeDeposit</action>
+			<method>withdrawTimeDepositCfm</method>
+			<field>currentAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!--7-3-->
+			<action>timeDeposit</action>
+			<method>viewTimeDepositforWithdrawl</method>
+			<field>tdAccountNo</field>
+			<check>checkAccount</check>
+		</condition>	
+		<condition>                     <!--7-3-->
+			<action>timeDeposit</action>
+			<method>withdrawTimeDepositCfm</method>
+			<field>tdAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+			
+		<condition>                     <!--9-1-1-modify  -->
+		    <action>scheduleTransferBANK</action>
+			<method>edit</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>		
+		<condition>                     <!--9-1-2-modify  -->
+		    <action>scheduleTransferMacau</action>
+			<method>edit</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>			
+		<condition>                     <!--9-1-3-modify  -->
+		    <action>scheduleTransferOversea</action>
+			<method>edit</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+			
+		<condition>                     <!--9-1-3-modify Deduct Charges  -->
+		    <action>scheduleTransferOversea</action>
+			<method>edit</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		                                 <!--9-2-1-add  -->	
+		<condition>                     
+		    <action>scheduleTransferBANK</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>			
+                                             <!-- 9-2-2 -->
+		 <condition>
+			<action>scheduleTransferMacau</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	                                            	<!-- 9-2-3 -->
+		 <condition>
+			<action>scheduleTransferOversea</action>
+			<method>add</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+	                                            	<!-- 9-2-3 Deduct Charges -->
+		 <condition>
+			<action>scheduleTransferOversea</action>
+			<method>add</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		
+        <condition>                     <!--10-1-->
+			<action>stopChequeRequest</action>
+			<method>stop</method>
+			<field>currentAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--10-2-->
+			<action>protectionChequeRequest</action>
+			<method>protection</method>
+			<field>account</field>
+			<check>checkAccount</check>
+		</condition>		
+		<condition>                     <!--10-3-->
+			<action>bankRequest</action>
+			<method>addDetail</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>				
+		<condition>                     <!--10-3 Debit Charges -->
+			<action>bankRequest</action>
+			<method>addDetail</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>				
+		<condition>                     <!--10-4-->
+			<action>cashOrderRequest</action>
+			<method>addDetail</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--10-4 Debit Charges-->
+			<action>cashOrderRequest</action>
+			<method>addDetail</method>
+			<field>chargeAccount</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--10-5-1-->
+			<action>bankRequest</action>
+			<method>listHistory</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>				
+		<condition>                     <!--10-5-2-->
+			<action>cashOrderRequest</action>
+			<method>listHistory</method>
+			<field>fromAccount</field>
+			<check>checkAccount</check>
+		</condition>	
+		   <!--12-3-->	
+	 <!--		<condition>                  
+			<action>accountAuthorization</action>
+			<method>listAccountAuthorizationCorp</method>
+			<field>account</field>
+			<check>checkAccount</check>
+		</condition>  --> 
+		<condition>                     <!--12-5-1-->
+			<action>estatement</action>
+			<method>list</method>
+			<field>accountNo</field>
+			<check>checkAccount</check>
+		</condition>
+		<condition>                     <!--12-5-2-->
+			<action>eadvice</action>
+			<method>list</method>
+			<field>accountNo</field>
+			<check>checkAccount</check>
+		</condition>		
+		
+		<!--  approver  -->
+		 <!--1-2-->
+			<condition>                    
+			<action>accEnquiry</action>
+			<method>viewCurrentAccount</method>
+			<field>accountNo</field>
+			<check>checkAccount</check>
+		</condition>
+			 <!--1-3-->
+		<condition>                    
+			<action>accEnquiry</action>
+			<method>viewSavingAccount</method>
+			<field>accountNo</field>
+			<check>checkAccount</check>
+		</condition>		
+			 <!--1-4-->
+		<condition>                    
+			<action>timeDeposit</action>
+			<method>viewTimeDeposit</method>
+			<field>tdAccountNo</field>
+			<check>checkAccount</check>
+		</condition>				
+				 <!--1-5-->
+		<condition>                    
+			<action>accEnquiry</action>
+			<method>viewOverdraftAccount</method>
+			<field>accountNo</field>
+			<check>checkAccount</check>
+		</condition>
+		
+		<condition>                    
+			<action>jsax</action>
+			<method>AccInTxnService</method>
+			<field>showFromAcc</field>
+			<check>checkAccount</check>
+		</condition>
+
+		<!-- approver 4-4 viewDetail -->
+		<condition>                    
+			<action>corpInfo</action>
+			<method>viewCorpUserDetial</method>
+			<field>userId</field>
+			<check>checkUser</check>
+		</condition>	
+		<!-- add by linrui for view loan account -->	
+		<condition>                    
+			<action>accEnquiry</action>
+			<method>viewLoanAccount</method>
+			<field>accountNo</field>
+			<check>checkAccount</check>
+		</condition>
+		<!-- end -->
+		
+		</condition-list>
+	</config>
+</request-checker>
+</request-checkers>

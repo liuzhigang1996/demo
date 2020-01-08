@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE neturbo-config PUBLIC "-//NETURBO org.// DTD NETURBO Configuration 2.0//EN" "http://www.neturbo.org.cn/resources/neturbo-config_1_0.dtd">
+<neturbo-config>
+  <neturbo-forms>
+    <form name="ActionFormA" bean="com.neturbo.set.core.ActionFormA" defaultForm="yes"/>
+  </neturbo-forms>
+  <global-forwards>
+    <forward name="LoginPath" path="/common/login.jsp"/>
+    <forward name="ErrorReporter" path="/common/error.jsp"/>
+  </global-forwards>
+  <neturbo-actions>
+    <action name="login" bean="app.cib.core.CorpLoginAction" input="/common/login.jsp" syslog="yes">
+      <forward name="load" path="/common/login.jsp"/>
+      <forward name="forceLoginLoad" path="/common/forceLogin.jsp"/>
+      <forward name="forceLogin" input="/common/forceLogin.jsp" path="/common/main.jsp"/>
+      <forward name="login" path="/common/main.jsp"/>
+      <forward name="changePinLogin" input="/common/change_pin_res.jsp" path="/common/main.jsp"/>
+      <forward name="logout" path="/common/login.jsp"/>
+      <forward name="firstLogin" path="/common/change_pin.jsp"/>
+      <forward name="changePin" input="/common/change_pin.jsp" path="/common/change_pin_res.jsp"/>
+      <forward name="close" input="/common/close.jsp" path="/common/close.jsp"/>
+    </action>
+    <action name="bankLogin" bean="app.cib.core.BankLoginAction" input="/common/bank/login.jsp" syslog="yes">
+      <forward name="load" path="/common/bank/login.jsp"/>
+      <forward name="forceLoginLoad" path="/common/bank/forceLogin.jsp"/>
+      <forward name="forceLogin" input="/common/bank/forceLogin.jsp" path="/common/bank/main.jsp"/>
+      <forward name="login" path="/common/bank/main.jsp"/>
+      <forward name="logout" path="/common/bank/login.jsp"/>
+      <forward name="firstLogin" path="/common/bank/change_pin.jsp"/>
+      <forward name="changePin" input="/common/bank/change_pin.jsp" path="/common/bank/change_pin_res.jsp"/>
+      <forward name="close" input="/common/close.jsp" path="/common/close.jsp"/>
+    </action>
+    <action name="welcome" bean="app.cib.action.sys.WelcomeAction">
+      <forward name="load" path="/common/welcome.jsp"/>
+      <forward name="changePage" path="/common/main.jsp"/><!-- add by linrui for changelang in-page20190805 -->
+    </action>
+    <action name="bankWelcome" bean="app.cib.action.bnk.WelcomeAction">
+      <forward name="load" path="/common/bank/welcome_bank.jsp"/>
+    </action>
+    <action name="PageProcess1" bean="app.cib.util.PageProcessor">
+      <forward name="default" path="/WEB-INF/pages/error.jsp" />
+    </action>
+    <action name="corporation" bean="app.cib.action.bnk.CorporationAction" permission="sys.user" input="/WEB-INF/pages/bank/corp_mng/corporation_list.jsp">
+      <forward name="list" path="/WEB-INF/pages/bank/corp_mng/corporation_list.jsp"/>
+      <forward name="prefEntry" input="/WEB-INF/pages/bank/corp_mng/corporation_pref_entry.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_pref_entry.jsp"/>
+      <forward name="view" path="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/bank/corp_mng/register_corporation.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bank/corp_mng/register_corporation.jsp" path="/WEB-INF/pages/bank/corp_mng/register_corporation_confirm.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/bank/corp_mng/register_corporation.jsp" path="/WEB-INF/pages/bank/corp_mng/register_corporation.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bank/corp_mng/register_corporation_confirm.jsp" path="/WEB-INF/pages/bank/corp_mng/register_corporation_ack.jsp"/>
+      <forward name="updateLoad" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_update.jsp"/>
+      <forward name="update" input="/WEB-INF/pages/bank/corp_mng/corporation_update.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_update_confirm.jsp"/>
+      <forward name="updateCancel" input="/WEB-INF/pages/bank/corp_mng/corporation_update.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_update.jsp"/>
+      <forward name="updateConfirm" input="/WEB-INF/pages/bank/corp_mng/corporation_update_confirm.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_update_ack.jsp"/>
+      <forward name="delete" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_delete_confirm.jsp"/>
+      <forward name="deleteCancel" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bank/corp_mng/corporation_delete_confirm.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_delete_ack.jsp"/>
+      <forward name="block" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_block_confirm.jsp"/>
+      <forward name="blockCancel" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/bank/corp_mng/corporation_block_confirm.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_block_ack.jsp"/>
+      <forward name="unblock" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_unblock_confirm.jsp"/>
+      <forward name="unblockCancel" input="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_view.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/bank/corp_mng/corporation_unblock_confirm.jsp" path="/WEB-INF/pages/bank/corp_mng/corporation_unblock_ack.jsp"/>
+      <forward name="listCorpForTree" permission="" input="/WEB-INF/pages/bank/corp_mng/dlg_corp_tree.jsp" path="/WEB-INF/pages/bank/corp_mng/dlg_corp_tree.jsp"/>
+      <forward name="checkConfig" input="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp" path="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp"/>
+    </action>
+    <action name="bankUser" bean="app.cib.action.bnk.BankUserAction" permission="bnk.user,srv.bank.supervisor" input="/WEB-INF/pages/bank/bank_user/bankUser_list.jsp">
+      <forward name="list" path="/WEB-INF/pages/bank/bank_user/bankUser_list.jsp"/>
+      <forward name="view" path="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/bank/bank_user/bankUser_add.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bank/bank_user/bankUser_add.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_add_confirm.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/bank/bank_user/bankUser_add.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_add.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bank/bank_user/bankUser_add_confirm.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_add_ack.jsp"/>
+      <forward name="updateLoad" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_update.jsp"/>
+      <forward name="update" input="/WEB-INF/pages/bank/bank_user/bankUser_update.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_update_confirm.jsp"/>
+      <forward name="updateCancel" input="/WEB-INF/pages/bank/bank_user/bankUser_update.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_update.jsp"/>
+      <forward name="updateConfirm" input="/WEB-INF/pages/bank/bank_user/bankUser_update_confirm.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_update_ack.jsp"/>
+      <forward name="delete" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_delete_confirm.jsp"/>
+      <forward name="deleteCancel" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bank/bank_user/bankUser_delete_confirm.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_delete_ack.jsp"/>
+      <forward name="block" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_block_confirm.jsp"/>
+      <forward name="blockCancel" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/bank/bank_user/bankUser_block_confirm.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_block_ack.jsp"/>
+      <forward name="unblock" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_unblock_confirm.jsp"/>
+      <forward name="unblockCancel" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/bank/bank_user/bankUser_unblock_confirm.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_unblock_ack.jsp"/>
+      <forward name="setPasswordLoad" path="/WEB-INF/pages/bank/bank_user/setPassword.jsp"/>
+      <forward name="setPassword" input="/WEB-INF/pages/bank/bank_user/setPassword.jsp" path="/WEB-INF/pages/bank/bank_user/setPassword_ack.jsp"/>
+      <forward name="resetPassword" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/resetPassword_confirm.jsp"/>
+      <forward name="resetPasswordCancel" input="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_view.jsp"/>
+      <forward name="resetPasswordConfirm" input="/WEB-INF/pages/bank/bank_user/resetPassword_confirm.jsp" path="/WEB-INF/pages/bank/bank_user/resetPassword_ack.jsp"/>
+      <forward name="listOperationHistoryLoad" input="/WEB-INF/pages/bank/bank_user/bankUser_history.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_history.jsp"/>
+      <forward name="listOperationHistory" input="/WEB-INF/pages/bank/bank_user/bankUser_history_list.jsp" path="/WEB-INF/pages/bank/bank_user/bankUser_history_list.jsp"/>
+    </action>
+    <action name="corpUser" bean="app.cib.action.sys.CorpUserAction" input="/WEB-INF/pages/sys/corp_user/user_list.jsp">
+      <forward name="list" input="/WEB-INF/pages/sys/corp_user/user_list.jsp" path="/WEB-INF/pages/sys/corp_user/user_list.jsp"/>
+      <forward name="view" path="/WEB-INF/pages/sys/corp_user/user_view.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/sys/corp_user/user_add.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/sys/corp_user/user_add.jsp" path="/WEB-INF/pages/sys/corp_user/user_add_confirm.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/sys/corp_user/user_add.jsp" path="/WEB-INF/pages/sys/corp_user/user_add.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/sys/corp_user/user_add_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/user_add_ack.jsp"/>
+      <forward name="updateLoad" input="/WEB-INF/pages/sys/corp_user/user_view.jsp"  path="/WEB-INF/pages/sys/corp_user/userUpdate.jsp"/>
+      <forward name="update" input="/WEB-INF/pages/sys/corp_user/userUpdate.jsp" path="/WEB-INF/pages/sys/corp_user/userUpdate_confirm.jsp"/>
+      <forward name="updateCancel" input="/WEB-INF/pages/sys/corp_user/userUpdate.jsp" path="/WEB-INF/pages/sys/corp_user/userUpdate.jsp"/>
+      <forward name="updateConfirm" input="/WEB-INF/pages/sys/corp_user/userUpdate_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/userUpdate_ack.jsp"/>
+      <forward name="delete" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/userDelete_confirm.jsp"/>
+      <forward name="deleteCancel" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/user_view.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/sys/corp_user/userDelete_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/userDelete_ack.jsp"/>
+      <forward name="block" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/userBlock_confirm.jsp"/>
+      <forward name="blockCancel" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/user_view.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/sys/corp_user/userBlock_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/userBlock_ack.jsp"/>
+      <forward name="unblock"  input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/userUnblock_confirm.jsp"/>
+      <forward name="unblockCancel" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/user_view.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/sys/corp_user/userUnblock_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/userUnblock_ack.jsp"/>
+      <forward name="setPasswordLoad" input="/WEB-INF/pages/sys/corp_user/setPassword.jsp" path="/WEB-INF/pages/sys/corp_user/setPassword.jsp"/>
+      <forward name="setPassword" input="/WEB-INF/pages/sys/corp_user/setPassword.jsp" path="/WEB-INF/pages/sys/corp_user/setPassword_ack.jsp"/>
+      <forward name="setSecurityCodeLoad" path="/WEB-INF/pages/sys/corp_user/set_security_code.jsp"/>
+      <forward name="inputCodeLoad" input="/WEB-INF/pages/common/approve/security_code_input.jsp" path="/WEB-INF/pages/common/approve/security_code_input.jsp" />
+      
+      <forward name="setSecurityCode" input="/WEB-INF/pages/sys/corp_user/set_security_code.jsp" path="/WEB-INF/pages/sys/corp_user/set_security_code_ack.jsp"/>
+      <forward name="resetPassword" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/resetPassword_confirm.jsp"/>
+      <forward name="resetPasswordCancel" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/user_view.jsp"/>
+      <forward name="resetPasswordConfirm" input="/WEB-INF/pages/sys/corp_user/resetPassword_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/resetPassword_ack.jsp"/>
+      <forward name="resetSecurityCode" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/reset_security_code_confirm.jsp"/>
+      <forward name="resetSecurityCodeCancel" input="/WEB-INF/pages/sys/corp_user/user_view.jsp" path="/WEB-INF/pages/sys/corp_user/user_view.jsp"/>
+      <forward name="resetSecurityCodeConfirm" input="/WEB-INF/pages/sys/corp_user/reset_security_code_confirm.jsp" path="/WEB-INF/pages/sys/corp_user/reset_security_code_ack.jsp"/>
+    </action>
+    <!-- YanLi // 2006.07.28 -->
+    
+    <!-- Jet 2007.10.17 -->
+    <action name="accountAuthorization" bean="app.cib.action.sys.AccountAuthorizationAction">
+      <forward name="listAccountAuthorization" path="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp"/>
+      <forward name="listAccountAuthorizationCorp" path="/WEB-INF/pages/bank/acct_auth/account_auth_list_corp.jsp"/>
+      <forward name="addLoad" input="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_add.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bank/acct_auth/account_auth_add.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_add_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bank/acct_auth/account_auth_add_confirm.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_add_ack.jsp"/>      
+      <forward name="addCancel" input="/WEB-INF/pages/bank/acct_auth/account_auth_add_confirm.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp"/>
+      <forward name="editLoad" input="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_edit.jsp"/>
+      <forward name="edit" input="/WEB-INF/pages/bank/acct_auth/account_auth_edit.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_edit_confirm.jsp"/>
+      <forward name="editConfirm" input="/WEB-INF/pages/bank/acct_auth/account_auth_edit_confirm.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_edit_ack.jsp"/>      
+      <forward name="editCancel" input="/WEB-INF/pages/bank/acct_auth/account_auth_edit_confirm.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp"/>
+      <forward name="delete" input="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_delete_confirm.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bank/acct_auth/account_auth_delete_confirm.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_delete_ack.jsp"/>      
+      <forward name="deleteCancel" input="/WEB-INF/pages/bank/acct_auth/account_auth_delete_confirm.jsp" path="/WEB-INF/pages/bank/acct_auth/account_auth_list.jsp"/>
+
+    </action>
+    <!-- Jet end -->
+    
+    <action name="group" bean="app.cib.action.sys.GroupAction" permission="sys.group">
+      <forward name="groupList" path="/WEB-INF/pages/sys/group_man/groupList.jsp"/>
+      <forward name="view" input="/WEB-INF/pages/sys/group_man/groupList.jsp" path="/WEB-INF/pages/sys/group_man/groupView.jsp"/>
+      <forward name="addGroupLoad" input="/WEB-INF/pages/sys/group_man/addGroup.jsp" path="/WEB-INF/pages/sys/group_man/addGroup.jsp"/>
+      <forward name="addGroup"  input="/WEB-INF/pages/sys/group_man/addGroup.jsp" path="/WEB-INF/pages/sys/group_man/addGroupCfm.jsp"/>
+      <forward name="addGroupCancel" input="/WEB-INF/pages/sys/group_man/addGroup.jsp" path="/WEB-INF/pages/sys/group_man/addGroup.jsp"/>
+      <forward name="addGroupConfirm" input="/WEB-INF/pages/sys/group_man/addGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/addGroup_ack.jsp"/>
+      <forward name="editGroupLoad"  input="/WEB-INF/pages/sys/group_man/groupView.jsp" path="/WEB-INF/pages/sys/group_man/editGroup.jsp"/>
+      <forward name="editGroup" input="/WEB-INF/pages/sys/group_man/editGroup.jsp" path="/WEB-INF/pages/sys/group_man/editGroupCfm.jsp"/>
+      <forward name="editGroupCancel" input="/WEB-INF/pages/sys/group_man/editGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/editGroup.jsp"/>
+      <forward name="editGroupConfirm" input="/WEB-INF/pages/sys/group_man/editGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/editGroup_ack.jsp" />
+      <forward name="delGroupLoad" input="/WEB-INF/pages/sys/group_man/groupView.jsp" path="/WEB-INF/pages/sys/group_man/delGroupCfm.jsp"/>
+      <forward name="delGroupCancel" input="/WEB-INF/pages/sys/group_man/delGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/groupView.jsp"/>
+      <forward name="delGroupConfirm" input="/WEB-INF/pages/sys/group_man/delGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/delGroup_ack.jsp"/>
+      <forward name="assignGroupLoad" path="/WEB-INF/pages/sys/group_man/assignGroup.jsp"/>
+      <forward name="assignGroupAdd" input="/WEB-INF/pages/sys/group_man/assignGroup.jsp" path="/WEB-INF/pages/sys/group_man/assignGroupCfm.jsp"/>
+      <forward name="assignGroupConfirm" input="/WEB-INF/pages/sys/group_man/assignGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/assignGroupAck.jsp"/>
+      <forward name="assignGroupCancel" input="/WEB-INF/pages/sys/group_man/assignGroupCfm.jsp" path="/WEB-INF/pages/sys/group_man/assignGroup.jsp"/>
+    </action>
+    <action name="accEnquiry" bean="app.cib.action.enq.AccEnquiryAction" permission="enq">
+      <forward name="listAccountSummary" path="/WEB-INF/pages/enq/account_enquiry/accountSummaryList.jsp" input="/WEB-INF/pages/enq/account_enquiry/accountSummaryList.jsp"/>
+      <forward name="viewAccountSummary" path="/WEB-INF/pages/enq/account_enquiry/accountSummaryView.jsp" input="/WEB-INF/pages/enq/account_enquiry/accountSummaryList.jsp"/>
+      <forward name="listCurrentAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/currentAccountList.jsp"/>
+      <forward name="viewCurrentAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/currentAccountList.jsp"/>
+      <forward name="listTransHistory" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp"/>
+      <forward name="listTransHistorySa" path="/WEB-INF/pages/enq/account_enquiry/savingAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/savingAccountView.jsp"/>
+      <forward name="listTimeDeposit" path="/WEB-INF/pages/enq/account_enquiry/timeDepositList.jsp" input="/WEB-INF/pages/enq/account_enquiry/timeDepositList.jsp"/>
+      <forward name="viewTimeDeposit" path="/WEB-INF/pages/enq/account_enquiry/timeDepositView.jsp" input="/WEB-INF/pages/enq/account_enquiry/timeDepositList.jsp"/>
+      <forward name="listOverdraftAccount" path="/WEB-INF/pages/enq/account_enquiry/overdraftAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/overdraftAccountList.jsp"/>
+      <forward name="viewOverdraftAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/overdraftAccountList.jsp"/>
+      <forward name="listLoanAccount" path="/WEB-INF/pages/enq/account_enquiry/loanAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/loanAccountList.jsp"/>
+      <forward name="viewLoanAccount" path="/WEB-INF/pages/enq/account_enquiry/loanAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/loanAccountList.jsp"/>
+      <forward name="viewInwardInfo" path="/WEB-INF/pages/enq/account_enquiry/inward_rem_info_view.jsp" input="/WEB-INF/pages/enq/account_enquiry/inward_rem_info_view.jsp"/>
+      <forward name="listSavingAccount" path="/WEB-INF/pages/enq/account_enquiry/savingAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/savingAccountList.jsp"/>
+      <forward name="viewSavingAccount" path="/WEB-INF/pages/enq/account_enquiry/savingAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/savingAccountList.jsp"/>
+      
+      <!-- add by long_zg 2014-12-16 for CR192 bob batch begin -->
+      <forward name="listCreditAccount" path="/WEB-INF/pages/enq/account_enquiry/creditAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/creditAccountList.jsp"/>
+      <forward name="viewCreditAccount" path="/WEB-INF/pages/enq/account_enquiry/creditAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/creditAccountList.jsp"/>
+       
+      <!-- add by long_zg 2014-12-16 for CR192 bob batch end -->
+    </action>
+	<action name="accEnquiryTest" bean="app.cib.action.enq.AccEnquiryTestAction" permission="enq">
+      <forward name="listAccountSummary" path="/WEB-INF/pages/enq/account_enquiry/accountSummaryTest.jsp" input="/WEB-INF/pages/enq/account_enquiry/accountSummaryTest.jsp"/>
+      <forward name="viewAccountSummary" path="/WEB-INF/pages/enq/account_enquiry/accountSummaryView.jsp" input="/WEB-INF/pages/enq/account_enquiry/accountSummaryTest.jsp"/>
+      <forward name="listCurrentAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/currentAccountList.jsp"/>
+      <forward name="viewCurrentAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/currentAccountList.jsp"/>
+      <forward name="listTransHistory" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp"/>
+      <forward name="listTimeDeposit" path="/WEB-INF/pages/enq/account_enquiry/timeDepositList.jsp" input="/WEB-INF/pages/enq/account_enquiry/timeDepositList.jsp"/>
+      <forward name="viewTimeDeposit" path="/WEB-INF/pages/enq/account_enquiry/timeDepositView.jsp" input="/WEB-INF/pages/enq/account_enquiry/timeDepositList.jsp"/>
+      <forward name="listOverdraftAccount" path="/WEB-INF/pages/enq/account_enquiry/overdraftAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/overdraftAccountList.jsp"/>
+      <forward name="viewOverdraftAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/overdraftAccountList.jsp"/>
+      <forward name="listLoanAccount" path="/WEB-INF/pages/enq/account_enquiry/loanAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/loanAccountList.jsp"/>
+      <forward name="viewLoanAccount" path="/WEB-INF/pages/enq/account_enquiry/loanAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/loanAccountList.jsp"/>
+      <forward name="viewInwardInfo" path="/WEB-INF/pages/enq/account_enquiry/inward_rem_info_view.jsp" input="/WEB-INF/pages/enq/account_enquiry/inward_rem_info_view.jsp"/>
+      <forward name="listSavingAccount" path="/WEB-INF/pages/enq/account_enquiry/savingAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry/savingAccountList.jsp"/>
+      <forward name="viewSavingAccount" path="/WEB-INF/pages/enq/account_enquiry/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry/savingAccountList.jsp"/>
+    </action>
+    <action name="subsidiaryAcc" bean="app.cib.action.enq.SubsidiaryAccAction" permission="enq.corp">
+      <forward name="listAccountSummary" path="/WEB-INF/pages/enq/subsidiary_account/accountSummaryList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/accountSummaryList.jsp"/>
+      <forward name="viewAccountSummary" path="/WEB-INF/pages/enq/subsidiary_account/accountSummaryView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/accountSummaryList.jsp"/>
+      <forward name="listCurrentAccount" path="/WEB-INF/pages/enq/subsidiary_account/currentAccountList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/currentAccountList.jsp"/>
+      <forward name="viewCurrentAccount" path="/WEB-INF/pages/enq/subsidiary_account/currentAccountView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/currentAccountList.jsp"/>
+      <forward name="listTimeDeposit" path="/WEB-INF/pages/enq/subsidiary_account/timeDepositList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/timeDepositList.jsp"/>
+      <forward name="viewTimeDeposit" path="/WEB-INF/pages/enq/subsidiary_account/timeDepositView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/timeDepositList.jsp"/>
+      <forward name="listOverdraftAccount" path="/WEB-INF/pages/enq/subsidiary_account/overdraftAccountList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/overdraftAccountList.jsp"/>
+      <forward name="viewOverdraftAccount" path="/WEB-INF/pages/enq/subsidiary_account/overdraftAccountView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/overdraftAccountList.jsp"/>
+      <forward name="listLoanAccount" path="/WEB-INF/pages/enq/subsidiary_account/loanAccountList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/loanAccountList.jsp"/>
+      <forward name="viewLoanAccount" path="/WEB-INF/pages/enq/subsidiary_account/loanAccountView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/loanAccountList.jsp"/>
+      <forward name="listSavingAccount" path="/WEB-INF/pages/enq/subsidiary_account/savingAccountList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/savingAccountList.jsp"/>
+      <forward name="viewSavingAccount" path="/WEB-INF/pages/enq/subsidiary_account/savingAccountView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/savingAccountList.jsp"/>
+      <forward name="listCreditAccount" path="/WEB-INF/pages/enq/subsidiary_account/creditAccountList.jsp" input="/WEB-INF/pages/enq/subsidiary_account/creditAccountList.jsp"/>
+      <forward name="viewCreditAccount" path="/WEB-INF/pages/enq/subsidiary_account/creditAccountView.jsp" input="/WEB-INF/pages/enq/subsidiary_account/creditAccountList.jsp"/>
+    </action>
+    <!-- End // YanLi -->
+    <!-- hjs start-->
+    <action name="templatePayment" bean="app.cib.action.txn.TemplatePaymentAction" permission="txn.pay" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp">
+    <!-- modify by long_zg 2014-04-17 for IE.11 in BOB application problem 10 begin-->
+      <!-- 
+      <forward name="gtPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/general_payment.jsp"/>
+      <forward name="ctPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/card_payment.jsp"/>
+       -->
+      <forward name="gtPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_payment.jsp"/>
+      <forward name="ctPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_card_payment.jsp"/>
+       <!-- modify by long_zg 2014-04-17 for IE.11 in BOB application problem 10 end-->
+      <forward name="listTemplate" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/template_list.jsp"/>
+      <forward name="addTemplateLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/template_add.jsp"/>
+      <forward name="addTemplate" input="/WEB-INF/pages/txn/bill_payment/template_add.jsp" path="/WEB-INF/pages/txn/bill_payment/template_add_cfm.jsp"/>
+      <forward name="addTemplateCfm" input="/WEB-INF/pages/txn/bill_payment/template_add_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/template_add_ack.jsp"/>
+      <forward name="addTemplateCancel" input="/WEB-INF/pages/txn/bill_payment/template_add.jsp" path="/WEB-INF/pages/txn/bill_payment/template_add.jsp"/>
+      <forward name="editTemplateLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/template_edit.jsp"/>
+      <forward name="editTemplate" input="/WEB-INF/pages/txn/bill_payment/template_edit.jsp" path="/WEB-INF/pages/txn/bill_payment/template_edit_cfm.jsp"/>
+      <forward name="editTemplateCfm" input="/WEB-INF/pages/txn/bill_payment/template_edit_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/template_edit_ack.jsp"/>
+      <forward name="editTemplateCancel" input="/WEB-INF/pages/txn/bill_payment/template_edit.jsp" path="/WEB-INF/pages/txn/bill_payment/template_edit.jsp"/>
+      <forward name="deleteTemplateLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/template_delete.jsp"/>
+      <forward name="deleteTemplate" input="/WEB-INF/pages/txn/bill_payment/template_delete.jsp" path="/WEB-INF/pages/txn/bill_payment/template_delete_cfm.jsp"/>
+      <forward name="deleteTemplateCfm" input="/WEB-INF/pages/txn/bill_payment/template_delete_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/template_delete_ack.jsp"/>
+      <forward name="deleteTemplateCancel" input="/WEB-INF/pages/txn/bill_payment/template_delete.jsp" path="/WEB-INF/pages/txn/bill_payment/template_delete.jsp"/>
+      <forward name="batchPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/template_list.jsp" path="/WEB-INF/pages/txn/bill_payment/template_batch_payment.jsp"/>
+      <forward name="batchPayment" input="/WEB-INF/pages/txn/bill_payment/template_batch_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/template_batch_payment_cfm.jsp"/>
+      <forward name="batchPaymentCfm" input="/WEB-INF/pages/txn/bill_payment/template_batch_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/template_batch_payment_ack.jsp"/>
+      <forward name="batchPaymentCancel" input="/WEB-INF/pages/txn/bill_payment/template_batch_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/template_batch_payment.jsp"/>
+      <forward name="listHistoryLoad" input="/WEB-INF/pages/txn/bill_payment/batch_payment_history.jsp" path="/WEB-INF/pages/txn/bill_payment/batch_payment_history.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/txn/bill_payment/batch_payment_history.jsp" path="/WEB-INF/pages/txn/bill_payment/batch_payment_history_result.jsp"/>
+      <forward name="viewHistoryDetail" input="/WEB-INF/pages/txn/bill_payment/batch_payment_history_result.jsp" path="/WEB-INF/pages/txn/bill_payment/batch_payment_history_detail.jsp"/>
+      </action>
+    <action name="billPayment" bean="app.cib.action.txn.BillPaymentAction" permission="txn.pay" input="/WEB-INF/pages/txn/bill_payment/general_payment_check.jsp">
+      <forward name="generalPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/general_payment_check.jsp" path="/WEB-INF/pages/txn/bill_payment/general_payment_check.jsp"/>
+      <forward name="generalPaymentCheck" input="/WEB-INF/pages/txn/bill_payment/general_payment_check.jsp" path="/WEB-INF/pages/txn/bill_payment/general_payment.jsp"/>
+      <forward name="generalPayment" input="/WEB-INF/pages/txn/bill_payment/general_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/general_payment_cfm.jsp"/>
+      <forward name="generalPaymentCfm" input="/WEB-INF/pages/txn/bill_payment/general_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/general_payment_ack.jsp"/>
+      <forward name="generalPaymentCancel" input="/WEB-INF/pages/txn/bill_payment/general_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/general_payment.jsp"/>
+      <forward name="cardPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/card_payment_check.jsp" path="/WEB-INF/pages/txn/bill_payment/card_payment_check.jsp"/>
+      <forward name="cardPaymentCheck" input="/WEB-INF/pages/txn/bill_payment/card_payment_check.jsp" path="/WEB-INF/pages/txn/bill_payment/card_payment.jsp"/>
+      <forward name="cardPayment" input="/WEB-INF/pages/txn/bill_payment/card_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/card_payment_cfm.jsp"/>
+      <forward name="cardPaymentCfm" input="/WEB-INF/pages/txn/bill_payment/card_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/card_payment_ack.jsp"/>
+      <forward name="cardPaymentCancel" input="/WEB-INF/pages/txn/bill_payment/card_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/card_payment.jsp"/>
+      <forward name="taxPaymentLoad" input="/WEB-INF/pages/txn/bill_payment/tax_payment_check.jsp" path="/WEB-INF/pages/txn/bill_payment/tax_payment_check.jsp"/>
+      <forward name="taxPaymentCheck" input="/WEB-INF/pages/txn/bill_payment/tax_payment_check.jsp" path="/WEB-INF/pages/txn/bill_payment/tax_payment.jsp"/>
+      <forward name="taxPayment" input="/WEB-INF/pages/txn/bill_payment/tax_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/tax_payment_cfm.jsp"/>
+      <forward name="taxPaymentCfm" input="/WEB-INF/pages/txn/bill_payment/tax_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/tax_payment_ack.jsp"/>
+      <forward name="taxPaymentCancel" input="/WEB-INF/pages/txn/bill_payment/tax_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/tax_payment.jsp"/>
+      <forward name="listLoad"   path="/WEB-INF/pages/txn/bill_payment/payment_history.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/txn/bill_payment/payment_history.jsp" path="/WEB-INF/pages/txn/bill_payment/payment_history_result.jsp"/>
+      <!-- add by long_zg 2014-04-17 for IE.11 in BOB application problem 10 -->
+      <forward name="frequentPayment" input="/WEB-INF/pages/txn/bill_payment/frequent_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_payment_cfm.jsp"/>
+      <forward name="frequentPaymentCfm" input="/WEB-INF/pages/txn/bill_payment/frequent_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_payment_ack.jsp"/>
+      <forward name="frequentCardPayment" input="/WEB-INF/pages/txn/bill_payment/frequent_card_payment.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_card_payment_cfm.jsp"/>
+      <forward name="frequentCardPaymentCfm" input="/WEB-INF/pages/txn/bill_payment/frequent_card_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_card_payment_ack.jsp"/>
+      <forward name="frequentPaymentCancel" input="/WEB-INF/pages/txn/bill_payment/frequent_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_payment.jsp"/>
+      <forward name="frequentCardPaymentCancel" input="/WEB-INF/pages/txn/bill_payment/frequent_card_payment_cfm.jsp" path="/WEB-INF/pages/txn/bill_payment/frequent_card_payment.jsp"/>
+      
+    </action>
+    <action name="timeDeposit" bean="app.cib.action.txn.TimeDepositAction" permission="txn.td" input="/WEB-INF/pages/txn/time_deposit/time_deposit_list.jsp">
+      <forward name="listTimeDeposit" input="/WEB-INF/pages/txn/time_deposit/time_deposit_list.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_list.jsp"/>
+      <forward name="addTimeDepositLoad" input="/WEB-INF/pages/txn/time_deposit/time_deposit_add.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_add.jsp"/>
+      <forward name="addTimeDeposit" input="/WEB-INF/pages/txn/time_deposit/time_deposit_add.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_add_cfm.jsp"/>
+      <forward name="addTimeDepositCfm" input="/WEB-INF/pages/txn/time_deposit/time_deposit_add_cfm.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_add_ack.jsp"/>
+      <forward name="addTimeDepositCancel" input="/WEB-INF/pages/txn/time_deposit/time_deposit_add.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_add.jsp"/>
+      <forward name="viewTimeDeposit" permission="enq" input="/WEB-INF/pages/txn/time_deposit/time_deposit_view.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_view.jsp"/>
+      <forward name="viewTimeDepositforWithdrawl" permission="enq" input="/WEB-INF/pages/txn/time_deposit/time_deposit_view.jsp" path="/WEB-INF/pages/txn/time_deposit/withdrawl_time_deposit_view.jsp"/>
+      <forward name="listTimeDepositWithdrawal" input="/WEB-INF/pages/txn/time_deposit/time_deposit_withdrawal_list.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_withdrawal_list.jsp"/>
+      <forward name="withdrawTimeDepositLoad" input="/WEB-INF/pages/txn/time_deposit/time_deposit_withdrawal_list.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw.jsp"/>
+      <forward name="withdrawTimeDeposit" input="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw_cfm.jsp"/>
+      <forward name="withdrawTimeDepositCfm" input="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw_cfm.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw_ack.jsp"/>
+      <forward name="withdrawTimeDepositCancel" input="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_withdraw.jsp"/>
+	  <forward name="listLoad"  path="/WEB-INF/pages/txn/time_deposit/time_deposit_history.jsp"/>
+	  <forward name="listHistory" input="/WEB-INF/pages/txn/time_deposit/time_deposit_history.jsp" path="/WEB-INF/pages/txn/time_deposit/time_deposit_history_result.jsp"/>
+	  <forward name="viewNewHistory" input="/WEB-INF/pages/txn/time_deposit/time_deposit_history.jsp" path="/WEB-INF/pages/txn/time_deposit/new_td_history_view.jsp"/>
+	  <forward name="viewWithdrawalHistory" input="/WEB-INF/pages/txn/time_deposit/time_deposit_history.jsp" path="/WEB-INF/pages/txn/time_deposit/withdrawal_td_history_view.jsp"/>
+    </action>
+    <action name="txnReport" bean="app.cib.action.rpt.TxnReportAction" permission="rpt.txn" input="/WEB-INF/pages/rpt/transaction_report/transfer_report.jsp">
+      <forward name="listTransferReportLoad" input="/WEB-INF/pages/rpt/transaction_report/transfer_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/transfer_report.jsp"/>
+      <forward name="listTransferReport" input="/WEB-INF/pages/rpt/transaction_report/transfer_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/transfer_report_list.jsp"/>
+      <forward name="listFundAllocationReportLoad" input="/WEB-INF/pages/rpt/transaction_report/fund_allocation_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/fund_allocation_report.jsp"/>
+      <forward name="listFundAllocationReport" input="/WEB-INF/pages/rpt/transaction_report/fund_allocation_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/fund_allocation_report_list.jsp"/>
+      <forward name="listBillPaymentReportLoad" input="/WEB-INF/pages/rpt/transaction_report/bill_payment_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/bill_payment_report.jsp"/>
+      <forward name="listBillPaymentReport" input="/WEB-INF/pages/rpt/transaction_report/bill_payment_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/bill_payment_report_list.jsp"/>
+      <forward name="listTimeDepositReportLoad" input="/WEB-INF/pages/rpt/transaction_report/time_deposit_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/time_deposit_report.jsp"/>
+      <forward name="listTimeDepositReport" input="/WEB-INF/pages/rpt/transaction_report/time_deposit_report.jsp" path="/WEB-INF/pages/rpt/transaction_report/time_deposit_report_list.jsp"/>
+	  <forward name="viewNewHistory" input="/WEB-INF/pages/rpt/transaction_report/time_deposit_report.jsp" path="/WEB-INF/pages/txn/time_deposit/new_td_history_view.jsp"/>
+	  <forward name="viewWithdrawalHistory" input="/WEB-INF/pages/rpt/transaction_report/time_deposit_report.jsp" path="/WEB-INF/pages/txn/time_deposit/withdrawal_td_history_view.jsp"/>
+    </action>
+    <action name="corpAccount" bean="app.cib.action.bnk.CorpAccountAction" input="/WEB-INF/pages/bank/corp_account/account_list.jsp">
+      <forward name="listCorpAccount" input="/WEB-INF/pages/bank/corp_account/account_list.jsp" path="/WEB-INF/pages/bank/corp_account/account_list.jsp"/>
+      <forward name="addAccount" input="/WEB-INF/pages/bank/corp_account/account_list.jsp" path="/WEB-INF/pages/bank/corp_account/account_cfm.jsp"/>
+      <forward name="removeAccount" input="/WEB-INF/pages/bank/corp_account/account_list.jsp" path="/WEB-INF/pages/bank/corp_account/account_cfm.jsp"/>
+      <forward name="accountCfm" input="/WEB-INF/pages/bank/corp_account/account_cfm.jsp" path="/WEB-INF/pages/bank/corp_account/account_ack.jsp"/>
+      <forward name="nameAccountLoad" input="/WEB-INF/pages/bank/corp_account/account_name.jsp" path="/WEB-INF/pages/bank/corp_account/account_name.jsp"/>
+      <forward name="nameAccount" input="/WEB-INF/pages/bank/corp_account/account_name.jsp" path="/WEB-INF/pages/bank/corp_account/account_name_cfm.jsp"/>
+      <forward name="nameAccountCfm" input="/WEB-INF/pages/bank/corp_account/account_name_cfm.jsp" path="/WEB-INF/pages/bank/corp_account/account_name_ack.jsp"/>
+      <forward name="nameAccountCancel" input="/WEB-INF/pages/bank/corp_account/account_name.jsp" path="/WEB-INF/pages/bank/corp_account/account_name.jsp"/>
+    </action>
+    <action name="corpAccountLimits" bean="app.cib.action.bnk.CorpAccountLimitsAction" permission="bnk.corp" input="/WEB-INF/pages/bank/corp_account/account_limits.jsp">
+      <forward name="listCorpAccount" input="/WEB-INF/pages/bank/corp_account/account_limits.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits.jsp"/>
+      <forward name="viewAccountLimits" input="/WEB-INF/pages/bank/corp_account/account_limits.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits_view.jsp"/>
+      <forward name="setAllAccLinitsLoad" input="/WEB-INF/pages/bank/corp_account/account_limits.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits_set.jsp"/>
+      <forward name="setAccountLimitsLoad" input="/WEB-INF/pages/bank/corp_account/account_limits.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits_set.jsp"/>
+      <forward name="setAccountLimits" input="/WEB-INF/pages/bank/corp_account/account_limits_set.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits_set_cfm.jsp"/>
+      <forward name="setAccountLimitsCfm" input="/WEB-INF/pages/bank/corp_account/account_limits_set_cfm.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits_set_ack.jsp"/>
+      <forward name="setAccountLimitsCancel" input="/WEB-INF/pages/bank/corp_account/account_limits_set.jsp" path="/WEB-INF/pages/bank/corp_account/account_limits_set.jsp"/>
+    </action>
+    <action name="corpInfo" bean="app.cib.action.sys.CorpInfoAction"  input="/WEB-INF/pages/sys/corp_info/account_list.jsp">
+      <forward name="viewAccInfoList" input="/WEB-INF/pages/sys/corp_info/account_list.jsp" path="/WEB-INF/pages/sys/corp_info/account_list.jsp"/>
+      <forward name="viewAccLimitsList" input="/WEB-INF/pages/sys/corp_info/account_limits.jsp" path="/WEB-INF/pages/sys/corp_info/account_limits.jsp"/>
+      <forward name="viewLimitsDetial" input="/WEB-INF/pages/sys/corp_info/account_limits.jsp" path="/WEB-INF/pages/sys/corp_info/account_limits_view.jsp"/>
+      <forward name="viewAuthPrefList" input="/WEB-INF/pages/sys/corp_info/authorization_list.jsp" path="/WEB-INF/pages/sys/corp_info/authorization_list.jsp"/>
+      <forward name="viewAuthPrefDetail" input="/WEB-INF/pages/sys/corp_info/authorization_list.jsp" path="/WEB-INF/pages/sys/corp_info/authorization_view.jsp"/>
+      <forward name="viewCorpUserList" input="/WEB-INF/pages/sys/corp_info/corp_user_list.jsp" path="/WEB-INF/pages/sys/corp_info/corp_user_list.jsp"/>
+      <forward name="viewCorpUserDetial" input="/WEB-INF/pages/sys/corp_info/corp_user_list.jsp" path="/WEB-INF/pages/sys/corp_info/corp_user_view.jsp"/>
+      <forward name="viewGroupList" input="/WEB-INF/pages/sys/corp_info/corp_group_list.jsp" path="/WEB-INF/pages/sys/corp_info/corp_group_list.jsp"/>
+      <forward name="viewGroupDetail" input="/WEB-INF/pages/sys/corp_info/corp_group_list.jsp" path="/WEB-INF/pages/sys/corp_info/corp_group_view.jsp"/>
+	</action>
+    <action name="wireInInfo" bean="app.cib.action.enq.HsWireInInfoAction" input="/WEB-INF/pages/enq/wire_in_info/wire_in_list.jsp">
+      <forward name="listWireInInfo" input="/WEB-INF/pages/enq/wire_in_info/wire_in_list.jsp" path="/WEB-INF/pages/enq/wire_in_info/wire_in_list.jsp"/>
+      <forward name="viewWireInInfo" input="/WEB-INF/pages/enq/wire_in_info/wire_in_list.jsp" path="/WEB-INF/pages/enq/wire_in_info/wire_in_view.jsp"/>
+    </action>
+    <action name="exchangeRates" bean="app.cib.action.enq.ExchangeRatesAction" input="/WEB-INF/pages/enq/exchange_rate/exchange_rate_list.jsp">
+      <forward name="listExchangeRates" input="/WEB-INF/pages/enq/exchange_rate/exchange_rate_list.jsp" path="/WEB-INF/pages/enq/exchange_rate/exchange_rate_list.jsp"/>
+    </action>
+    <action name="interestRates" bean="app.cib.action.enq.InterestRatesAction" input="/WEB-INF/pages/enq/interest_rate/interest_rate_list.jsp">
+      <forward name="listInterestRates" input="/WEB-INF/pages/enq/interest_rate/interest_rate_list.jsp" path="/WEB-INF/pages/enq/interest_rate/interest_rate_list.jsp"/>
+      <forward name="listSpecialInterestRates" input="/WEB-INF/pages/enq/interest_rate/special_interest_rate_list.jsp" path="/WEB-INF/pages/enq/interest_rate/special_interest_rate_list.jsp"/>
+    </action>
+    <action name="payroll" bean="app.cib.action.bat.PayrollAction" input="/WEB-INF/pages/bat/payroll/upload_file.jsp">
+      <forward name="uploadFileLoad" input="/WEB-INF/pages/bat/payroll/upload_file.jsp" path="/WEB-INF/pages/bat/payroll/upload_file.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/payroll/upload_file.jsp" path="/WEB-INF/pages/bat/payroll/upload_file_cfm.jsp"/>
+      <forward name="uploadFileCfm" input="/WEB-INF/pages/bat/payroll/upload_file_cfm.jsp" path="/WEB-INF/pages/bat/payroll/upload_file_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/payroll/upload_file.jsp" path="/WEB-INF/pages/bat/payroll/upload_file.jsp"/>
+      <forward name="usePreviousFileLoad" input="/WEB-INF/pages/bat/payroll/use_previous_file.jsp" path="/WEB-INF/pages/bat/payroll/use_previous_file.jsp"/>
+      <forward name="usePreviousFile" input="/WEB-INF/pages/bat/payroll/use_previous_file.jsp" path="/WEB-INF/pages/bat/payroll/use_previous_file_cfm.jsp"/>
+      <forward name="usePreviousFileCfm" input="/WEB-INF/pages/bat/payroll/use_previous_file_cfm.jsp" path="/WEB-INF/pages/bat/payroll/use_previous_file_ack.jsp"/>
+      <forward name="listHistoryLoad" input="/WEB-INF/pages/bat/payroll/payroll_history.jsp" path="/WEB-INF/pages/bat/payroll/payroll_history.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/bat/payroll/payroll_history.jsp" path="/WEB-INF/pages/bat/payroll/payroll_history_list.jsp"/>
+      <forward name="viewHistoryDetail" input="/WEB-INF/pages/bat/payroll/payroll_history_list.jsp" path="/WEB-INF/pages/bat/payroll/payroll_history_view.jsp"/>
+    </action>
+    <action name="schTxnReport" bean="app.cib.action.rpt.SchTxnReportAction" input="/WEB-INF/pages/rpt/scheduled_transfer/sch_report_list.jsp">
+      <forward name="listReport" input="/WEB-INF/pages/rpt/scheduled_transfer/sch_report_list.jsp" path="/WEB-INF/pages/rpt/scheduled_transfer/sch_report_list.jsp"/>
+      <forward name="cancel" input="/WEB-INF/pages/rpt/scheduled_transfer/sch_report_list.jsp" path="/WEB-INF/pages/rpt/scheduled_transfer/sch_report_list.jsp"/>
+    </action>
+    <action name="pdfDownload" bean="app.cib.action.srv.PdfDownloadAction" input="/WEB-INF/pages/srv/pdf_download/pdf_download.jsp">
+      <forward name="listFileLoad" input="/WEB-INF/pages/srv/pdf_download/pdf_download.jsp" path="/WEB-INF/pages/srv/pdf_download/pdf_download.jsp"/>
+      <forward name="listFile" input="/WEB-INF/pages/srv/pdf_download/pdf_download.jsp" path="/WEB-INF/pages/srv/pdf_download/pdf_download_result.jsp"/>
+    </action>
+    <action name="userReport" bean="app.cib.action.rpt.UserReportAction" input="/WEB-INF/pages/rpt/user_report/activity_log_report.jsp">
+      <forward name="listActivityLogReportLoad" input="/WEB-INF/pages/rpt/user_report/activity_log_report.jsp" path="/WEB-INF/pages/rpt/user_report/activity_log_report.jsp"/>
+      <forward name="listActivityLogReport" input="/WEB-INF/pages/rpt/user_report/activity_log_report.jsp" path="/WEB-INF/pages/rpt/user_report/activity_log_report_list.jsp"/>
+    </action>
+    <action name="approvalReport" bean="app.cib.action.rpt.ApprovalReportAction" input="/WEB-INF/pages/rpt/approval_report/approval_report.jsp">
+      <forward name="listApprovalReportLoad" input="/WEB-INF/pages/rpt/approval_report/approval_report.jsp" path="/WEB-INF/pages/rpt/approval_report/approval_report.jsp"/>
+      <forward name="listApprovalReport" input="/WEB-INF/pages/rpt/approval_report/approval_report.jsp" path="/WEB-INF/pages/rpt/approval_report/approval_report_list.jsp"/>
+      <forward name="listPendingStatusReportLoad" input="/WEB-INF/pages/rpt/approval_report/pending_status_report.jsp" path="/WEB-INF/pages/rpt/approval_report/pending_status_report.jsp"/>
+      <forward name="listPendingStatusReport" input="/WEB-INF/pages/rpt/approval_report/pending_status_report.jsp" path="/WEB-INF/pages/rpt/approval_report/pending_status_report_list.jsp"/>
+      <forward name="listSuspendReport" input="/WEB-INF/pages/rpt/approval_report/approver_suspend_report_list.jsp" path="/WEB-INF/pages/rpt/approval_report/approver_suspend_report_list.jsp"/>
+    </action>
+    <action name="payrollReport" bean="app.cib.action.rpt.PayrollReportAction" input="/WEB-INF/pages/rpt/payroll_report/payroll_report.jsp">
+      <forward name="listReportLoad" input="/WEB-INF/pages/rpt/payroll_report/payroll_report.jsp" path="/WEB-INF/pages/rpt/payroll_report/payroll_report.jsp"/>
+      <forward name="listReport" input="/WEB-INF/pages/rpt/payroll_report/payroll_report.jsp" path="/WEB-INF/pages/rpt/payroll_report/payroll_report_list.jsp"/>
+      <forward name="viewReportDetail" input="/WEB-INF/pages/rpt/payroll_report/payroll_report_list.jsp" path="/WEB-INF/pages/rpt/payroll_report/payroll_report_view.jsp"/>
+    </action>
+    <!--<action name="estatement" bean="app.cib.action.srv.EStatementAction" input="/WEB-INF/pages/srv/document_archive/e_statement.jsp">
+      <forward name="listDocLoad" input="/WEB-INF/pages/srv/document_archive/e_statement.jsp" path="/WEB-INF/pages/srv/document_archive/e_statement.jsp"/>
+      <forward name="listDoc" input="/WEB-INF/pages/srv/document_archive/e_statement.jsp" path="/WEB-INF/pages/srv/document_archive/e_statement.jsp"/>
+    </action>
+    --><action name="eadvice" bean="app.cib.action.srv.EAdviceAction" input="/WEB-INF/pages/srv/document_archive/e_advice.jsp">
+      <forward name="listDocLoad" input="/WEB-INF/pages/srv/document_archive/e_advice.jsp" path="/WEB-INF/pages/srv/document_archive/e_advice.jsp"/>
+      <forward name="listDoc" input="/WEB-INF/pages/srv/document_archive/e_advice.jsp" path="/WEB-INF/pages/srv/document_archive/e_advice.jsp"/>
+    </action>
+    <action name="ereports" bean="app.cib.action.srv.EReportsAction" input="/WEB-INF/pages/srv/document_archive/e_reports.jsp">
+      <forward name="listDocLoad" input="/WEB-INF/pages/srv/document_archive/e_reports.jsp" path="/WEB-INF/pages/srv/document_archive/e_reports.jsp"/>
+      <forward name="listDoc" input="/WEB-INF/pages/srv/document_archive/e_reports.jsp" path="/WEB-INF/pages/srv/document_archive/e_reports.jsp"/>
+    </action>
+    <action name="eforms" bean="app.cib.action.srv.EFormsAction" input="/WEB-INF/pages/srv/document_archive/e_forms.jsp">
+      <forward name="listDocLoad" input="/WEB-INF/pages/srv/document_archive/e_forms.jsp" path="/WEB-INF/pages/srv/document_archive/e_forms.jsp"/>
+      <forward name="listDoc" input="/WEB-INF/pages/srv/document_archive/e_forms.jsp" path="/WEB-INF/pages/srv/document_archive/e_forms.jsp"/>
+    </action>
+    <!-- Supervisor -->
+    <action name="corporationForSupervisor" bean="app.cib.action.bnk.CorporationAction" permission="srv.bank.supervisor" input="/WEB-INF/pages/bank/corp_pref_view/corporation_pref_entry.jsp">
+      <forward name="prefEntry" input="/WEB-INF/pages/bank/corp_pref_view/corporation_pref_entry.jsp" path="/WEB-INF/pages/bank/corp_pref_view/corporation_pref_entry.jsp"/>
+      <forward name="list" path="/WEB-INF/pages/bank/corp_pref_view/corporation_list.jsp"/>
+      <forward name="view" path="/WEB-INF/pages/bank/corp_pref_view/corporation_view.jsp"/>
+    </action>
+    <action name="corpUserForSupervisor" bean="app.cib.action.sys.CorpUserAction" input="/WEB-INF/pages/bank/corp_pref_view/user_list.jsp">
+      <forward name="list" input="/WEB-INF/pages/bank/corp_pref_view/user_list.jsp" path="/WEB-INF/pages/bank/corp_pref_view/user_list.jsp"/>
+      <forward name="view" path="/WEB-INF/pages/bank/corp_pref_view/user_view.jsp"/>
+    </action>
+    <action name="corpAccountForSupervisor" bean="app.cib.action.bnk.CorpAccountAction" input="/WEB-INF/pages/bank/corp_pref_view/account_list.jsp">
+      <forward name="listCorpAccount" input="/WEB-INF/pages/bank/corp_pref_view/account_list.jsp" path="/WEB-INF/pages/bank/corp_pref_view/account_list.jsp"/>
+    </action>
+    <action name="corpAccountLimitsForSupervisor" bean="app.cib.action.bnk.CorpAccountLimitsAction" permission="srv.bank.supervisor" input="/WEB-INF/pages/bank/corp_pref_view/account_limits.jsp">
+      <forward name="listCorpAccount" input="/WEB-INF/pages/bank/corp_pref_view/account_limits.jsp" path="/WEB-INF/pages/bank/corp_pref_view/account_limits.jsp"/>
+      <forward name="viewAccountLimits" input="/WEB-INF/pages/bank/corp_pref_view/account_limits.jsp" path="/WEB-INF/pages/bank/corp_pref_view/account_limits_view.jsp"/>
+    </action>
+    <action name="authPrefForSupervisor" bean="app.cib.action.sys.AuthorizationPreferenceAction" permission="srv.bank.supervisor">
+      <forward name="query" path="/WEB-INF/pages/bank/corp_pref_view/authorization_list.jsp"/>
+      <forward name="setLoadForSupervisor" input="/WEB-INF/pages/bank/corp_pref_view/authorization_list.jsp" path="/WEB-INF/pages/bank/corp_pref_view/authorization_view.jsp"/>
+    </action>
+    <action name="corpSubsidiaryForSupervisor" bean="app.cib.action.bnk.CorpSubsidiaryAction" permission="srv.bank.supervisor">
+      <forward name="listSubsidiary" input="/WEB-INF/pages/bank/corp_pref_view/corp_subsidiary_list.jsp" path="/WEB-INF/pages/bank/corp_pref_view/corp_subsidiary_list.jsp"/>
+    </action>
+    <action name="accountAuthorizationForSupervisor" bean="app.cib.action.sys.AccountAuthorizationAction" permission="srv.bank.supervisor">
+      <forward name="listAccountAuthorization" path="/WEB-INF/pages/bank/corp_pref_view/account_auth_list.jsp"/>
+    </action>
+    <action name="configCheckingForSupervisor" bean="app.cib.action.bnk.ConfigCheckingAction" permission="srv.bank.supervisor" input="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp">
+      <forward name="checkConfig" input="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp" path="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp"/>
+    </action>    
+    <action name="configChecking" bean="app.cib.action.bnk.ConfigCheckingAction" permission="sys.user" input="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp">
+      <forward name="checkConfig" input="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp" path="/WEB-INF/pages/bank/corp_mng/config_checking_result.jsp"/>
+    </action>
+    <!-- hjs end-->
+    <!-- Jet begin-->    
+    <action name="accountEnqBank" bean="app.cib.action.bnk.CorporationAction" permission="srv.bank.enq" input="/WEB-INF/pages/bank/corp_account_bank/corporation_pref_entry.jsp">
+      <forward name="prefEntry" input="/WEB-INF/pages/bank/corp_account_bank/corporation_pref_entry.jsp" path="/WEB-INF/pages/bank/corp_account_bank/corporation_pref_entry.jsp"/>
+    </action>
+    <action name="accEnquiryBank" bean="app.cib.action.enq.AccEnquiryBankAction" permission="srv.bank.enq">
+      <forward name="listAccountSummary" path="/WEB-INF/pages/enq/account_enquiry_bank/accountSummaryList.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/accountSummaryList.jsp"/>
+      <forward name="viewAccountSummary" path="/WEB-INF/pages/enq/account_enquiry_bank/accountSummaryView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/accountSummaryList.jsp"/>
+      <forward name="listCurrentAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountList.jsp"/>
+      <forward name="viewCurrentAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountList.jsp"/>
+      <forward name="listTransHistory" path="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountView.jsp"/>
+      <forward name="listTransHistorySa" path="/WEB-INF/pages/enq/account_enquiry_bank/savingAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/savingAccountView.jsp"/>
+      <forward name="listTimeDeposit" path="/WEB-INF/pages/enq/account_enquiry_bank/timeDepositList.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/timeDepositList.jsp"/>
+      <forward name="viewTimeDeposit" path="/WEB-INF/pages/enq/account_enquiry_bank/timeDepositView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/timeDepositList.jsp"/>
+      <forward name="listOverdraftAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/overdraftAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/overdraftAccountList.jsp"/>
+      <forward name="viewOverdraftAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/currentAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/overdraftAccountList.jsp"/>
+      <forward name="listLoanAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/loanAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/loanAccountList.jsp"/>
+      <forward name="viewLoanAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/loanAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/loanAccountList.jsp"/>
+      <forward name="viewInwardInfo" path="/WEB-INF/pages/enq/account_enquiry_bank/inward_rem_info_view.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/inward_rem_info_view.jsp"/>
+      <forward name="listSavingAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/savingAccountList.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/savingAccountList.jsp"/>
+      <forward name="viewSavingAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/savingAccountView.jsp" input="/WEB-INF/pages/enq/account_enquiry_bank/savingAccountList.jsp"/>
+      <!-- add by mbh for a new tab of credit card -->
+      <forward name="listCreditAccount" path="/WEB-INF/pages/enq/account_enquiry/creditAccountList_bank.jsp" input="/WEB-INF/pages/enq/account_enquiry/creditAccountList_bank.jsp"/>
+      <forward name="viewCreditAccount" path="/WEB-INF/pages/enq/account_enquiry_bank/creditAccountView_bank.jsp" input="/WEB-INF/pages/enq/account_enquiry/creditAccountList_bank.jsp"/>
+    </action>
+
+    <action name="viewerAccessList" bean="app.cib.action.bnk.ViewerAccessListAction" permission="srv.bank">
+      <forward name="listLoad" path="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_load.jsp" input="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_load.jsp"/>
+      <forward name="listCorp" path="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list.jsp" input="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_load.jsp"/>
+      <forward name="updateAccessListReturn" path="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list.jsp" input="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_confirm.jsp"/>
+      <forward name="updateAccessList" path="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_confirm.jsp" input="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list.jsp"/>
+      <forward name="updateAccessListCfm" path="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_ack.jsp" input="/WEB-INF/pages/bank/viewer_access_list/viewer_access_list_confirm.jsp"/>      
+    </action>
+    
+    <!-- Jet end-->    
+          
+    <!--  pan_wy begin -->
+    <action name="message" bean="app.cib.action.srv.MessageAction" input="/WEB-INF/pages/srv/message/message_corp_list.jsp">
+      <forward name="list" input="/WEB-INF/pages/srv/message/message_corp_list.jsp" path="/WEB-INF/pages/srv/message/message_corp_list.jsp"/>
+      <forward name="view" input="/WEB-INF/pages/srv/message/message_corp_list.jsp" path="/WEB-INF/pages/srv/message/message_corp_view.jsp"/>
+      <forward name="delete" input="/WEB-INF/pages/srv/message/message_corp_list.jsp" path="/WEB-INF/pages/srv/message/message_delete_ack.jsp"/>
+    </action>
+    <action name="messageManage" bean="app.cib.action.srv.MessageManageAction" permission="srv.bank,srv.bank.supervisor" input="/WEB-INF/pages/srv/message/message_bank_list.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/srv/message/message_add.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/srv/message/message_add.jsp" path="/WEB-INF/pages/srv/message/message_add_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/srv/message/message_add_confirm.jsp" path="/WEB-INF/pages/srv/message/message_add_ack.jsp"/>
+      <forward name="delete" input="/WEB-INF/pages/srv/message/message_bank_list.jsp" path="/WEB-INF/pages/srv/message/message_bank_delete_ack.jsp"/>
+      <forward name="listByBank" input="/WEB-INF/pages/srv/message/message_bank_list.jsp" path="/WEB-INF/pages/srv/message/message_bank_list.jsp"/>
+      <forward name="view" input="/WEB-INF/pages/srv/message/message_bank_list.jsp" path="/WEB-INF/pages/srv/message/message_bank_view.jsp"/>
+      <forward name="listByBankSupervisor" input="/WEB-INF/pages/srv/message/message_bank_supervisor_list.jsp" path="/WEB-INF/pages/srv/message/message_bank_supervisor_list.jsp"/>
+      <forward name="viewBySupervisor" input="/WEB-INF/pages/srv/message/message_bank_supervisor_view.jsp" path="/WEB-INF/pages/srv/message/message_bank_supervisor_view.jsp"/>
+      <forward name="listPrintPassword" path="/WEB-INF/pages/srv/print_password/list_print_password.jsp"/>
+    </action>
+    <action name="approve" bean="app.cib.action.flow.ApproveAction">
+      <forward name="list" input="/WEB-INF/pages/common/approve/approve_work_list.jsp" path="/WEB-INF/pages/common/approve/approve_work_list.jsp"/>
+      <forward name="returnList" input="/WEB-INF/pages/common/approve/approve_work_list.jsp" path="/WEB-INF/pages/common/approve/approve_work_list.jsp"/>
+      <forward name="view" input="/WEB-INF/pages/common/approve/approve_work_list.jsp" path="/WEB-INF/pages/common/approve/approve_view.jsp"/>
+      <forward name="approveLoad" input="/WEB-INF/pages/common/approve/approve_work_list.jsp" path="/WEB-INF/pages/common/approve/approve_confirm.jsp"/>
+      <forward name="approve" input="/WEB-INF/pages/common/approve/approve_confirm.jsp" path="/WEB-INF/pages/common/approve/approve_ack.jsp"/>
+      <forward name="cancelLoad" input="/WEB-INF/pages/common/approve/approve_status_enquiry.jsp" path="/WEB-INF/pages/common/approve/cancel_confirm.jsp"/>
+      <forward name="cancel" input="/WEB-INF/pages/common/approve/cancel_confirm.jsp" path="/WEB-INF/pages/common/approve/cancel_ack.jsp"/>
+      <forward name="cancelApprove" input="/WEB-INF/pages/common/approve/approve_confirm.jsp" path="/WEB-INF/pages/common/approve/approve_work_list.jsp"/>
+      <forward name="multiApproveLoad" input="/WEB-INF/pages/common/approve/approve_work_list.jsp" path="/WEB-INF/pages/common/approve/approve_multi_list.jsp"/>
+      <forward name="multiApprove" input="/WEB-INF/pages/common/approve/approve_multi_list.jsp" path="/WEB-INF/pages/common/approve/approve_multi_progress_bar.jsp"/>
+      <forward name="multiApproveShowResult" input="/WEB-INF/pages/common/approve/approve_multi_progress_bar.jsp" path="/WEB-INF/pages/common/approve/approve_multi_ack.jsp"/>
+      <forward name="cancelMultiApprove" input="/WEB-INF/pages/common/approve/approve_multi_list.jsp" path="/WEB-INF/pages/common/approve/approve_work_list.jsp"/>
+      <forward name="changeApproverLoad" path="/WEB-INF/pages/common/approve/approve_change_approver_confirm.jsp"/>
+      <forward name="changeApprover" input="/WEB-INF/pages/common/approve/approve_change_approver_confirm.jsp" path="/WEB-INF/pages/common/approve/approve_change_approver_ack.jsp"/>
+      <forward name="statusEnquiry" input="/WEB-INF/pages/common/approve/approve_status_enquiry.jsp" path="/WEB-INF/pages/common/approve/approve_status_enquiry.jsp"/>
+      <forward name="statusEnquiryView" input="/WEB-INF/pages/common/approve/approve_status_enquiry.jsp" path="/WEB-INF/pages/common/approve/approve_view_history.jsp"/>
+      <forward name="statusEnquiryBank" input="/WEB-INF/pages/common/approve/approve_status_enquiry_bank.jsp" path="/WEB-INF/pages/common/approve/approve_status_enquiry_bank.jsp"/>
+      <forward name="historyEnquiryLoad" input="/WEB-INF/pages/common/approve/approve_history_enquiry_load.jsp" path="/WEB-INF/pages/common/approve/approve_history_enquiry_load.jsp"/>
+      <forward name="historyEnquiry" input="/WEB-INF/pages/common/approve/approve_history_enquiry_load.jsp" path="/WEB-INF/pages/common/approve/approve_history_enquiry.jsp"/>
+      <forward name="historyEnquiryView" input="/WEB-INF/pages/common/approve/approve_history_enquiry.jsp" path="/WEB-INF/pages/common/approve/approve_view_history.jsp"/>
+      <forward name="inputCodeLoad" input="/WEB-INF/pages/common/approve/security_code_input.jsp" path="/WEB-INF/pages/common/approve/security_code_input.jsp"/>
+	  <forward name="unavailableApprove" input="/WEB-INF/pages/common/approve/approve_ack.jsp" path="/WEB-INF/pages/common/approve/approve_ack.jsp"></forward>
+      <forward name="unavailableMultiApprove" input="/WEB-INF/pages/common/approve/approve_multi_ack.jsp" path="/WEB-INF/pages/common/approve/approve_multi_ack.jsp"></forward>
+      
+    </action>
+    <!-- pan_wy end -->
+    <!--  huang_gh begin -->
+    <action name="uploadFile" bean="app.cib.action.srv.UploadFileAction" input="/WEB-INF/pages/srv/upload/upload_file.jsp">
+      <forward name="load" path="/WEB-INF/pages/srv/upload/upload_file.jsp"/>
+      <forward name="upload" input="/WEB-INF/pages/srv/upload/upload_file.jsp" path="/WEB-INF/pages/srv/upload/upload_file_ok.jsp"/>
+    </action>
+    <!-- huang_gh end -->
+    <!-- mxl start 0802 -->
+    <action name="transferTemplateInOversea" bean="app.cib.action.txn.TransferTemplateInOverseaAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_template/transferTemplateInOversea.jsp">
+      <forward name="listTemplate" path="/WEB-INF/pages/txn/transfer_template/transferTemplateInOversea.jsp"/>
+      <forward name="addTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/addTemplateInOversea.jsp"/>
+      <forward name="addTemplate" input="/WEB-INF/pages/txn/transfer_template/addTemplateInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInOversea.jsp"/>
+      <forward name="addTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_ackInOversea.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplateInOversea.jsp"/>
+      <forward name="deleteTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InOversea.jsp"/>
+      <forward name="deleteTemplate" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInOversea.jsp"/>
+      <forward name="deleteTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_ackInOversea.jsp"/>
+      <forward name="editTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InOversea.jsp"/>
+      <forward name="editTemplate" input="/WEB-INF/pages/txn/transfer_template/editTemplate_InOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInOversea.jsp"/>
+      <forward name="editTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_ackInOversea.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InOversea.jsp"/>
+      <forward name="transferTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InOversea.jsp"/>
+      <forward name="transferTemplate" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_InOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInOversea.jsp"/>
+      <forward name="transferTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_ackInOversea.jsp"/>
+      <forward name="payCancel" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInOversea.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InOversea.jsp"/>
+    </action>
+    <action name="transferTemplateInMacau" bean="app.cib.action.txn.TransferTemplateInMacauAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_template/transferTemplateInMacau.jsp">
+      <forward name="listTemplate" path="/WEB-INF/pages/txn/transfer_template/transferTemplateInMacau.jsp"/>
+      <forward name="addTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/addTemplateInMacau.jsp"/>
+      <forward name="addTemplate" input="/WEB-INF/pages/txn/transfer_template/addTemplateInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInMacau.jsp"/>
+      <forward name="addTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_ackInMacau.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplateInMacau.jsp"/>
+      <forward name="deleteTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InMacau.jsp"/>
+      <forward name="deleteTemplate" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInMacau.jsp"/>
+      <forward name="deleteTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_ackInMacau.jsp"/>
+      <forward name="editTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InMacau.jsp"/>
+      <forward name="editTemplate" input="/WEB-INF/pages/txn/transfer_template/editTemplate_InMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInMacau.jsp"/>
+      <forward name="editTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_ackInMacau.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InMacau.jsp"/>
+      <forward name="transferTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InMacau.jsp"/>
+      <forward name="transferTemplate" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_InMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInMacau.jsp"/>
+      <forward name="transferTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_ackInMacau.jsp"/>
+      <forward name="payCancel" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInMacau.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InMacau.jsp"/>
+    </action>
+    <action name="transferTemplate" bean="app.cib.action.txn.TransferTemplateInBankAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_template/transferTemplateInBank.jsp">
+      <forward name="listTemplate" path="/WEB-INF/pages/txn/transfer_template/transferTemplateInBank.jsp"/>
+      <forward name="addTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/addTemplateInBank.jsp"/>
+      <forward name="addTemplate" input="/WEB-INF/pages/txn/transfer_template/addTemplateInBank.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInBANK.jsp"/>
+      <forward name="addTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_ackInBANK.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplateInBank.jsp"/>
+      <forward name="deleteTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InBANK.jsp"/>
+      <forward name="deleteTemplate" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInBANK.jsp"/>
+      <forward name="deleteTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_ackInBANK.jsp"/>
+      <forward name="editTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InBANK.jsp"/>
+      <forward name="editTemplate" input="/WEB-INF/pages/txn/transfer_template/editTemplate_InBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInBANK.jsp"/>
+      <forward name="editTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_ackInBANK.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InBANK.jsp"/>
+      <forward name="transferTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InBANK.jsp"/>
+      <forward name="transferTemplate" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_InBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInBANK.jsp"/>
+      <forward name="transferTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_ackInBANK.jsp"/>
+      <forward name="payCancel" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInBANK.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InBANK.jsp"/>
+    </action>
+    <!-- /* Add by long_zg 2015-05-22 UAT6-242 第三者轉賬operator成功頁缺少save as template begin */-->
+    <action name="transferTemplate3rd" bean="app.cib.action.txn.TransferTemplateInBankAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_template/transferTemplateInBank.jsp">
+      <forward name="listTemplate" path="/WEB-INF/pages/txn/transfer_template/transferTemplateInBank3rd.jsp"/>
+      <forward name="addTemplateLoad3rd" path="/WEB-INF/pages/txn/transfer_template/addTemplateInBank3rd.jsp"/>
+      <forward name="addTemplate" input="/WEB-INF/pages/txn/transfer_template/addTemplateInBank3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInBANK3rd.jsp"/>
+      <forward name="addTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplate_ackInBANK3rd.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_template/addTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/addTemplateInBank3rd.jsp"/>
+      <forward name="deleteTemplateLoad" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InBANK3rd.jsp"/>
+      <forward name="deleteTemplate" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_InBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInBANK3rd.jsp"/>
+      <forward name="deleteTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/deleteTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/deleteTemplate_ackInBANK3rd.jsp"/>
+      <forward name="editTemplateLoad3rd" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InBANK3rd.jsp"/>
+      <forward name="editTemplate" input="/WEB-INF/pages/txn/transfer_template/editTemplate_InBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInBANK3rd.jsp"/>
+      <forward name="editTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_ackInBANK3rd.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/txn/transfer_template/editTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/editTemplate_InBANK3rd.jsp"/>
+      <forward name="transferTemplateLoad3rd" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InBANK3rd.jsp"/>
+      <forward name="transferTemplate" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_InBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInBANK3rd.jsp"/>
+      <forward name="transferTemplateConfirm" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_ackInBANK3rd.jsp"/>
+      <forward name="payCancel" input="/WEB-INF/pages/txn/transfer_template/transferTemplate_confirmInBANK3rd.jsp" path="/WEB-INF/pages/txn/transfer_template/transferTemplate_InBANK3rd.jsp"/>
+    </action>
+    <!-- /* Add by long_zg 2015-05-22 UAT6-242 第三者轉賬operator成功頁缺少save as template end */-->
+    <action name="transferInBANK" bean="app.cib.action.txn.TransferInBankAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_account/transferAccountInBank.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/transfer_account/transferAccountInBank.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/transfer_account/transferAccountInBank.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirm.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_ack.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirm.jsp" path="/WEB-INF/pages/txn/transfer_account/transferAccountInBank.jsp"/>
+      <forward name="saveTemplate" input ="/WEB-INF/pages/txn/transfer_account/saveTemplateInBank_fail.jsp" path="/WEB-INF/pages/txn/transfer_account/saveTemplateInBank.jsp"/>
+    </action>
+	<!-- add by long_zg 2019-05-16 for 3rd -->
+    <action name="transferInBANK3rd" bean="app.cib.action.txn.TransferInBankAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_account/transferAccountInBank3rd.jsp">
+      <forward name="addLoad3rd" path="/WEB-INF/pages/txn/transfer_account/transferAccountInBank3rd.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/transfer_account/transferAccountInBank3rd.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_confirm3rd.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirm3rd.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_ack3rd.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirm3rd.jsp" path="/WEB-INF/pages/txn/transfer_account/transferAccountInBank3rd.jsp"/>
+      <forward name="saveTemplate" input ="/WEB-INF/pages/txn/transfer_account/saveTemplateInBank_fail3rd.jsp" path="/WEB-INF/pages/txn/transfer_account/saveTemplateInBank3rd.jsp"/>
+    </action>
+    <action name="transferInMacau" bean="app.cib.action.txn.TransferInMacauAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_account/transferAccountInMacau.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/transfer_account/transferAccountInMacau.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/transfer_account/transferAccountInMacau.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmMacau.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmMacau.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_ackMacau.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmMacau.jsp" path="/WEB-INF/pages/txn/transfer_account/transferAccountInMacau.jsp"/>
+      <forward name="saveTemplate" input ="/WEB-INF/pages/txn/transfer_account/saveTemplateInMacau_fail.jsp" path="/WEB-INF/pages/txn/transfer_account/saveTemplateInMacau.jsp"/>
+    </action>
+    <action name="transferInOversea" bean="app.cib.action.txn.TransferInOverseaAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_account/transferAccountInOversea.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/transfer_account/transferAccountInOversea.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/transfer_account/transferAccountInOversea.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmOversea.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmOversea.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_ackOversea.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmOversea.jsp" path="/WEB-INF/pages/txn/transfer_account/transferAccountInOversea.jsp"/>
+      <forward name="saveTemplate" input ="/WEB-INF/pages/txn/transfer_account/saveTemplateInOversea_fail.jsp" path="/WEB-INF/pages/txn/transfer_account/saveTemplateInOversea.jsp"/>
+    </action>
+    <action name="transferHistory" bean="app.cib.action.txn.TransferHistoryAction" permission="txn.transfer" input="/WEB-INF/pages/txn/transfer_account/transferHistory.jsp">
+      <forward name="listLoad" path="/WEB-INF/pages/txn/transfer_account/transferHistory.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/txn/transfer_account/transferHistory.jsp" path="/WEB-INF/pages/txn/transfer_account/transferHistoryResult.jsp"/>
+      <forward name="viewInBANK" path="/WEB-INF/pages/txn/transfer_account/transferViewInBANK.jsp"/>
+      <forward name="viewInMacau" path="/WEB-INF/pages/txn/transfer_account/transferViewInMacau.jsp"/>
+      <forward name="viewInOversea" path="/WEB-INF/pages/txn/transfer_account/transferViewInOversea.jsp"/>
+      <forward name="viewInBankStM" path="/WEB-INF/pages/txn/transfer_account/batchTransferViewInBANKStM.jsp"/>
+      <forward name="viewInBankMtS" path="/WEB-INF/pages/txn/transfer_account/batchTransferViewInBANKMtS.jsp"/>
+      <forward name="viewInMacauStM" path="/WEB-INF/pages/txn/transfer_account/batchTransferViewInMacauStM.jsp"/>
+      <forward name="viewInOverseaStM" path="/WEB-INF/pages/txn/transfer_account/batchTransferViewInOverseaStM.jsp"/>
+      <forward name="saveTemplate" path="/WEB-INF/pages/txn/transfer_account/saveHistoryTemplate.jsp"/>
+    </action>
+    <action name="corpDelivery" bean="app.cib.action.txn.CorpDeliveryAction" permission="txn.transfer" input="/WEB-INF/pages/txn/corp_transfer/corpDelivery.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/corp_transfer/corpDelivery.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/corp_transfer/corpDelivery.jsp" path="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmDelivery.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmDelivery.jsp" path="/WEB-INF/pages/txn/corp_transfer/corp_add_ackDelivery.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmDelivery.jsp" path="/WEB-INF/pages/txn/corp_transfer/corpDelivery.jsp"/>
+    </action>
+    <action name="corpSubsidiaryTransfer" bean="app.cib.action.txn.CorpSubsidiaryAction" permission="txn.transfer" input="/WEB-INF/pages/txn/corp_transfer/corpSubsidiary.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/corp_transfer/corpSubsidiary.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/corp_transfer/corpSubsidiary.jsp" path="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmSubsidiary.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmSubsidiary.jsp" path="/WEB-INF/pages/txn/corp_transfer/corp_add_ackSubsidiary.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmSubsidiary.jsp" path="/WEB-INF/pages/txn/corp_transfer/corpSubsidiary.jsp"/>
+    </action>
+    <action name="corpRepatriate" bean="app.cib.action.txn.CorpRepatriateAction" permission="txn.transfer" input="/WEB-INF/pages/txn/corp_transfer/corpRepatriate.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/corp_transfer/corpRepatriate.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/corp_transfer/corpRepatriate.jsp" path="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmRepatriate.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmRepatriate.jsp" path="/WEB-INF/pages/txn/corp_transfer/corp_add_ackRepatriate.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/txn/corp_transfer/corp_add_confirmRepatriate.jsp" path="/WEB-INF/pages/txn/corp_transfer/corpRepatriate.jsp"/>
+    </action>
+    <action name="corpHistory" bean="app.cib.action.txn.CorpHistoryAction" permission="txn.transfer" input="/WEB-INF/pages/txn/corp_transfer/corpTransferHistory.jsp">
+      <forward name="listLoad" path="/WEB-INF/pages/txn/corp_transfer/corpTransferHistory.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/txn/corp_transfer/corpTransferHistory.jsp" path="/WEB-INF/pages/txn/corp_transfer/corpHistoryResult.jsp"/>
+    </action>
+    <action name="scheduleTransferBANK" bean="app.cib.action.bat.ScheduleTransferBankAction" permission="txn.schetxn" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank.jsp">
+      <forward name="list" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InBANK.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInBank_add_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bat/schedule_transfer/schTranInBank_add_confirm.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInBank_add_ack.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank.jsp" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank.jsp"/>
+      <forward name="deleteLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InBANK.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InBANK.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_ackInBANK.jsp"/>
+      <forward name="editLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InBANK.jsp"/>
+      <forward name="edit" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InBANK.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInBANK.jsp"/>
+      <forward name="editConfirm" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInBANK.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_ackInBANK.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInBANK.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InBANK.jsp"/>
+      <forward name="blockLoad"   input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank.jsp"  path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InBANK.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InBANK.jsp" path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_ackInBANK.jsp"/>
+      <forward name="unblockLoad"   input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank.jsp"  path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InBANK.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InBANK.jsp" path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_ackInBANK.jsp"/>
+    </action>
+    <!-- /* Add by long_zg 2019-05-22 UAT6-246 COB：新增的第三者轉賬未完全改好  begin */ -->
+    <action name="scheduleTransferBANK3rd" bean="app.cib.action.bat.ScheduleTransferBankAction" permission="txn.schetxn" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank3rd.jsp">
+      <forward name="list" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank3rd.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InBANK3rd.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank3rd.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInBank_add_confirm3rd.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bat/schedule_transfer/schTranInBank_add_confirm3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInBank_add_ack3rd.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInBank3rd.jsp"/>
+      <forward name="deleteLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InBANK3rd.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InBANK3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_ackInBANK3rd.jsp"/>
+      <forward name="editLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InBANK3rd.jsp"/>
+      <forward name="edit" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InBANK3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInBANK3rd.jsp"/>
+      <forward name="editConfirm" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInBANK3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_ackInBANK3rd.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInBANK3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InBANK3rd.jsp"/>
+      <forward name="blockLoad"   input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank3rd.jsp"  path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InBANK3rd.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InBANK3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_ackInBANK3rd.jsp"/>
+      <forward name="unblockLoad"   input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInBank3rd.jsp"  path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InBANK3rd.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InBANK3rd.jsp" path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_ackInBANK3rd.jsp"/>
+    </action>
+    <!-- /* Add by long_zg 2019-05-22 UAT6-246 COB：新增的第三者轉賬未完全改好  begin */ -->
+    
+    <action name="scheduleTransferMacau" bean="app.cib.action.bat.ScheduleTransferMacauAction" permission="txn.schetxn" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInMacau.jsp">
+      <forward name="list" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTransferListInMacau.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InMacau.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInMacau.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInMacau_add_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bat/schedule_transfer/schTranInMacau_add_confirm.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInMacau_add_ack.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/bat/schedule_transfer/schTranInMacau_add_confirm.jsp" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInMacau.jsp"/>
+      <forward name="deleteLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InMacau.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_ackInMacau.jsp"/>
+      <forward name="editLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InMacau.jsp"/>
+      <forward name="edit" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInMacau.jsp"/>
+      <forward name="editConfirm" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_ackInMacau.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InMacau.jsp"/>
+      <forward name="blockLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InMacau.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_ackInMacau.jsp"/>
+      <forward name="unblockLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InMacau.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InMacau.jsp" path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_ackInMacau.jsp"/>
+    </action>
+    <action name="scheduleTransferOversea" bean="app.cib.action.bat.ScheduleTransferOverseaAction" permission="txn.schetxn" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInOversea.jsp">
+      <forward name="list" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTransferListInOversea.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InOversea.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInOversea.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInOversea_add_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/bat/schedule_transfer/schTranInOversea_add_confirm.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTranInOversea_add_ack.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/bat/schedule_transfer/schTranInOversea_add_confirm.jsp" path="/WEB-INF/pages/bat/schedule_transfer/scheduleTransferInOversea.jsp"/>
+      <forward name="deleteLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InOversea.jsp"/>
+      <forward name="deleteConfirm" input="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_InOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/deleteSchTransfer_ackInOversea.jsp"/>
+      <forward name="editLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InOversea.jsp"/>
+      <forward name="edit" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInOversea.jsp" />
+      <forward name="editConfirm" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_ackInOversea.jsp"/>
+      <forward name="editCancel" input="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_confirmInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/editSchTransfer_InOversea.jsp" />
+      <forward name="blockLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InOversea.jsp"/>
+      <forward name="blockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_InOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/blockSchTransfer_ackInOversea.jsp"/>
+      <forward name="unblockLoad" input="/WEB-INF/pages/bat/schedule_transfer/schTransferListInOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InOversea.jsp"/>
+      <forward name="unblockConfirm" input="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_InOversea.jsp" path="/WEB-INF/pages/bat/schedule_transfer/unblockSchTransfer_ackInOversea.jsp"/>
+    </action>
+    <action name="schTransferHistory" bean="app.cib.action.bat.SchTransferHistoryAction" permission="txn.schetxn" input="/WEB-INF/pages/bat/schedule_transfer/schTransferHistory.jsp">
+      <forward name="listLoad" path="/WEB-INF/pages/bat/schedule_transfer/schTransferHistory.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/bat/schedule_transfer/schTransferHistory.jsp" path="/WEB-INF/pages/bat/schedule_transfer/schTransferHistoryResult.jsp"/>
+      <forward name="viewHistoryInBANK" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InBANK.jsp"/>
+      <forward name="viewHistoryInMacau" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InMacau.jsp"/>
+      <forward name="viewHistoryInOverea" path="/WEB-INF/pages/bat/schedule_transfer/schTransferView_InOversea.jsp"/>
+      <!-- add by hjs -->
+      <forward name="listOperationHistoryLoad" input="/WEB-INF/pages/bat/schedule_transfer/sch_operation_history.jsp" path="/WEB-INF/pages/bat/schedule_transfer/sch_operation_history.jsp"/>
+      <forward name="listOperationHistory" input="/WEB-INF/pages/bat/schedule_transfer/sch_operation_history.jsp" path="/WEB-INF/pages/bat/schedule_transfer/sch_operation_history_list.jsp"/>
+    </action>
+    <action name="bankRequest" bean="app.cib.action.srv.BankRequestAction" permission="srv.corp" input="/WEB-INF/pages/srv/request/addBankDraftRequest.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/srv/request/addBankDraftRequest.jsp"/>
+      <forward name="addDetail" input="/WEB-INF/pages/srv/request/addBankDraftRequest.jsp" path="/WEB-INF/pages/srv/request/addBankDraftRequest_next.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/srv/request/addBankDraftRequest_next.jsp" path="/WEB-INF/pages/srv/request/addBankDraftRequest_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/srv/request/addBankDraftRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/addBankDraftRequest_ack.jsp"/>
+      <!--<forward name="listLoad" path="/WEB-INF/pages/srv/request/bankDraftRequestList.jsp"/>-->
+      <forward name="listLoad" path="/WEB-INF/pages/srv/request/stopChequeRequestList.jsp"/><!-- mod by linrui 20180314 -->
+      <forward name="listHistory" input="/WEB-INF/pages/srv/request/bankDraftRequestList.jsp" path="/WEB-INF/pages/srv/request/bankDraftRequestListResult.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/srv/request/bankDraftRequestView.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/srv/request/addBankDraftRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/addBankDraftRequest_next.jsp"/>
+     </action>
+    <action name="bankBatchRequest" bean="app.cib.action.bat.BankRequestBatchAction" permission="srv.corp" input="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file.jsp" path="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/bankDraft_upload_file.jsp"/>
+    </action>
+    <action name="cashOrderRequest" bean="app.cib.action.srv.CashOrderAction" permission="srv.corp" input="/WEB-INF/pages/srv/request/addCashOrderRequest.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/srv/request/addCashOrderRequest.jsp"/>
+      <forward name="addDetail" input="/WEB-INF/pages/srv/request/addCashOrderRequest.jsp" path="/WEB-INF/pages/srv/request/addCashOrderRequest_next.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/srv/request/addCashOrderRequest_next.jsp" path="/WEB-INF/pages/srv/request/addCashOrderRequest_confirm.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/srv/request/addCashOrderRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/addCashOrderRequest_ack.jsp"/>
+      <forward name="listLoad" path="/WEB-INF/pages/srv/request/cashOrderRequestList.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/srv/request/cashOrderRequestList.jsp" path="/WEB-INF/pages/srv/request/cashOrderRequestListResult.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/srv/request/cashOrderRequestView.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/srv/request/addCashOrderRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/addCashOrderRequest_next.jsp"/>
+     </action>
+    <action name="cashOrderBatchRequest" bean="app.cib.action.bat.CashOrderBatchAction" permission="srv.corp" input="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file.jsp" path="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/cashOrder_upload_file.jsp"/>
+    </action>
+    <action name="stopChequeRequest" bean="app.cib.action.srv.StopChequeAction" permission="srv.corp.req" input="/WEB-INF/pages/srv/request/stopChequeRequest.jsp">
+      <forward name="stopLoad" path="/WEB-INF/pages/srv/request/stopChequeRequest.jsp"/>
+      <forward name="stop" input="/WEB-INF/pages/srv/request/stopChequeRequest.jsp" path="/WEB-INF/pages/srv/request/stopChequeRequest_confirm.jsp"/>
+      <forward name="stopConfirm" input="/WEB-INF/pages/srv/request/stopChequeRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/stopChequeRequest_ack.jsp"/>
+      <forward name="listLoad" path="/WEB-INF/pages/srv/request/stopChequeRequestList.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/srv/request/stopChequeRequestList.jsp" path="/WEB-INF/pages/srv/request/stopChequeRequestListResult.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/srv/request/stopChequeRequestView.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/srv/request/stopChequeRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/stopChequeRequest.jsp"/>
+    </action>
+    <action name="stopChequeBatchRequest" bean="app.cib.action.bat.StopChequeBatchAction" permission="srv.corp" input="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file.jsp" path="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/stopCheque_upload_file.jsp"/>
+    </action>
+    <action name="protectionChequeRequest" bean="app.cib.action.srv.ProtectionChequeAction" permission="srv.corp" input="/WEB-INF/pages/srv/request/protectionChequeRequest.jsp">
+      <forward name="protectionLoad" path="/WEB-INF/pages/srv/request/protectionChequeRequest.jsp"/>
+      <forward name="protection" input="/WEB-INF/pages/srv/request/protectionChequeRequest.jsp" path="/WEB-INF/pages/srv/request/protectionChequeRequest_confirm.jsp"/>
+      <forward name="protectionConfirm" input="/WEB-INF/pages/srv/request/protectionChequeRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/protectionChequeRequest_ack.jsp"/>
+      <forward name="listLoad" path="/WEB-INF/pages/srv/request/protectionChequeRequestList.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/srv/request/protectionChequeRequestList.jsp" path="/WEB-INF/pages/srv/request/protectionChequeRequestListResult.jsp"/>
+      <forward name="viewDetail" path="/WEB-INF/pages/srv/request/protectionChequeRequestView.jsp"/>
+      <forward name="addCancel" input="/WEB-INF/pages/srv/request/protectionChequeRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/protectionChequeRequest.jsp"/>
+    </action>
+    <action name="protectionChequeBatchRequest" bean="app.cib.action.bat.ProtectionChequeBatchAction" permission="srv.corp" input="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file.jsp" path="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file_confirm.jsp" path="/WEB-INF/pages/bat/batch_request/protectionCheque_upload_file.jsp"/>
+    </action>
+    <action name="transferInBankStM" bean="app.cib.action.bat.TransferInBankStMAction" permission="txn.transfer" input="/WEB-INF/pages/bat/batch_transfer/transferAccountInBankStM.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_transfer/transferInBankStM.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_transfer/transferInBankStM.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInBankStM_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_transfer/transferInBankStM_confirm.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInBankStM_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_transfer/transferInBankStM.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInBankStM.jsp"/>
+    </action>
+    <action name="transferInBankMtS" bean="app.cib.action.bat.TransferInBankMtSAction" permission="txn.transfer" input="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS_confirm.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInBankMtS.jsp"/>
+    </action>
+   <action name="transferInMacauStM" bean="app.cib.action.bat.TransferInMacauStMAction" permission="txn.transfer" input="/WEB-INF/pages/bat/batch_transfer/transferAccountInMacauStM.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM_confirm.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInMacauStM.jsp"/>
+    </action>
+    <action name="transferInOverseaStM" bean="app.cib.action.bat.TransferInOverseaStMAction" permission="txn.transfer" input="/WEB-INF/pages/bat/batch_transfer/transferAccountInMacauStM.jsp">
+      <forward name="uploadFileLoad" path="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM.jsp"/>
+      <forward name="uploadFile" input="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM_confirm.jsp"/>
+      <forward name="uploadFileConfirm" input="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM_confirm.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM_ack.jsp"/>
+      <forward name="uploadFileCancel" input="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM.jsp" path="/WEB-INF/pages/bat/batch_transfer/transferInOverseaStM.jsp"/>
+    </action>
+    <!-- mxl end 1010 -->
+    <!-- Jet 2006.07.28 -->
+    <action name="authorizationPreference" bean="app.cib.action.sys.AuthorizationPreferenceAction" permission="bnk.corp">
+      <forward name="query" path="/WEB-INF/pages/sys/authorization_preference/authorization_list.jsp"/>
+      <forward name="addList" input="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp" path="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp"/>
+      <forward name="deleteList" input="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp" path="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp"/>
+      <forward name="setLoad" input="/WEB-INF/pages/sys/authorization_preference/authorization_list.jsp" path="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp"/>
+      <forward name="set" input="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp" path="/WEB-INF/pages/sys/authorization_preference/authorization_set_cfm.jsp"/>
+      <forward name="setCfm" input="/WEB-INF/pages/sys/authorization_preference/authorization_set_cfm.jsp" path="/WEB-INF/pages/sys/authorization_preference/authorization_set_ack.jsp"/>
+      <forward name="setReturn" input="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp" path="/WEB-INF/pages/sys/authorization_preference/authorization_set.jsp"/>
+    </action>
+    <action name="corpSubsidiary" bean="app.cib.action.bnk.CorpSubsidiaryAction" permission="bnk.corp">
+      <forward name="listSubsidiary" input="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp"/>
+      <forward name="listCorpForAdd" input="/WEB-INF/pages/bank/corp_subsidiary/dlg_corp_list.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/dlg_corp_list.jsp"/>
+      <forward name="addSubsidiary" input="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp"/>
+      <forward name="removeSubsidiary" input="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp"/>
+      <forward name="updateSubsidiary" input="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/update_subsidiary_cfm.jsp"/>
+      <forward name="updateSubsidiaryCfm" input="/WEB-INF/pages/bank/corp_subsidiary/update_subsidiary_cfm.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/update_subsidiary_ack.jsp"/>
+      <forward name="updateSubsidiaryReturn" input="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp" path="/WEB-INF/pages/bank/corp_subsidiary/corp_subsidiary_list.jsp"/>
+    </action>
+    <!-- Jet end -->
+    <!-- huang_gh start -->
+    <action name="batchPrint" bean="app.cib.action.batch.BatchPrint" permission="batch.print" input="/WEB-INF/pages/batch/corp_batch_print.jsp">
+      <forward name="corpBatchLoad" path="/WEB-INF/pages/batch/corp_batch_print.jsp"/>
+      <forward name="bankBatchLoad" path="/WEB-INF/pages/batch/bank_batch_print.jsp"/>
+    </action>
+    <!-- huang_gh end -->
+     <!-- test start-->
+    <action name="transferInbankTest" bean="app.cib.test.txn.TransferInBankTestAction"  input="/WEB-INF/pages/txn/transfer_account/transferAccountInBankTest.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/txn/transfer_account/transferAccountInBankTest.jsp"/>
+      <forward name="add" input="/WEB-INF/pages/txn/transfer_account/transferAccountInBankTest.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmTest.jsp"/>
+      <forward name="addConfirm" input="/WEB-INF/pages/txn/transfer_account/transfer_add_confirmTest.jsp" path="/WEB-INF/pages/txn/transfer_account/transfer_add_ack.jsp"/>
+      <forward name="saveTemplate" path="/WEB-INF/pages/txn/transfer_account/saveTemplateInBank.jsp"/>
+    </action>
+    <!-- end-->
+    <!-- wen_chy start 20090921 -->
+    <action name="merchantEnquiry" bean="app.cib.action.enq.MerchantEnquiryAction" permission="enq" input="/WEB-INF/pages/enq/merchant_enquiry/summary_information_enquiry.jsp">
+      <forward name="listSummary" path="/WEB-INF/pages/enq/merchant_enquiry/summary_information_enquiry.jsp"/>
+      <forward name="listDetail" path="/WEB-INF/pages/enq/merchant_enquiry/detail_information_enquiry.jsp"/>
+    </action>
+    <!-- wen_chy end 20090921 -->
+    
+    
+    <!-- add by long_zg 2014-12-18 for CR192 bob batch begin-->
+    <action name="autopayAuthorization" bean="app.cib.action.txn.AutopayAuthorizationAction" permission="txn.pay" input="/WEB-INF/pages/enq/merchant_enquiry/summary_information_enquiry.jsp">
+      <forward name="listAutopay" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_list.jsp"/>
+      <forward name="addLoad" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_add.jsp"/>
+      <forward name="edit" input="/WEB-INF/pages/txn/bill_payment/autopay_instruction_add.jsp" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_cfm.jsp"/>
+      <forward name="editLoad" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_edit.jsp"/>
+      <forward name="deleteLoad" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_del.jsp"/>
+      <forward name="delete" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_ack.jsp"/>
+      <forward name="confirm" path="/WEB-INF/pages/txn/bill_payment/autopay_instruction_ack.jsp"/>
+    </action>
+    <action name="chequeBookRequest" bean="app.cib.action.srv.ChequeBookRequestAction" permission="txn.pay" input="/WEB-INF/pages/srv/request/chequeBookRequest.jsp">
+      <forward name="addLoad" path="/WEB-INF/pages/srv/request/chequeBookRequest.jsp"/>
+      <forward name="add" path="/WEB-INF/pages/srv/request/chequeBookRequest_confirm.jsp"/>
+      <forward name="confirm" input = "/WEB-INF/pages/srv/request/chequeBookRequest_confirm.jsp" path="/WEB-INF/pages/srv/request/chequeBookRequest_ack.jsp"/>
+      <!-- Add by long_zg 2019-05-31 UAT6-464 COB：COB：申請支票報錯，交易記錄也不見了 begin -->
+      <forward name="addCancel" path="/WEB-INF/pages/srv/request/chequeBookRequest.jsp"/>
+      <!-- Add by long_zg 2019-05-31 UAT6-464 COB：COB：申請支票報錯，交易記錄也不見了 end -->
+      <!-- add by lzg 20190722 -->
+      <forward name="listLoad" path="/WEB-INF/pages/srv/request/ChequeRequestList.jsp"/>
+      <forward name="listHistory" input="/WEB-INF/pages/srv/request/ChequeRequestList.jsp" path="/WEB-INF/pages/srv/request/ChequeRequestListResult.jsp"/>
+      <!-- add by lzg end -->
+    </action>
+    <!-- add by linrui 20190701 for control currency begin-->
+    <action name="setCurrency" bean="app.cib.action.bnk.SetCurrencyAction" permission="srv.bank.enq" input="/WEB-INF/pages/sys/corp_info/setCurrency.jsp">
+      <forward name="setCurrencyLoad" input="/WEB-INF/pages/sys/corp_info/setCurrency.jsp" path="/WEB-INF/pages/sys/corp_info/setCurrency.jsp"/>
+      <forward name="setCurrency" path="/WEB-INF/pages/sys/corp_info/setCurrencyCfm.jsp" input="/WEB-INF/pages/sys/corp_info/setCurrency.jsp"/>
+      <forward name="setCurrencyCancel" path="/WEB-INF/pages/sys/corp_info/setCurrency.jsp" input="/WEB-INF/pages/sys/corp_info/setCurrency.jsp"/>
+      <forward name="setCurrencyConfirm" path="/WEB-INF/pages/sys/corp_info/setCurrencyAck.jsp" input="/WEB-INF/pages/sys/corp_info/setCurrencyCfm.jsp"/>
+    </action>
+    <!-- add by linrui 20190701 for control currency end -->
+    <!-- add by lzg for Estatement -->
+    <action name="estatement" bean="app.cib.action.srv.EStatementAction"  input="/WEB-INF/pages/estatement/main.jsp" permission="txn.estatement">
+    	<forward name="showMenu" input="/WEB-INF/pages/estatement/menu.jsp" path="/WEB-INF/pages/estatement/menu.jsp"/>
+    	<forward name="listLoad" input="/WEB-INF/pages/estatement/main.jsp" path="/WEB-INF/pages/estatement/main.jsp"/>
+    	<forward name="showCoNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showCoNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showPeNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showPeNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showReNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showReNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showLoNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showLoNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showCrNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showCrNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showOvNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showOvNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showAsNote" input="/WEB-INF/pages/estatement/Note.jsp" path="/WEB-INF/pages/estatement/Note.jsp"/>
+    	<forward name="showAsNoteResult" input="/WEB-INF/pages/estatement/NoteResult.jsp" path="/WEB-INF/pages/estatement/NoteResult.jsp"/>
+    	<forward name="showTitle" input="/WEB-INF/pages/estatement/title.jsp" path="/WEB-INF/pages/estatement/title.jsp"/>
+    </action>
+    
+    <action name="transferPrompt" bean="app.cib.action.sys.TransferPromptAction"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" permission="bnk.corp">
+    	<forward name="load"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp"  />
+    	<forward name="editLoad"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/editLoad.jsp"  />
+    	<forward name="editLoginMessageLoad"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/editLoginMessageLoad.jsp"  />
+    	<forward name="view"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/transferPromptView.jsp"  />
+    	<forward name="viewLoginMessage"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/loginMessageView.jsp"  />
+    	<forward name="cancel"  input="/WEB-INF/pages/bank/txn_pro/editCfm.jsp" path="/WEB-INF/pages/bank/txn_pro/editLoad.jsp"  />
+    	<forward name="cancelLoginMessage"  input="/WEB-INF/pages/bank/txn_pro/editLoginMessageCfm.jsp" path="/WEB-INF/pages/bank/txn_pro/editLoginMessageLoad.jsp"  />
+    	<forward name="edit"  input="/WEB-INF/pages/bank/txn_pro/editLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/editCfm.jsp"  />
+    	<forward name="editLoginMessage"  input="/WEB-INF/pages/bank/txn_pro/editLoginMessageLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/editLoginMessageCfm.jsp"  />
+    	<forward name="editConfirm"  input="/WEB-INF/pages/bank/txn_pro/editCfm.jsp" path="/WEB-INF/pages/bank/txn_pro/editAck.jsp"  />
+    	<forward name="editLoginMessageConfirm"  input="/WEB-INF/pages/bank/txn_pro/editLoginMessageCfm.jsp" path="/WEB-INF/pages/bank/txn_pro/editLoginMessageAck.jsp"  />
+    	<forward name="clearLoad"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/clearLoad.jsp"  />
+    	<forward name="clearLoginMessageLoad"  input="/WEB-INF/pages/bank/txn_pro/transferPromptLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/clearLoginMessageLoad.jsp"  />
+    	<forward name="clear"  input="/WEB-INF/pages/bank/txn_pro/clearLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/clearCfm.jsp"  />
+    	<forward name="clearLoginMessage"  input="/WEB-INF/pages/bank/txn_pro/clearLoginMessageLoad.jsp" path="/WEB-INF/pages/bank/txn_pro/clearLoginMessageCfm.jsp"  />
+    	<forward name="clearConfirm"  input="/WEB-INF/pages/bank/txn_pro/clearCfm.jsp" path="/WEB-INF/pages/bank/txn_pro/clearAck.jsp"  />
+    	<forward name="clearLoginMessageConfirm"  input="/WEB-INF/pages/bank/txn_pro/clearLoginMessageCfm.jsp" path="/WEB-INF/pages/bank/txn_pro/clearLoginMessageAck.jsp"  />
+    </action>
+    <!-- add by lzg end -->
+  </neturbo-actions>
+</neturbo-config>

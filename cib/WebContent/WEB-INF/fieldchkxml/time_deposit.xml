@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="new_tdAccount">
+		<field name="currentAccount" label="debit_account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("currentAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="currentAccountCcy" label="From_ccy" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("currentAccountCcy").selectedIndex == 0</reject>
+		</field>
+		<field name="currency" label="currency">
+			<format type="string" />
+			<reject prompt="currency_seleted">[currency]=="0"</reject>
+			<reject prompt="Maturity_Instruction_Currency_Jusitify">[currency]!=[currentAccountCcy]</reject>
+		</field>
+		<field name="term" label="period">
+			<format type="string" />
+			<reject prompt="period_seletec">[term]=="0"</reject>
+		</field>
+		<field name="principal" label="amount" required="yes">
+			<format type="amount"/>
+			<reject prompt="amount_justify">[principal] &lt; 5000</reject>
+		</field>
+		<field name="currentAccount" label="current_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[currentAccount]=="0"</reject>
+		</field>
+		<!-- add by linrui for add Maturity instruction -->
+		<field name="instCd" label="Maturity_Instruction" required="no">
+            <format type="string" />
+			<reject prompt="Maturity_Instruction_Jusitify">document.getElementById("instCd").selectedIndex == 0</reject>
+        </field>
+		<!-- end -->
+	</group>
+	<group name="withdrawal_list">
+		<field name="accountNo" label="account_no" required="yes">
+		</field>
+	</group>
+	<group name="withdrawal">
+		<field name="currentAccount" label="credit_ccount" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("currentAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="fromCurrency" label="From_ccy" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("currentAccountCcy").selectedIndex == 0</reject>
+		    <reject prompt="Maturity_Instruction_Currency_Jusitify">[currency]!=[currentAccountCcy]</reject>
+		</field>
+		<field name="currentAccountCcy" label="Credit_Currency" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("currentAccountCcy").selectedIndex == 0</reject>
+		</field>
+	</group>
+	<group name="td_history">
+		<field name="dateFrom" label="date_from" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "")|| (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+		</field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+		</field>
+	</group>
+</fieldchecking>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Fri Dec 29 23:23:31 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.bat">
+
+    <class name="TransferMacauStm" table="TRANSFER_MACAU_STM">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="recordType" column="RECORD_TYPE" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="networkType" column="NETWORK_TYPE" type="java.lang.String" />
+        <property name="benbankSwiab" column="BENBANK_SWIAB" type="java.lang.String" />
+        <property name="beneficiaryCountry" column="BENEFICIARY_COUNTRY" type="java.lang.String" />
+        <property name="fromAccount" column="FROM_ACCOUNT" type="java.lang.String" />
+        <property name="toAccount" column="TO_ACCOUNT" type="java.lang.String" />
+        <property name="beneficiaryName" column="BENEFICIARY_NAME" type="java.lang.String" />
+        <property name="beneficiaryBank" column="BENEFICIARY_BANK" type="java.lang.String" />
+        <property name="beneficiaryBankAdd1" column="BENEFICIARY_BANK_ADD1" type="java.lang.String" />
+        <property name="beneficiaryBankAdd2" column="BENEFICIARY_BANK_ADD2" type="java.lang.String" />
+        <property name="beneficiaryBankAdd3" column="BENEFICIARY_BANK_ADD3" type="java.lang.String" />
+        <property name="senderReference" column="SENDER_REFERENCE" type="java.lang.String" />
+        <property name="bankCode" column="BANK_CODE" type="java.lang.String" />
+        <property name="chipsVid" column="CHIPS_VID" type="java.lang.String" />
+        <property name="intermediaryBank" column="INTERMEDIARY_BANK" type="java.lang.String" />
+        <property name="inteBankAccount" column="INTE_BANK_ACCOUNT" type="java.lang.String" />
+        <property name="inteBankSwift" column="INTE_BANK_SWIFT" type="java.lang.String" />
+        <property name="inteBankAdd1" column="INTE_BANK_ADD1" type="java.lang.String" />
+        <property name="inteBankAdd2" column="INTE_BANK_ADD2" type="java.lang.String" />
+        <property name="inteBankAdd3" column="INTE_BANK_ADD3" type="java.lang.String" />
+        <property name="message" column="MESSAGE" type="java.lang.String" />
+        <property name="transferAmount" column="TRANSFER_AMOUNT" type="java.lang.Double" />
+        <property name="debitAmount" column="DEBIT_AMOUNT" type="java.lang.Double" />
+        <property name="inputAmountFlag" column="INPUT_AMOUNT_FLAG" type="java.lang.String" />
+        <property name="requestType" column="REQUEST_TYPE" type="java.lang.String" />
+        <property name="transferDate" column="TRANSFER_DATE" type="java.util.Date" />
+        <property name="chargeBy" column="CHARGE_BY" type="java.lang.String" />
+        <property name="chargeAccount" column="CHARGE_ACCOUNT" type="java.lang.String" />
+        <property name="messsage" column="MESSSAGE" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="toCurrency" column="TO_CURRENCY" type="java.lang.String" />
+        <property name="fromCurrency" column="FROM_CURRENCY" type="java.lang.String" />
+        <property name="chargeAmount" column="CHARGE_AMOUNT" type="java.lang.Double" />
+        <property name="exchangeRate" column="EXCHANGE_RATE" type="java.lang.Double" />
+        <property name="chargeCurrency" column="CHARGE_CURRENCY" type="java.lang.String" />
+        <property name="problemType" column="PROBLEM_TYPE" type="java.lang.String" />
+        <property name="batchId" column="BATCH_ID" type="java.lang.String" />
+        <property name="filler" column="FILLER" type="java.lang.String" />
+        <property name="lineNo" column="LINE_NO" type="java.lang.Integer" />
+        <property name="bankReferenceNumber" column="BNU_REFERENCE_NUMBER" type="java.lang.String" />
+        <property name="detailResult" column="DETAIL_RESULT" type="java.lang.String" />
+        <property name="rejectReason" column="REJECT_REASON" type="java.lang.String" />
+        <!-- added by xyf 20090804 -->
+        <property name="beneficiaryName2" column="BENEFICIARY_NAME2" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

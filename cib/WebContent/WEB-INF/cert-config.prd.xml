@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cert-settings>
+
+	<!--new CA configuration 20100409-->
+		<cert-setting id="CORP_CERT(G02)" key="Macao Post eSignTrust Corporate Qualified Certificate CA (G02)">
+		<issuer id="CORP_CA(G02)" file="${app.root}/WEB-INF/servercert/MPCorpQcCA(G02).cer">
+			<issuer id="ROOT_CA(G02)" file="${app.root}/WEB-INF/servercert/MPRootCA(G02).cer">
+			</issuer>
+		</issuer>
+		<!-- http://www.esigntrust.com/en/m10_CRL.php?pageID=10  -->
+		<!-- Download CRL for Qualified Certificates for Corporate -->
+		<crl id="CRLFile(G02)" file="${app.root}/WEB-INF/servercert/CorpLatestCRL(G02).crl">
+		</crl>
+	</cert-setting>
+	<cert-setting id="PER_CERT(G02)" key="Macao Post eSignTrust Personal Qualified Certificate CA (G02)">
+		<issuer id="PER_CA(G02)" file="${app.root}/WEB-INF/servercert/MPPerQcCA(G02).cer">
+			<issuer id="ROOT_CA(G02)" file="${app.root}/WEB-INF/servercert/MPRootCA(G02).cer">
+			</issuer>
+		</issuer>
+		<!-- http://www.esigntrust.com/en/m10_CRL.php?pageID=10  -->
+		<!-- Download CRL for Qualified Certificates for Personal -->
+		<crl id="CRLFile2(G02)" file="${app.root}/WEB-INF/servercert/PerLatestCRL(G02).crl">
+		</crl>
+	</cert-setting>
+	
+		<!--new CA configuration 20100409-->
+		<cert-setting id="CORP_CERT(G03)" key="eSignTrust Corporate Qualified Certificate CA (G03)">
+		<issuer id="CORP_CA(G03)" file="${app.root}/WEB-INF/servercert/ESTCorpQCCA(G03).cer">
+			<issuer id="ROOT_CA(G03)" file="${app.root}/WEB-INF/servercert/ESTRootCA(G03).cer">
+			</issuer>
+		</issuer>
+		<!-- http://www.esigntrust.com/en/m10_CRL.php?pageID=10  -->
+		<!-- Download CRL for Qualified Certificates for Corporate -->
+		<crl id="CRLFile(G03)" file="${app.root}/WEB-INF/servercert/CorpLatestCRL(G03).crl">
+		</crl>
+	</cert-setting>
+	<cert-setting id="PER_CERT(G03)" key="eSignTrust Personal Qualified Certificate CA (G03)">
+		<issuer id="PER_CA(G03)" file="${app.root}/WEB-INF/servercert/ESTPerQCCA(G03).cer">
+			<issuer id="ROOT_CA(G03)" file="${app.root}/WEB-INF/servercert/ESTRootCA(G03).cer">
+			</issuer>
+		</issuer>
+		<!-- http://www.esigntrust.com/en/m10_CRL.php?pageID=10  -->
+		<!-- Download CRL for Qualified Certificates for Personal -->
+		<crl id="CRLFile2(G03)" file="${app.root}/WEB-INF/servercert/PerLatestCRL(G03).crl">
+		</crl>
+	</cert-setting>
+</cert-settings>

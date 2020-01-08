@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->
+<transaction>
+	<packet-to-host> 
+		<string name="SERV_CD" length="7" encoding="EBCDIC" />
+        <number name="AC_DATE" length="8" encoding="EBCDIC"/>
+        <number name="JRNNO" length="9" encoding="EBCDIC"/>
+	</packet-to-host>  		 
+	<packet-from-host>
+	    <string name="BSP_STATUS" length="1" encoding="EBCDIC"/>
+        <string name="FILE_NAME" length="30" encoding="EBCDIC"/>
+        <number name="SUCC_CNT" length="9" encoding="EBCDIC"/>
+        <number name="FAIL_CNT" length="9" encoding="EBCDIC"/>
+ 	</packet-from-host>
+</transaction>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<transaction>
+    <packet-to-host>
+        <string name="currDate" length="8" encoding="UTF8" default=" "/>
+        <string name="uploadType" length="2" encoding="UTF8" default=" "/>
+        <string name="currTime" length="6" encoding="UTF8" default=" "/>
+        <string name="teller_id_1" length="20" encoding="UTF8" default=" "/>
+        <string name="type1" length="2" encoding="UTF8" default=" "/>
+        <string name="teller_id_2" length="20" encoding="UTF8" default=" "/>
+        <string name="fileName" length="8" encoding="UTF8" default=" "/>
+        <string name="ip_addr" length="15" encoding="UTF8" default=" "/>
+        <string name="fil_PATH" length="30" encoding="UTF8" default=" "/>
+        <string name="teller_id_3" length="20" encoding="UTF8" default=" "/>
+        <string name="br_branch" length="11" encoding="UTF8" default=" "/>
+        <string name="CTRT_NO" length="7" encoding="UTF8" default=" "/>
+        <string name="CNTR_NO" length="19" encoding="UTF8" default=" "/>
+        <string name="DD_AC" length="12" encoding="UTF8" default=" "/>
+        <string name="CI_NO" length="10" encoding="UTF8" default=" "/>
+        <string name="CI_ENM" length="60" encoding="UTF8" default=" "/>
+        <string name="ITM" length="10" encoding="UTF8" default=" "/>
+        <string name="AC_SEQ" length="5" encoding="UTF8" default=" "/>
+        <string name="TOT_CNT" length="5" encoding="UTF8" default=" "/>
+        <string name="TOT_AMT" length="16" encoding="UTF8" default=" "/>
+        <string name="X01" length="1" encoding="UTF8" default=" "/>
+        <string name="BRANCH_BR" length="11" encoding="UTF8" default=" "/>
+        <string name="DRCR_FLG" length="3" encoding="UTF8" default=" "/>
+    </packet-to-host>
+    <packet-from-host>
+        <string name="H_FMT_CODE" length="5" encoding="UTF8" default=" "/>
+        <string name="H_PRT_FLG" length="1" encoding="UTF8" default=" "/>
+        <string name="currDate" length="8" encoding="UTF8" default=" "/>
+        <string name="uploadType" length="2" encoding="UTF8" default=" "/>
+        <string name="currTime" length="6" encoding="UTF8" default=" "/>
+        <string name="teller_id_1" length="20" encoding="UTF8" default=" "/>
+        <string name="type1" length="2" encoding="UTF8" default=" "/>
+        <string name="teller_id_2" length="20" encoding="UTF8" default=" "/>
+        <string name="fileName" length="8" encoding="UTF8" default=" "/>
+        <string name="ip_addr" length="15" encoding="UTF8" default=" "/>
+        <string name="fil_PATH" length="30" encoding="UTF8" default=" "/>
+        <string name="teller_id_3" length="20" encoding="UTF8" default=" "/>
+        <string name="br_branch" length="11" encoding="UTF8" default=" "/>
+        <string name="CTRT_NO" length="7" encoding="UTF8" default=" "/>
+        <string name="CNTR_NO" length="19" encoding="UTF8" default=" "/>
+        <string name="DD_AC" length="12" encoding="UTF8" default=" "/>
+        <string name="CI_NO" length="10" encoding="UTF8" default=" "/>
+        <string name="CI_ENM" length="60" encoding="UTF8" default=" "/>
+        <string name="ITM" length="10" encoding="UTF8" default=" "/>
+        <string name="AC_SEQ" length="5" encoding="UTF8" default=" "/>
+        <string name="TOT_CNT" length="5" encoding="UTF8" default=" "/>
+        <string name="TOT_AMT" length="16" encoding="UTF8" default=" "/>
+        <string name="X01" length="1" encoding="UTF8" default=" "/>
+        <string name="BRANCH_BR" length="11" encoding="UTF8" default=" "/>
+    </packet-from-host>
+</transaction>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="setRules">
+		<field name="ruleType" label="Auth_Type" required="yes">
+			<format type="string"/>
+		</field>
+		<field name="singleLevel" label="Single_Class">
+			<format type="string"/>
+			<reject prompt="Single_Level_Must_Set">[ruleType]=="0" &amp;&amp; [singleLevel]==""</reject>
+		</field>
+	</group>
+	<group name="multiRules">
+		<field name="fromAmount0" label="From_Amount0"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount0" label="To_Amount0">
+			<format type="amount"/>
+		</field>
+		<field name="levelA0" label="Level_A0">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA0]=="0" || [levelA0]=="") &amp;&amp; ([levelB0]=="0" || [levelB0]=="") &amp;&amp; ([levelC0]=="0" || [levelC0]=="") &amp;&amp; ([levelD0]=="0" || [levelD0]=="") &amp;&amp; ([levelE0]=="0" || [levelE0]=="")</reject>
+		</field>
+		<field name="levelB0" label="Level_B0">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC0" label="Level_C0">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD0" label="Level_D0">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE0" label="Level_E0">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount1" label="From_Amount1"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount1" label="To_Amount1">
+			<format type="amount"/>
+		</field>
+		<field name="levelA1" label="Level_A1">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA1]=="0" || [levelA1]=="") &amp;&amp; ([levelB1]=="0" || [levelB1]=="") &amp;&amp; ([levelC1]=="0" || [levelC1]=="") &amp;&amp; ([levelD1]=="0" || [levelD1]=="") &amp;&amp; ([levelE1]=="0" || [levelE1]=="")</reject>
+		</field>
+		<field name="levelB1" label="Level_B1">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC1" label="Level_C1">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD1" label="Level_D1">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE1" label="Level_E1">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount2" label="From_Amount2"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount2" label="To_Amount2">
+			<format type="amount"/>
+		</field>
+		<field name="levelA2" label="Level_A2">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA2]=="0" || [levelA2]=="") &amp;&amp; ([levelB2]=="0" || [levelB2]=="") &amp;&amp; ([levelC2]=="0" || [levelC2]=="") &amp;&amp; ([levelD2]=="0" || [levelD2]=="") &amp;&amp; ([levelE2]=="0" || [levelE2]=="")</reject>
+		</field>
+		<field name="levelB2" label="Level_B2">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC2" label="Level_C2">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD2" label="Level_D2">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE2" label="Level_E2">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount3" label="From_Amount3"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount3" label="To_Amount3">
+			<format type="amount"/>
+		</field>
+		<field name="levelA3" label="Level_A3">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA3]=="0" || [levelA3]=="") &amp;&amp; ([levelB3]=="0" || [levelB3]=="") &amp;&amp; ([levelC3]=="0" || [levelC3]=="") &amp;&amp; ([levelD3]=="0" || [levelD3]=="") &amp;&amp; ([levelE3]=="0" || [levelE3]=="")</reject>
+		</field>
+		<field name="levelB3" label="Level_B3">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC3" label="Level_C3">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD3" label="Level_D3">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE3" label="Level_E3">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount4" label="From_Amount4"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount4" label="To_Amount4">
+			<format type="amount"/>
+		</field>
+		<field name="levelA4" label="Level_A4">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA4]=="0" || [levelA4]=="") &amp;&amp; ([levelB4]=="0" || [levelB4]=="") &amp;&amp; ([levelC4]=="0" || [levelC4]=="") &amp;&amp; ([levelD4]=="0" || [levelD4]=="") &amp;&amp; ([levelE4]=="0" || [levelE4]=="")</reject>
+		</field>
+		<field name="levelB4" label="Level_B4">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC4" label="Level_C4">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD4" label="Level_D4">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE4" label="Level_E4">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount5" label="From_Amount5"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount5" label="To_Amount5">
+			<format type="amount"/>
+		</field>
+		<field name="levelA5" label="Level_A5">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA5]=="0" || [levelA5]=="") &amp;&amp; ([levelB5]=="0" || [levelB5]=="") &amp;&amp; ([levelC5]=="0" || [levelC5]=="") &amp;&amp; ([levelD5]=="0" || [levelD5]=="") &amp;&amp; ([levelE5]=="0" || [levelE5]=="")</reject>
+		</field>
+		<field name="levelB5" label="Level_B5">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC5" label="Level_C5">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD5" label="Level_D5">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE5" label="Level_E5">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount6" label="From_Amount6"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount6" label="To_Amount6">
+			<format type="amount"/>
+		</field>
+		<field name="levelA6" label="Level_A6">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA6]=="0" || [levelA6]=="") &amp;&amp; ([levelB6]=="0" || [levelB6]=="") &amp;&amp; ([levelC6]=="0" || [levelC6]=="") &amp;&amp; ([levelD6]=="0" || [levelD6]=="") &amp;&amp; ([levelE6]=="0" || [levelE6]=="")</reject>
+		</field>
+		<field name="levelB6" label="Level_B6">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC6" label="Level_C6">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD6" label="Level_D6">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE6" label="Level_E6">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount7" label="From_Amount7"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount7" label="To_Amount7">
+			<format type="amount"/>
+		</field>
+		<field name="levelA7" label="Level_A7">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA7]=="0" || [levelA7]=="") &amp;&amp; ([levelB7]=="0" || [levelB7]=="") &amp;&amp; ([levelC7]=="0" || [levelC7]=="") &amp;&amp; ([levelD7]=="0" || [levelD7]=="") &amp;&amp; ([levelE7]=="0" || [levelE7]=="")</reject>
+		</field>
+		<field name="levelB7" label="Level_B7">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC7" label="Level_C7">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD7" label="Level_D7">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE7" label="Level_E7">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount8" label="From_Amount8"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount8" label="To_Amount8">
+			<format type="amount"/>
+		</field>
+		<field name="levelA8" label="Level_A8">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA8]=="0" || [levelA8]=="") &amp;&amp; ([levelB8]=="0" || [levelB8]=="") &amp;&amp; ([levelC8]=="0" || [levelC8]=="") &amp;&amp; ([levelD8]=="0" || [levelD8]=="") &amp;&amp; ([levelE8]=="0" || [levelE8]=="")</reject>
+		</field>
+		<field name="levelB8" label="Level_B8">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC8" label="Level_C8">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD8" label="Level_D8">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE8" label="Level_E8">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAmount9" label="From_Amount9"  required="yes">
+			<format type="amount"/>
+		</field>
+		<field name="toAmount9" label="To_Amount9">
+			<format type="amount"/>
+		</field>
+		<field name="levelA9" label="Level_A9">
+			<format type="numonly"/>
+			<reject prompt="Level_Must_Set">([levelA9]=="0" || [levelA9]=="") &amp;&amp; ([levelB9]=="0" || [levelB9]=="") &amp;&amp; ([levelC9]=="0" || [levelC9]=="") &amp;&amp; ([levelD9]=="0" || [levelD9]=="") &amp;&amp; ([levelE9]=="0" || [levelE9]=="")</reject>
+		</field>
+		<field name="levelB9" label="Level_B9">
+			<format type="numonly"/>
+		</field>
+		<field name="levelC9" label="Level_C9">
+			<format type="numonly"/>
+		</field>
+		<field name="levelD9" label="Level_D9">
+			<format type="numonly"/>
+		</field>
+		<field name="levelE9" label="Level_E9">
+			<format type="numonly"/>
+		</field>
+	</group>
+</fieldchecking>

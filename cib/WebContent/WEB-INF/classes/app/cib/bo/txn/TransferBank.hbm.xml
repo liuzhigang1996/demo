@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Aug 28 10:18:54 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="TransferBank" table="TRANSFER_BNU">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="recordType" column="RECORD_TYPE" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="fromAccount" column="FROM_ACCOUNT" type="java.lang.String" />
+        <property name="toAccount" column="TO_ACCOUNT" type="java.lang.String" />
+        <property name="ownerAccFlag" column="OWNER_ACC_FLAG" type="java.lang.String" />
+        <property name="fromCurrency" column="FROM_CURRENCY" type="java.lang.String" />
+        <property name="toCurrency" column="TO_CURRENCY" type="java.lang.String" />
+        <property name="transferAmount" column="TRANSFER_AMOUNT" type="java.lang.Double" />
+        <property name="debitAmount" column="DEBIT_AMOUNT" type="java.lang.Double" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="fromCorporation" column="FROM_CORPORATION" type="java.lang.String" />
+        <property name="toCorporation" column="TO_CORPORATION" type="java.lang.String" />
+        <property name="exchangeRate" column="EXCHANGE_RATE" type="java.lang.Double" />
+        <property name="flag" column="FLAG" type="java.lang.String" />
+        <property name="inputAmountFlag" column="INPUT_AMOUNT_FLAG" type="java.lang.String" />
+        <property name="fromAcctype" column="FROM_ACCTYPE" type="java.lang.String" />
+        <property name="toAcctype" column="TO_ACCTYPE" type="java.lang.String" />
+        <property name="hostresponseCode" column="HOSTRESPONSE_CODE" type="java.lang.String" />
+        <property name="hosterrorCode" column="HOSTERROR_CODE" type="java.lang.String" />
+        <property name="toName" column="TO_NAME" type="java.lang.String" /><!-- ADD BY linrui 20181105  -->
+       
+        <!-- Add by heyj 20190529 -->
+        <property name="endDate" column="END_DATE" type="java.lang.String" />
+        
+        <!-- Add by lzg 20190618 -->
+        <property name="showExchangeRate" column="SHOW_EXCHANGERATE" type="java.lang.Double" />
+        
+         <!-- Add by lzg 2019809 -->
+        <property name="serialNumber" column="SERIAL_NUMBER" type="java.lang.String" />
+        
+         <!-- Add by linrui 20190911 -->
+        <property name="remarkHost" column="remark_Host" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

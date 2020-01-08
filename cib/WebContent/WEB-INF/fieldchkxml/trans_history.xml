@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="trans_history">
+		<!--<field name="dateFrom" label="date_from" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "") || (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+        </field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+		</field>
+	-->
+	<field name="dateFrom" label="Transaction_Date" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="date" &amp;&amp; (getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo]!="" &amp;&amp; [dateFrom]!="")</reject>
+			<reject prompt="Date_Justify_1">[date_range]=="date" &amp;&amp; [dateFrom]==""</reject>
+			
+        </field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify_2">[date_range]=="date" &amp;&amp; [dateTo]==""</reject>
+		</field>
+	</group>
+</fieldchecking>

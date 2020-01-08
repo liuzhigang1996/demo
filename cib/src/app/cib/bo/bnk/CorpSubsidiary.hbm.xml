@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Mar 01 15:49:39 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.bnk">
+
+    <class name="CorpSubsidiary" table="CORP_SUBSIDIARY">
+        <id name="relationId" column="RELATION_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="afterModifyId" column="AFTER_MODIFY_ID" type="java.lang.String" />
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="perentId" column="PERENT_ID" type="java.lang.String" />
+        <property name="subsidiryId" column="SUBSIDIRY_ID" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

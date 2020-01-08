@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Mar 19 14:08:45 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="IdGenerator" table="ID_GENERATOR">
+        <id name="idType" column="ID_TYPE" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="currentId" column="CURRENT_ID" type="java.lang.Integer" />
+    </class>
+    
+</hibernate-mapping>

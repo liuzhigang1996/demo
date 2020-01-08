@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="upload_file">
+		<field name="uploadFile" label="upload_file" required="yes">
+		</field>
+	</group>
+	<group name="previous_file">
+		<field name="payDate" label="pay_day" required="yes">
+		</field>
+	</group>
+</fieldchecking>

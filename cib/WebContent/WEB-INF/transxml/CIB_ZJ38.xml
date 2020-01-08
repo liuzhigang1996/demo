@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->     
+<Trans> 
+	<packet-to-host>
+		<string name="FIELD_PRESENT_BYTE1" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE2" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE3" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE4" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE5" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE6" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE7" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE8" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE9" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE10" length="1" encoding="ASCII" default="0B00000000"/>
+		<string name="REQ_REF" 		length="16" encoding="EBCDIC"  />
+    <!--<string name="TRANS_CODE_1"             length="4"           encoding="EBCDIC"/>          
+    <string name="EFFECTIVE_DATE1"           length="8"           encoding="EBCDIC"/>-->     
+    <string name="TRANSFER_2_ACC"           length="12"           encoding="EBCDIC"/>             
+    <string name="ACC_NO1"                   length="15"           encoding="EBCDIC"/>     
+    <!--<decimal name="TRANS_AMT1"                length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="PENALTY_FROM_PRINCIPAL"   length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="AMT_FROM_PRINCIPAL"       length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="LCY_4_TRANS_AMT1"          length="15,2"           encoding="EBCDIC"/>  
+    <number name="CURR1"                      length="3"           encoding="EBCDIC"/>      
+    <decimal name="EXCHANGE_RATE1"            length="11,7"           encoding="EBCDIC"/>
+		<string name="TRANSACTIONS_TIME1" length="6" encoding="EBCDIC"/> 	
+		<string name="CORPORATION_ID1" length="10" encoding="EBCDIC"/> 
+		<string name="EBANKING_ID1" length="12" encoding="EBCDIC"/> 
+		<string name="LANGUAGE_CODE1" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSACTION_NATURE1" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSFER2ACC_TYPE1" length="1" encoding="EBCDIC"/> 	 
+		<string name="LOCAL_TRANSACTION_REF1" length="18" encoding="EBCDIC"/>   
+		<string name="51_TRANSACTION_FLAG1" length="1" encoding="EBCDIC"/> 
+    <string name="TRANS_CODE_2"             length="4"           encoding="EBCDIC"/>          
+    <string name="EFFECTIVE_DATE2"           length="8"           encoding="EBCDIC"/>      
+    <number name="ACC_NO2"                   length="12"           encoding="EBCDIC"/>     
+    <decimal name="TRANS_AMT2"                length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="LCY_4_TRANS_AMT2"          length="15,2"           encoding="EBCDIC"/>  
+    <number name="CURR2"                     length="3"           encoding="EBCDIC"/>   
+    <decimal name="EXCHANGE_RATE2"            length="11,7"           encoding="EBCDIC"/>  
+    <number name="SERIAL_NO"                length="6"           encoding="EBCDIC"/>      
+    <number name="REFERENCE_NO"             length="6"           encoding="EBCDIC"/>      
+    <string name="ALPHA_1_1"                  length="40"           encoding="EBCDIC"/>
+		<string name="TRANSACTIONS_TIME2" length="6" encoding="EBCDIC"/> 	
+		<string name="CORPORATION_ID2" length="10" encoding="EBCDIC"/> 
+		<string name="EBANKING_ID2" length="12" encoding="EBCDIC"/> 
+		<string name="LANGUAGE_CODE2" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSACTION_NATURE2" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSFER2ACC_TYPE2" length="1" encoding="EBCDIC"/> 	 
+		<string name="LOCAL_TRANSACTION_REF2" length="18" encoding="EBCDIC"/>          
+		<string name="51_TRANSACTION_FLAG2" length="1" encoding="EBCDIC"/> 
+    <string name="TRANS_CODE_3"             length="4"           encoding="EBCDIC"/>          
+    <string name="EFFECTIVE_DATE3"           length="8"           encoding="EBCDIC"/>          
+    <number name="ACC_NO3"                   length="12"           encoding="EBCDIC"/>-->  
+    <!--<decimal name="PASSBOOK_BALANCE"         length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="TRANS_AMT3"                length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="PRINCIPAL_AMT"            length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="INTEREST_AMT"             length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="ESCROW_AMT"               length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="LCE_OF_TRANS_AMT"         length="15,2"           encoding="EBCDIC"/>  
+    <number name="FOREIGN_CCY_CODE"         length="3"           encoding="EBCDIC"/>      
+    <decimal name="FOREIGN_CCY_RATE"         length="11,7"           encoding="EBCDIC"/>  
+    <string name="CASHIER_NO"               length="3"           encoding="EBCDIC"/>      
+    <number name="COST_CENTRE"              length="6"           encoding="EBCDIC"/>      
+    <string name="ALPHA_1_2"                  length="40"           encoding="EBCDIC"/>         
+    <string name="ALPHA_2"                  length="40"           encoding="EBCDIC"/>         
+    <decimal name="EXCHANGE_IN_DR"           length="15,2"           encoding="EBCDIC"/>  
+    <decimal name="EXCHANGE_OUT_CR"          length="15,2"           encoding="EBCDIC"/>
+	-->
+		<string name="TRANSACTIONS_TIME3" length="6" encoding="EBCDIC"/> 	
+		<string name="CORPORATION_ID3" length="10" encoding="EBCDIC"/> 
+		<string name="EBANKING_ID3" length="12" encoding="EBCDIC"/> 
+		<string name="LANGUAGE_CODE3" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSACTION_NATURE3" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSFER2ACC_TYPE3" length="1" encoding="EBCDIC"/> 	 
+		<string name="LOCAL_TRANSACTION_REF3" length="18" encoding="EBCDIC"/>  
+		<string name="51_TRANSACTION_FLAG3" length="1" encoding="EBCDIC"/> 
+	</packet-to-host>  	  	 
+	<packet-from-host>  
+ 	</packet-from-host>
+</Trans>

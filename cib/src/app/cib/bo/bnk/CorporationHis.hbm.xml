@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Mar 01 15:48:59 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.bnk">
+
+    <class name="CorporationHis" table="CORPORATION_HIS">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="afterModifyId" column="AFTER_MODIFY_ID" type="java.lang.String" />
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="corpType" column="CORP_TYPE" type="java.lang.String" />
+        <property name="allowFinancialController" column="ALLOW_FINANCIAL_CONTROLLER" type="java.lang.String" />
+        <property name="authenticationMode" column="AUTHENTICATION_MODE" type="java.lang.String" />
+        <!-- //add by long_zg 2019-05-16 for otp login -->
+        <property name="otpLogin" column="OTP_LOGIN" type="java.lang.String" />
+        <property name="parentCorp" column="PARENT_CORP" type="java.lang.String" />
+        <property name="corpName" column="CORP_NAME" type="java.lang.String" />
+        <property name="address" column="ADDRESS" type="java.lang.String" />
+        <property name="allowTd" column="ALLOW_TD" type="java.lang.String" />
+        <property name="allowExecutor" column="ALLOW_EXECUTOR" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="operationDesc" column="OPERATION_DESC" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="version" column="VERSION" type="java.lang.Integer" />
+        <property name="allowApproverSelection" column="ALLOW_APPROVER_SELECTION" type="java.lang.String" />
+        <property name="allowDisplayBottom" column="ALLOW_DISPLAY_BOTTOM" type="java.lang.String" />
+        <property name="allowTaxPayment" column="ALLOW_TAX_PAYMENT" type="java.lang.String" />
+        <property name="authCurMop" column="AUTH_CUR_MOP" type="java.lang.String" />
+        <property name="authCurHkd" column="AUTH_CUR_HKD" type="java.lang.String" />
+        <property name="authCurUsd" column="AUTH_CUR_USD" type="java.lang.String" />
+        <property name="authCurEur" column="AUTH_CUR_EUR" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+        <property name="fullName" column="FULL_NAME" type="java.lang.String" />
+        <property name="commercialRegistryNo" column="COMMERCIAL_REGISTRY_NO" type="java.lang.String" />
+        <property name="registryCountry" column="REGISTRY_COUNTRY" type="java.lang.String" />
+        <property name="address1" column="ADDRESS1" type="java.lang.String" />
+        <property name="address2" column="ADDRESS2" type="java.lang.String" />
+        <property name="address3" column="ADDRESS3" type="java.lang.String" />
+        <property name="address4" column="ADDRESS4" type="java.lang.String" />
+        <property name="telephone" column="TELEPHONE" type="java.lang.String" />
+        <property name="faxNo" column="FAX_NO" type="java.lang.String" />
+        <property name="email" column="EMAIL" type="java.lang.String" />
+        <property name="rep1FullName" column="REP1_FULL_NAME" type="java.lang.String" />
+        <property name="rep1ShortName" column="REP1_SHORT_NAME" type="java.lang.String" />
+        <property name="rep1Title" column="REP1_TITLE" type="java.lang.String" />
+        <property name="rep1IdType" column="REP1_ID_TYPE" type="java.lang.String" />
+        <property name="rep1IdNo" column="REP1_ID_NO" type="java.lang.String" />
+        <property name="rep1IdIssueDate" column="REP1_ID_ISSUE_DATE" type="java.util.Date" />
+        <property name="rep1IdIssuer" column="REP1_ID_ISSUER" type="java.lang.String" />
+        <property name="rep1Telephone" column="REP1_TELEPHONE" type="java.lang.String" />
+        <property name="rep1Mobile" column="REP1_MOBILE" type="java.lang.String" />
+        <property name="rep1Email" column="REP1_EMAIL" type="java.lang.String" />
+        <property name="rep1FaxNo" column="REP1_FAX_NO" type="java.lang.String" />
+        <property name="rep2FullName" column="REP2_FULL_NAME" type="java.lang.String" />
+        <property name="rep2ShortName" column="REP2_SHORT_NAME" type="java.lang.String" />
+        <property name="rep2Title" column="REP2_TITLE" type="java.lang.String" />
+        <property name="rep2IdType" column="REP2_ID_TYPE" type="java.lang.String" />
+        <property name="rep2IdNo" column="REP2_ID_NO" type="java.lang.String" />
+        <property name="rep2IdIssueDate" column="REP2_ID_ISSUE_DATE" type="java.util.Date" />
+        <property name="rep2IdIssuer" column="REP2_ID_ISSUER" type="java.lang.String" />
+        <property name="rep2Telephone" column="REP2_TELEPHONE" type="java.lang.String" />
+        <property name="rep2Mobile" column="REP2_MOBILE" type="java.lang.String" />
+        <property name="rep2Email" column="REP2_EMAIL" type="java.lang.String" />
+        <property name="rep2FaxNo" column="REP2_FAX_NO" type="java.lang.String" />
+        <property name="foreignCity" column="FOREIGN_CITY" type="java.lang.String" />
+        <property name="timeZone" column="TIME_ZONE" type="java.lang.String" />
+        <property name="merchantGroup" column="MERCHANT_GROUP" type="java.lang.String" />
+        <property name="merchantGroupDes" column="MERCHANT_GROUP_DES" type="java.lang.String" />
+        <property name="cifNo" column="CIF_NO" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

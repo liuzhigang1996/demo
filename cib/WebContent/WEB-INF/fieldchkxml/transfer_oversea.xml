@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="transferInOversea">
+		<field name="swiftAddress" label="SWIFT_Address" required="yes">
+			<format type="string" />
+		</field>
+		<field name="CorrespondentBankName" label="Correspondent_Bank_Name" required="no">
+			<format type="common" />
+		</field>
+		<field name="CorrespondentBankCode" label="Correspondent_Bank_Code" required="no">
+			<format type="string" />
+			<reject prompt="CorrespondentBankCodeJustify">[CorrespondentBankCode].length != 8 &amp;&amp; [CorrespondentBankCode].length != 11</reject>
+		</field>
+		<field name="fromAccount" label="Transfer_Account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="fromCurrency" label="From_ccy" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromCurrency").selectedIndex == 0</reject>
+			<reject prompt="fromCurrency_Justify_1">document.getElementById("fromCurrency").value=="CNY"</reject>
+		</field>
+		<field name="toCurrency" label="To_Currency" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("toCurrency").selectedIndex == 0</reject>
+			<!-- add by lzg 20190613 -->
+			<reject prompt="toCurrency_Justify">document.getElementById("toCurrency").selectedIndex != 0&amp;&amp;document.getElementById("toCurrency").value != "HKD" &amp;&amp; document.getElementById("toCurrency").value != "USD" &amp;&amp; document.getElementById("toCurrency").value != "EUR"</reject>
+			<!-- add by lzg end -->
+		</field>
+		<field name="transferAmount" label="Amount_Justify_lable" >
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;10 &amp;&amp; [debitAmount]&lt;10 </reject>
+		</field>
+		<field name="beneficiaryName1" label="Beneficiary_Name">
+			<format type="common" />
+		</field>
+		<field name="beneficiaryName2" label="Beneficiary_Name">
+			<format type="common" />
+			<reject prompt="Beneficial_Justify">([beneficiaryName1]=="" &amp;&amp; [beneficiaryName2]=="")</reject>
+		</field>
+		<field name="beneJustify" label="Beneficiary_Name">
+			<format type="string" />
+			<reject prompt="Beneficial_Justify_1">[beneJustify]=='Y'</reject>
+		</field>
+		<field name="beneficiaryName3" label="Beneficiary_Address">
+			<format type="common" />
+		</field>
+		<field name="beneficiaryName4" label="Beneficiary_Address">
+			<format type="common" />
+		</field>
+		<field name="beneficiaryCountry" label="Country" required="yes">
+			<format type="string" />
+		</field>
+		<field name="beneficiaryCity" label="City" required="yes">
+			<format type="string" />
+		</field>
+		<field name="toAccount" label="Beneficiary_Account">
+			<format type="numonly" />
+			<reject prompt="ToAccount_Justify">[accType]=="toAccount"&amp;&amp; [toAccount]==""</reject>
+			<reject prompt="Account_Justify"> [toAccount]==[fromAccount]</reject>
+		</field>
+		<field name="otherCity" label="OtherCity">
+			<format type="common" />
+			<reject prompt="City_Justify">[beneficiaryCity]=="other"&amp;&amp; [otherCity]==""</reject>
+		</field>
+		<field name="beneficiaryBank1" label="Bank_Name" required="no">
+			<reject prompt="Bank_Justify">document.getElementById("beneficiaryBank1").selectedIndex == "0"</reject>
+		</field>
+		<field name="spbankCode" label="SpbankCode">
+			<format type="string" />
+			<reject prompt="SpbankCode_Justify">[beneficiaryCountry]=="AU"&amp;&amp; [spbankCode]==""</reject>
+		</field>
+		<field name="otherBank" label="other_bank">
+			<format type="common" />
+			<reject prompt="Bank_Justify">[beneficiaryBank1]=="other"&amp;&amp; [otherBank]==""</reject>
+		</field>
+		<field name="beneficiaryBank2" label="Branch_Address">
+			<format type="common" />
+		</field>
+		<field name="beneficiaryBank3" label="Branch_Address">
+			<format type="common" />
+		</field>
+		<!-- <field name="correspondentBankLine1" label="Correspondent_Bank">
+			<format type="common" />
+		</field>
+		<field name="correspondentBankLine2" label="Correspondent_Bank">
+			<format type="common" />
+		</field>
+		<field name="correspondentBankLine3" label="Correspondent_Bank">
+			<format type="common" />
+		</field>
+		<field name="correspondentBankLine4" label="Correspondent_Bank">
+			<format type="common" />
+		</field> -->
+		<field name="requestType" label="Transfer_Date" required="yes">
+			<format type="string" />
+		</field>
+		<field name="transferDateString" label="Transfer_Date">
+			<format type="date" />
+			<reject prompt="Date_Justify">[requestType]=='2' &amp;&amp; [transferDateString] == ''</reject>
+		</field>
+		<field name="chareBy" label="Charges_Oversea_By" required="yes">
+			<format type="string" />
+		</field>
+		
+		<!--<field name="chargeAccount" label="Charges_Account" required="yes">
+			<format type="string" />
+		</field>
+		
+		--><field name="accType" label="Account_Type" required="yes">
+			<format type="string" />
+		</field>
+		<field name="messsage" label="Message_Send">
+			<format type="common" />
+		</field>
+		<field name="messsage2" label="Message_Send">
+			<format type="common" />
+		</field>
+		<field name="messsage3" label="Message_Send">
+			<format type="common" />
+		</field>
+		<field name="debitAmount" label="Transfer_Info1" >
+			<format type="amount" />
+		</field>
+		
+		<field name="correspondentBankAccount" label="Correspondent_Bank_Account" >
+			<format type="common" />
+		</field> 
+		<!--<field name="remark" label="Remark" >
+			<format type="common" />
+		</field>
+		--><field name="NIB" label="NIB" >
+			<format type="common" />
+		</field>
+		<field name="IBAN" label="IBAN" >
+			<format type="common" />
+		</field>
+		<!-- add by linrui 20191008 -->  
+		<field name="chargeAccount" label="Deduct_Charge_from_Account" required="no">
+			<reject prompt="Required">document.getElementsByName('chareBy')[0].checked != true &amp;&amp; document.getElementById("chargeAccount").selectedIndex == 0 </reject>
+		</field> 
+		<!-- add by linrui end -->
+		<!-- add by lzg 20190602 -->
+		<field name="purposeCode" label="Purpose" required="no">
+			<reject prompt="Required">document.getElementById("purposeCode").selectedIndex == 0</reject>
+		</field>
+		<!-- add by lzg end -->
+	</group>
+</fieldchecking>

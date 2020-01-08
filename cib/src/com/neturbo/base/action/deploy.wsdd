@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:ns="http://action.base.neturbo.com"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+  <service name="ActionService" provider="java:RPC">
+      <parameter name="className" value="com.neturbo.base.action.ActionService"/>
+      <parameter name="allowedMethods" value="process "/>
+      <parameter name="scope" value="Session"/>
+
+
+  </service>
+</deployment>

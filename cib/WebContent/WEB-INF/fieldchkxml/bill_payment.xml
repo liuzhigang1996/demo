@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="template">
+		<field name="transId" label="trans_id" required="yes">
+		</field>
+	</group>
+	<group name="template_pay">
+		<field name="fromAccount" label="debit_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[fromAccount]=="0"</reject>
+		</field>
+	</group>
+	<group name="template_add">
+		<field name="category" label="category">
+			<format type="string" />
+			<reject prompt="category_selected">[category]=="0"</reject>
+		</field>
+		<field name="merchant" label="merchant">
+			<format type="string" />
+			<reject prompt="merchant_selected">[merchant]=="0"</reject>
+		</field>
+		<field name="fromAccount" label="debit_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[fromAccount]=="0"</reject>
+		</field>
+		<field name="billNo1" label="billNo" required="yes">
+			<format type="numonly"/>
+		</field>
+		<field name="transferAmount" label="payment_amount">
+			<format type="amount"/>
+			<reject prompt="amount_seleted">[payType]=="8" &amp;&amp; [transferAmount]==""</reject>
+		</field>
+	</group>
+	<group name="template_edit">
+		<field name="category" label="category">
+			<format type="string" />
+			<reject prompt="category_selected">[category]=="0"</reject>
+		</field>
+		<field name="merchant" label="merchant">
+			<format type="string" />
+			<reject prompt="merchant_selected">[merchant]=="0"</reject>
+		</field>
+		<field name="billNo1" label="billNo" required="yes">
+			<format type="numonly"/>
+		</field>
+		<field name="fromAccount" label="debit_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[fromAccount]=="0"</reject>
+		</field>
+	</group>
+	<group name="general_payment_check">
+		<field name="category" label="category">
+			<format type="string" />
+			<reject prompt="category_selected">[category]=="0"</reject>
+		</field>
+		<field name="merchant" label="merchant">
+			<format type="string" />
+			<reject prompt="merchant_selected">[merchant]=="0"</reject>
+		</field>
+		<field name="billNo1" label="billNo">
+			<format type="string" />
+			<reject prompt="bill_no_selected">[billNo1]=="0"</reject>
+		</field>
+		<field name="otherBillNo" label="other_bill_no">
+			<format type="numonly" />
+			<reject prompt="other_not_null">[billNo1]=="9" &amp;&amp; [otherBillNo]==""</reject>
+		</field>
+	</group>
+	<group name="general_payment">
+		<field name="fromAccount" label="debit_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[fromAccount]=="0"</reject>
+		</field>
+	</group>
+	<group name="card_payment_check">
+		<field name="billNo1" label="card_no" required="yes">
+			<format type="numonly"/>
+		</field>
+	</group>
+	<group name="card_payment">
+		<field name="fromAccount" label="debit_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[fromAccount]=="0"</reject>
+		</field>
+		<field name="transferAmount" label="payment_amount" required="yes">
+			<format type="amount"/>
+		</field>
+	</group>
+	<group name="tax_payment_check">
+		<field name="billType" label="tax_category">
+			<format type="string" />
+			<reject prompt="tax_category_selected">[billType]=="0"</reject>
+		</field>
+		<field name="billNo1" label="nr_conhecimento" required="yes">
+			<format type="numonly"/>
+		</field>
+		<field name="billNo2" label="nr_contribuinte" required="yes">
+			<format type="numonly"/>
+		</field>
+	</group>
+	<group name="tax_payment">
+		<field name="fromAccount" label="debit_account">
+			<format type="string" />
+			<reject prompt="account_seleted">[fromAccount]=="0"</reject>
+		</field>
+	</group>
+	<group name="payment_history">
+		<field name="dateFrom" label="date_from" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "") || (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+        </field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+		</field>
+	</group>
+</fieldchecking>

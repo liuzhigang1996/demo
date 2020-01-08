@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data-mapping table_header="FILE_REQUEST" table_detail="REQ_BANK_DRAFT" line_length="300">
+
+	<string name="RECORD_ID" length="1" encoding="ASCII" />
+	<sectionif name="BH" key="RECORD_ID" isvalue="H">
+		<string name="ORDER_DATE"   length="8" encoding="ASCII"/>
+		<string name="FROM_ACCOUNT"   length="10" encoding="ASCII"/> 
+		<string name="TO_CURRENCY"   length="3" encoding="ASCII"/> 
+		<decimal name="TO_AMOUNT"   length="15,2" encoding="ASCII"/> 
+		<decimal name="TOTAL_NUMBER"   length="5" encoding="ASCII"/>
+		<string name="CORP_ID"   length="10" encoding="ASCII"/>
+		<string name="BATCH_REFERENCE"   length="20" encoding="ASCII"/>
+		<string name="BATCH_STATUS"   length="10" encoding="ASCII"/>        
+		<skip name="FILLER"   length="217" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="BD" key="RECORD_ID" isvalue="D">
+	    <decimal name="DRAFT_AMOUNT"   length="13,2" encoding="ASCII"/>     
+		<string name="BENEFICIARY_NAME"  length="35" encoding="ASCII"/>   
+		<string name="PRINT_NAME_INDICATOR"   length="1" encoding="ASCII"/>
+		<string name="BANK_ADDRESS_1"   length="35" encoding="ASCII"/>
+		<string name="BANK_ADDRESS_2"   length="35" encoding="ASCII"/>
+		<string name="PURPOSE" length="35" encoding="ASCII"/>
+		<string name="CHARGE_ACCOUNT"   length="10" encoding="ASCII"/>
+		<string name="SENDER_REFERENCE"   length="40" encoding="ASCII"/>
+		<skip name="FILLER"   length="95" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="FT" key="RECORD_ID" isvalue="T">
+	<string name="END_OF_FILE"   length="1" encoding="ASCII"/>
+	<skip name="FILLER"   length="298" encoding="ASCII"/>         
+	</sectionif>
+			
+	    
+</data-mapping>

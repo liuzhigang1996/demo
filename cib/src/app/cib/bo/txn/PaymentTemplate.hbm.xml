@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Jul 17 10:29:44 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.txn">
+
+    <class name="PaymentTemplate" table="PAYMENT_TEMPLATE">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="templateName" column="TEMPLATE_NAME" type="java.lang.String" />
+        <property name="payType" column="PAY_TYPE" type="java.lang.String" />
+        <property name="transId" column="TRANS_ID" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

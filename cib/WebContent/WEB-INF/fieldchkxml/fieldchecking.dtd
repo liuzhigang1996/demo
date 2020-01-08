@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by nabai (enlogic) -->
+<!ENTITY % Boolean "(true|false|yes|no)">
+<!ENTITY % Integer "CDATA">
+<!ENTITY % PropName "CDATA">
+<!ENTITY % FieldFormat "(string|numonly|engonly|engnum|date|time|amount|integer|phoneno|email)">
+<!ELEMENT fieldchecking (group*)>
+<!ELEMENT group (field*)>
+<!ATTLIST group
+	name %PropName; #REQUIRED
+>
+<!ELEMENT field (format?, depend*, reject*)>
+<!ATTLIST field
+	name %PropName; #REQUIRED
+	label %PropName; #REQUIRED
+	required %Boolean; #IMPLIED
+>
+<!ELEMENT format (#PCDATA)>
+<!ATTLIST format
+	type %PropName; #REQUIRED
+	fixlen %Integer; #IMPLIED
+	maxlen %Integer; #IMPLIED
+	minlen %Integer; #IMPLIED
+	prefix %Integer; #IMPLIED
+	suffix %Integer; #IMPLIED
+>
+<!ELEMENT depend (#PCDATA)>
+<!ATTLIST depend
+	prompt %PropName; #REQUIRED
+>
+<!ELEMENT reject (#PCDATA)>
+<!ATTLIST reject
+	prompt %PropName; #REQUIRED
+>

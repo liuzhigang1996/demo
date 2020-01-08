@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Fri Dec 29 23:21:58 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.bat">
+
+    <class name="Payroll" table="PAYROLL">
+        <id name="payrollId" column="PAYROLL_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="originatorAcNo" column="ORIGINATOR_AC_NO" type="java.lang.String" />
+        <property name="groupId" column="GROUP_ID" type="java.lang.String" />
+        <property name="startValueDate" column="START_VALUE_DATE" type="java.lang.String" />
+        <property name="endValueDate" column="END_VALUE_DATE" type="java.lang.String" />
+        <property name="volumeNo" column="VOLUME_NO" type="java.lang.String" />
+        <property name="filler1" column="FILLER_1" type="java.lang.String" />
+        <property name="batchNo" column="BATCH_NO" type="java.lang.String" />
+        <property name="batchDate" column="BATCH_DATE" type="java.lang.String" />
+        <property name="totalNumber" column="TOTAL_NUMBER" type="java.lang.Integer" />
+        <property name="totalAmount" column="TOTAL_AMOUNT" type="java.lang.Double" />
+        <property name="filler2" column="FILLER_2" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="fileName" column="FILE_NAME" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="batchResult" column="BATCH_RESULT" type="java.lang.String" />
+        <!-- add by linrui for payroll add two colum begin -->
+        <property name="acDate" column="AC_DATE" type="java.lang.String" />
+        <property name="jrnNo" column="JRN_NO" type="java.lang.String" />
+        <property name="haddownHis" column="HADDOWN_HIS" type="java.lang.String" />
+        <!-- end -->
+    </class>
+    
+</hibernate-mapping>

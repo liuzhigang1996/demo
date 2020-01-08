@@ -1,0 +1,101 @@
+.menu{
+ 		background-color: white;
+ 		width:270px;
+ 		height:35px;
+ 		margin-bottom: 7%;
+ 		margin-top: 7%;
+ 		margin-left: 20px;
+ 		border-radius:5px;
+ 		text-align: center;
+ 		border: 1px solid #2680EB;
+}
+.menu_href{
+	text-decoration: none;
+	color:#2680EB;
+}
+.menu_child{
+	text-align:center;
+	line-height:35px;
+    position: relative;
+}
+.subscript{
+	color: red;
+    height: 12px;
+    width: 40px;
+    position: absolute;
+    right:-3px;
+    top:0px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.subscript2{
+    position: absolute;
+    background-color:red;
+    transform:rotate(-40deg);
+    width:20%;
+    height:30%;
+   	left:-5%;
+   	top:4px;
+   	padding-bottom: 5px;
+   	color:white;
+   	padding-left: 10px;
+}
+
+.functionTitle{
+	font-weight: bold;
+    font-size: 12pt;
+    color: #000000;
+    padding: 10px 0px 0px 10px;
+}
+.groupseperator_e{
+	background-color: #002D72;
+	height:5%;
+	width:95%;
+}
+.label_e{
+	font-size: 10pt;
+    color: #000000;
+    padding: 2px 10px 2px 10px;
+    line-height: 25px;
+    text-align: left;
+    margin-right: 15%;
+    width: 100%;
+}
+.content_e{
+	font-size: 10pt;
+    color: #000000;
+    line-height: 25px;
+    text-align: left;
+}
+.MyButton{
+	margin-top: 2%;
+	text-align: center;
+}
+.MyHidden{
+	font-size: 10pt;
+    color: #000000;
+    padding: 2px 10px 2px 10px;
+    line-height: 25px;
+    text-align: left;
+    margin-right: 15%;
+    width: 100%;
+	visibility: hidden;
+}
+.table_title{
+	padding-left:1%;
+	color: white;
+	font-size: 10pt;
+	border-right: 1px solid white; 
+}
+
+.table_content{
+	padding-left:1%;
+	font-size: 10pt;
+    color: #000000;
+    line-height: 25px;
+}
+.table_button:HOVER {
+	text-decoration: none;
+}

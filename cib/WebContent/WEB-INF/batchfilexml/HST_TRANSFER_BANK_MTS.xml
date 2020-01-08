@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data-mapping table_header="FILE_REQUEST" table_detail="TRANSFER_BNU_STM" line_length="486">
+
+		<string name="ORDER_DATE"   length="8" encoding="ASCII"/> 
+		<string name="TO_CURRENCY"   length="3" encoding="ASCII"/>   
+		<decimal name="DEBIT_AMOUNT"   length="16,2" encoding="ASCII"/>
+		<skip name="DAC_TYP"   length="1" encoding="ASCII"/>
+	    <string name="FROM_ACCOUNT"   length="32" encoding="ASCII"/>
+	    <string name="FROM_CURRENCY"   length="3" encoding="ASCII"/>
+		<skip name="DR_BR"   length="11" encoding="ASCII"/>
+		<skip name="CAC_TYP"   length="1" encoding="ASCII"/>
+		<string name="TO_ACCOUNT"   length="32" encoding="ASCII"/>
+		<string name="TO_CURRENCY"   length="3" encoding="ASCII"/>
+		<skip name="CR_BR"   length="11" encoding="ASCII"/>
+		<string name="REMARK"   length="120" encoding="ASCII"/>
+		<skip name="NARR"   length="72" encoding="ASCII"/>
+		<skip name="OTH_AC"   length="32" encoding="ASCII"/>
+		<skip name="OTH_NM"   length="122" encoding="ASCII"/>
+		<skip name="OTH_BK"   length="14" encoding="ASCII"/>
+		<number name="TOTAL_NUMBER" length="5" encoding="ASCII"/>
+		<skip name="FILLER"   length="1" encoding="ASCII"/>         
+
+			
+	    
+</data-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Aug 07 14:49:55 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="EmailNotification" table="EMAIL_NOTIFICATION">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="title" column="TITLE" type="java.lang.String" />
+        <property name="content" column="CONTENT" type="org.springframework.orm.hibernate.support.ClobStringType" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="recipientUser" column="RECIPIENT_USER" type="java.lang.String" />
+        <property name="recipientCorp" column="RECIPIENT_CORP" type="java.lang.String" />
+        <property name="email" column="EMAIL" type="java.lang.String" />
+        <property name="relatedTransType" column="RELATED_TRANS_TYPE" type="java.lang.String" />
+        <property name="relatedTransId" column="RELATED_TRANS_ID" type="java.lang.String" />
+        <property name="submitTime" column="SUBMIT_TIME" type="java.util.Date" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

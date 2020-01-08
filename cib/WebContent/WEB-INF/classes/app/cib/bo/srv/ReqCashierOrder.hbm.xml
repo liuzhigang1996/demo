@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Fri Dec 29 23:26:54 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.srv">
+
+    <class name="ReqCashierOrder" table="REQ_CASHIER_ORDER">
+        <id name="transId" column="TRANS_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="batchId" column="BATCH_ID" type="java.lang.String" />
+        <property name="cashierAmount" column="CASHIER_AMOUNT" type="java.lang.Double" />
+        <property name="beneficiaryName" column="BENEFICIARY_NAME" type="java.lang.String" />
+        <property name="beneficiaryName2" column="BENEFICIARY_NAME2" type="java.lang.String" />
+        <property name="beneficiaryName3" column="BENEFICIARY_NAME3" type="java.lang.String" />
+        <property name="printNameIndicator" column="PRINT_NAME_INDICATOR" type="java.lang.String" />
+        <property name="bankAddress1" column="BANK_ADDRESS_1" type="java.lang.String" />
+        <property name="bankAddress2" column="BANK_ADDRESS_2" type="java.lang.String" />
+        <property name="chargeAccount" column="CHARGE_ACCOUNT" type="java.lang.String" />
+        <property name="senderReference" column="SENDER_REFERENCE" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="requestTime" column="REQUEST_TIME" type="java.util.Date" />
+        <property name="executeTime" column="EXECUTE_TIME" type="java.util.Date" />
+        <property name="problemType" column="PROBLEM_TYPE" type="java.lang.String" />
+        <property name="chargeAmount" column="CHARGE_AMOUNT" type="java.lang.Double" />
+        <property name="lineNo" column="LINE_NO" type="java.lang.Integer" />
+        <property name="filler" column="FILLER" type="java.lang.String" />
+        <property name="detailResult" column="DETAIL_RESULT" type="java.lang.String" />
+        <!-- Add by lw 20100902 -->
+        <property name="purpose" column="PURPOSE" type="java.lang.String" />
+        <!-- Add by lw end -->
+        <!-- Add by lw 20100904 -->
+        <property name="purposeCode" column="PURPOSE_CODE" type="java.lang.String" />
+        <property name="otherPurpose" column="OTHER_PURPOSE" type="java.lang.String" />
+        <property name="proofOfPurpose" column="PROOF_OF_PURPOSE" type="java.lang.String" />
+        <!-- Add by lw end -->
+    </class>
+    
+</hibernate-mapping>

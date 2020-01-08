@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Sep 28 16:59:40 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="CorpAccountHis" table="CORP_ACCOUNT_HIS">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="accountNo" column="ACCOUNT_NO" type="java.lang.String" />
+        <property name="accountType" column="ACCOUNT_TYPE" type="java.lang.String" />
+        <property name="currency" column="CURRENCY" type="java.lang.String" />
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="accountName" column="ACCOUNT_NAME" type="java.lang.String" />
+        <property name="accountDesc" column="ACCOUNT_DESC" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

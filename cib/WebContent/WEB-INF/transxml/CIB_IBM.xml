@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE service SYSTEM "packet_header.dtd"> 22.236.199.42 -->
+<service name="CIB" host="192.168.40.110" port="8001" sendbuffer="2500" receivebuffer="8192">
+	<header-to-host length="34" idfield="TRANSACTION_CODE" lengthfield="PACKET_LENGTH!-9">
+		<number name="PACKET_LENGTH" length="8" encoding="ASCII"/> 
+		<string name="PACKET_LENGTH_END" length="1" encoding="ASCII" default="0x00"/> 
+		<string name="HEADER_ID" length="4" encoding="EBCDIC" default=" "/> 
+		<string name="BRANCH_NO" length="3" encoding="EBCDIC" default="409"/> 
+		<string name="TELLER_NO" length="4" encoding="EBCDIC" default="6601"/> 
+		<string name="UNIQUE_SEQUENCE" length="4" encoding="EBCDIC" default="0011"/> 
+		<string name="TRANSACTION_CODE" length="4" encoding="EBCDIC"/> 
+		<string name="OVERRIDE_FLAG" length="1" encoding="EBCDIC" default="T"/> 
+		<string name="CORRECTION_FLAG" length="1" encoding="EBCDIC" default=" "/> 
+		<string name="RE_ENTRY_FLAG" length="1" encoding="EBCDIC" default=" "/> 
+		<string name="AM_PM_FLAG" length="1" encoding="EBCDIC" default="A"/> 
+		<string name="TRAINING_FLAG" length="1" encoding="EBCDIC" default=" "/> 
+		<string name="REBID_FLAG" length="1" encoding="EBCDIC" default=" "/> 
+	</header-to-host>
+	<header-from-host length="37" lengthfield="PACKET_LENGTH!-9">
+		<number name="PACKET_LENGTH" length="8" encoding="ASCII"/> 
+		<string name="PACKET_LENGTH_END" length="1" encoding="ASCII" default="0x00"/> 
+		<string name="TELLER_ID" length="4" encoding="EBCDIC"/> 
+		<string name="UNIQUE_SEQUENCE_NO" length="4" encoding="EBCDIC"/> 
+		<string name="RESPONSE_CODE" length="1" encoding="EBCDIC"/> 
+		<string name="APPLICATION_CODE" length="2" encoding="EBCDIC"/> 
+		<string name="RETURN_MESSAGE_NO1" length="3" encoding="EBCDIC"/> 
+		<string name="RETURN_MESSAGE_NO2" length="3" encoding="EBCDIC"/> 
+		<string name="RETURN_MESSAGE_NO3" length="3" encoding="EBCDIC"/> 
+		<string name="RETURN_MESSAGE_NO4" length="3" encoding="EBCDIC"/> 
+		<string name="RETURN_MESSAGE_NO5" length="3" encoding="EBCDIC"/> 
+		<string name="INTERNAL_COUNTER" length="2" encoding="EBCDIC"/> 
+	</header-from-host>
+</service>

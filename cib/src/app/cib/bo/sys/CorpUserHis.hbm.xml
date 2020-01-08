@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Mar 01 14:32:03 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="CorpUserHis" table="CORP_USER_HIS">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="loginId" column="LOGIN_ID" type="java.lang.String" />
+        <property name="userPassword" column="USER_PASSWORD" type="java.lang.String" />
+        <property name="securityCode" column="SECURITY_CODE" type="java.lang.String" />
+        <property name="userName" column="USER_NAME" type="java.lang.String" />
+        <property name="roleId" column="ROLE_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="groupId" column="GROUP_ID" type="java.lang.String" />
+        <property name="authLevel" column="AUTH_LEVEL" type="java.lang.String" />
+        <property name="idType" column="ID_TYPE" type="java.lang.String" />
+        <property name="idNo" column="ID_NO" type="java.lang.String" />
+        <property name="email" column="EMAIL" type="java.lang.String" />
+        <property name="userDesc" column="USER_DESC" type="java.lang.String" />
+        <property name="certInfo1" column="CERT_INFO1" type="java.lang.String" />
+        <property name="certInfo2" column="CERT_INFO2" type="java.lang.String" />
+        <property name="certInfo3" column="CERT_INFO3" type="java.lang.String" />
+        <property name="limit1" column="LIMIT1" type="java.lang.Double" />
+        <property name="limit2" column="LIMIT2" type="java.lang.Double" />
+        <property name="limit3" column="LIMIT3" type="java.lang.Double" />
+        <property name="limit4" column="LIMIT4" type="java.lang.Double" />
+        <property name="limit5" column="LIMIT5" type="java.lang.Double" />
+        <property name="limit6" column="LIMIT6" type="java.lang.Double" />
+        <property name="limit7" column="LIMIT7" type="java.lang.Double" />
+        <property name="limit8" column="LIMIT8" type="java.lang.Double" />
+        <property name="limit9" column="LIMIT9" type="java.lang.Double" />
+        <property name="limit10" column="LIMIT10" type="java.lang.Double" />
+        <property name="loginStatus" column="LOGIN_STATUS" type="java.lang.String" />
+        <property name="loginTimes" column="LOGIN_TIMES" type="java.lang.Integer" />
+        <property name="loginFailTimes" column="LOGIN_FAIL_TIMES" type="java.lang.Integer" />
+        <property name="currLoginIp" column="CURR_LOGIN_IP" type="java.lang.String" />
+        <property name="currLoginTime" column="CURR_LOGIN_TIME" type="java.util.Date" />
+        <property name="prevLoginIp" column="PREV_LOGIN_IP" type="java.lang.String" />
+        <property name="prevLoginTime" column="PREV_LOGIN_TIME" type="java.util.Date" />
+        <property name="pervLoginStatus" column="PERV_LOGIN_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="blockReason" column="BLOCK_REASON" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="version" column="VERSION" type="java.lang.Integer" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+        <property name="fullName" column="FULL_NAME" type="java.lang.String" />
+        <property name="title" column="TITLE" type="java.lang.String" />
+        <property name="gender" column="GENDER" type="java.lang.String" />
+        <property name="idIssueDate" column="ID_ISSUE_DATE" type="java.util.Date" />
+        <property name="idIssuer" column="ID_ISSUER" type="java.lang.String" />
+        <property name="telephone" column="TELEPHONE" type="java.lang.String" />
+        <property name="mobile" column="MOBILE" type="java.lang.String" />
+        <property name="faxNo" column="FAX_NO" type="java.lang.String" />
+        <property name="afterModifyId" column="AFTER_MODIFY_ID" type="java.lang.String" />
+        <property name="viewAllTransFlag" column="VIEW_ALL_TRANS_FLAG" type="java.lang.String" />
+        <property name="financialControllerFlag" column="FINANCIAL_CONTROLLER_FLAG" type="java.lang.String" />
+        <property name="merchantType" column="MERCHANT_TYPE" type="java.lang.String" />
+        <property name="certCardType" column="CERT_CARD_TYPE" type="java.lang.String" />
+        
+        <!-- modify by long_zg 2014-04-03 for CR204 Apply OTP to BOB begin -->
+        <property name="mobileCountryCode" column="MOBILE_COUNTRY_CODE" type="java.lang.String" />
+        <property name="mobileAreaCode" column="MOBILE_AREA_CODE" type="java.lang.String" />
+        <!-- modify by long_zg 2014-04-03 for CR204 Apply OTP to BOB end -->
+    </class>
+    
+</hibernate-mapping>

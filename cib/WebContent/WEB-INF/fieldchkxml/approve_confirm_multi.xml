@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="confirm">
+		<field name="memo" label="Confirmation_multilist">
+			<format type="string" minlen="0" maxlen="200"/>
+		</field>
+	</group>
+</fieldchecking>

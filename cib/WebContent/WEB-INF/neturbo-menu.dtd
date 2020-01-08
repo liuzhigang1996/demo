@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT menu-setting (menu*)>
+<!ATTLIST menu-setting
+	resource CDATA #IMPLIED
+>
+
+<!ELEMENT menu (menu*)>
+<!ATTLIST menu
+	mid CDATA #REQUIRED
+	name CDATA #IMPLIED
+	type CDATA #IMPLIED
+	label CDATA #IMPLIED
+	class CDATA #IMPLIED
+	permission CDATA #IMPLIED
+	path CDATA #IMPLIED
+	target CDATA #IMPLIED
+>

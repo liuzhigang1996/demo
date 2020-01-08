@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->
+
+<transaction> 
+	<packet-to-host>
+		<string name="FIELD_PRESENT_BYTE1" length="1" encoding="ASCII" default="0B00100000"/> 
+		<string name="FIELD_PRESENT_BYTE2" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE3" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE4" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE5" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE6" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE7" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE8" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE9" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE10" length="1" encoding="ASCII" default="0B00100000"/>
+    <string name="CIF_NO" length="10" encoding="EBCDIC"/>
+    <string name="TYPE" length="1" encoding="EBCDIC" default="H"/> 
+    <string name="SEQNO" length="2" encoding="EBCDIC"/> 
+    <string name="TRANSACTIONS_TIME" length="6" encoding="EBCDIC"/>
+		<string name="CUSTOMER_NO_ALPHA" length="10" encoding="EBCDIC"/>
+		<string name="EBANKING_ID" length="12" encoding="EBCDIC"/> 
+		<string name="LANGUAGE_CODE" length="1" encoding="EBCDIC"/> 
+		<string name="INITIAL_LOGON" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSACTION_NATURE" length="1" encoding="EBCDIC"/> 		
+		<string name="TRANSFER2ACC_TYPE" length="1" encoding="EBCDIC"/> 	 
+		<string name="LOCAL_TRANSACTION_REF" length="18" encoding="EBCDIC"/> 
+	</packet-to-host>  		 
+
+	<packet-from-host>
+		<string name="CUSTOMER_NAME" length="60" encoding="EBCDIC"/> 
+		<string name="HOME_PHONE" length="18" encoding="EBCDIC"/> 
+		<string name="MOBILE_PHONE" length="18" encoding="EBCDIC"/> 
+		<string name="HOME_FAX" length="18" encoding="EBCDIC"/> 
+		<string name="HOME_EMAIL_ADDRESS" length="30" encoding="EBCDIC"/> 
+		<string name="LANGUAGE_CODE" length="1" encoding="EBCDIC"/> 
+		<string name="LINE_1" length="35" encoding="EBCDIC"/> 
+		<string name="LINE_2" length="35" encoding="EBCDIC"/> 
+		<string name="LINE_3" length="35" encoding="EBCDIC"/> 
+		<string name="LINE_4" length="35" encoding="EBCDIC"/> 
+		<string name="STATEMENT_LANGUAGE" length="2" encoding="EBCDIC"/> 
+		<string name="CREDIT_CARD_SMS_ALERT" length="1" encoding="EBCDIC"/> 
+		<string name="HOME_PHONE_COUNTRY_CODE" length="3" encoding="EBCDIC"/> 
+		<string name="HOME_PHONE_AREA_CODE" length="3" encoding="EBCDIC"/> 
+		<string name="MOBILE_PHONE_COUNTRY_CODE" length="3" encoding="EBCDIC"/> 
+		<string name="MOBILE_PHONE_AREA_CODE" length="3" encoding="EBCDIC"/> 
+		<string name="HOME_FAX_COUNTRY_CODE" length="3" encoding="EBCDIC"/> 
+		<string name="HOME_FAX_AREA_CODE" length="3" encoding="EBCDIC"/>
+		<string name="CIF_NO" length="10" encoding="EBCDIC"/>
+		<string name="STATUS" length="3" encoding="EBCDIC"/>
+		<string name="CUS_TYPE" length="1" encoding="EBCDIC"/>
+		<string name="CUS_ID_NO" length="30" encoding="EBCDIC"/>
+		<string name="CUS_ID_TYPE" length="3" encoding="EBCDIC"/>
+		
+ 	</packet-from-host>
+
+</transaction>

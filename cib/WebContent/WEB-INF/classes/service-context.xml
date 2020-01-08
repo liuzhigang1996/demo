@@ -1,0 +1,2108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+   <!--<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName">
+      <value>jdbc/cib</value>
+    </property>
+  </bean>
+ -->
+ <!-- oracle by linrui -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName">
+      <value>oracle.jdbc.driver.OracleDriver</value>
+    </property>
+    <property name="url">
+      <value>jdbc:oracle:thin:@192.168.1.149:1521:orcl</value>
+    </property>
+    <property name="username">
+      <value>cibuser</value>
+    </property>
+    <property name="password">
+      <value>123456</value>
+    </property>
+  </bean>
+
+<!--linux oracle 
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName">
+      <value>oracle.jdbc.driver.OracleDriver</value>
+    </property>
+    <property name="url">
+      <value>jdbc:oracle:thin:@192.168.234.219:1521:mdb</value>
+    </property>
+    <property name="username">
+      <value>cibuser</value>
+    </property>
+    <property name="password">
+      <value>123456</value>
+    </property>
+  </bean>
+   -->
+ <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName">
+      <value>com.ibm.db2.jcc.DB2Driver</value>
+    </property>
+    <property name="url">
+      <value>jdbc:db2://127.0.0.1:50000/bankcib:deferPrepares=false;</value>
+    </property>
+    <property name="username">
+      <value>db2admin</value>
+    </property>
+    <property name="password">
+      <value>db2admin</value>
+    </property>
+  </bean>    -->
+
+  <!--
+  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName">
+      <value>jdbc/bankcib</value>
+    </property>
+  </bean>
+  -->
+  <!-- for BLOB & CLOB -->
+  <bean id="defaultLobHandler"  class="org.springframework.jdbc.support.lob.DefaultLobHandler"  lazy-init="true"/>
+  <!-- Choose the dialect that matches your "dataSource" definition -->
+  <bean id="defaultSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+    <property name="dataSource">
+      <ref local="dataSource"/>
+    </property>
+    <property name="lobHandler">
+      <ref local="defaultLobHandler"/>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <!-- <prop key="hibernate.dialect">net.sf.hibernate.dialect.DB2Dialect</prop> mod by linrui for mul-language-->
+        <prop key="hibernate.dialect">net.sf.hibernate.dialect.DB2Dialect</prop>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.jdbc.batch_size">50</prop>
+        <prop key="hibernate.jdbc.fetch_size">30</prop>
+        <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+      </props>
+    </property>
+    <property name="mappingResources">
+      <list>
+        <value>app/cib/bo/flow/FlowProcess.hbm.xml</value>
+        <value>app/cib/bo/flow/FlowProcessHis.hbm.xml</value>
+        <value>app/cib/bo/flow/FlowWork.hbm.xml</value>
+        <value>app/cib/bo/flow/FlowWorkHis.hbm.xml</value>
+        <value>app/cib/bo/srv/Message.hbm.xml</value>
+        <value>app/cib/bo/srv/BatchFile.hbm.xml</value>
+        <value>app/cib/bo/srv/MessageUser.hbm.xml</value>
+        <value>app/cib/bo/sys/CorpUser.hbm.xml</value>
+        <value>app/cib/bo/sys/CorpUserHis.hbm.xml</value>
+        <value>app/cib/bo/sys/CorpPermission.hbm.xml</value>
+        <value>app/cib/bo/sys/UserGroup.hbm.xml</value>
+        <value>app/cib/bo/sys/UserGroupHis.hbm.xml</value>
+        <value>app/cib/bo/sys/ApproveRule.hbm.xml</value>
+        <value>app/cib/bo/sys/TxnSubtype.hbm.xml</value>
+        <value>app/cib/bo/sys/CorpAccount.hbm.xml</value>
+        <value>app/cib/bo/sys/CorpAccountHis.hbm.xml</value>
+        <value>app/cib/bo/sys/CorpPreference.hbm.xml</value>
+        <value>app/cib/bo/sys/IdGenerator.hbm.xml</value>
+        <value>app/cib/bo/sys/TellerSequence.hbm.xml</value>
+        <value>app/cib/bo/sys/EmailNotification.hbm.xml</value>
+        <value>app/cib/bo/bnk/Corporation.hbm.xml</value>
+        <value>app/cib/bo/bnk/CorporationHis.hbm.xml</value>
+        <value>app/cib/bo/bnk/CorpSubsidiary.hbm.xml</value>
+        <value>app/cib/bo/bnk/TxnLimit.hbm.xml</value>
+        <value>app/cib/bo/bnk/BankUser.hbm.xml</value>
+        <value>app/cib/bo/bnk/BankUserHis.hbm.xml</value>
+        <value>app/cib/bo/txn/BillPayment.hbm.xml</value>
+        <value>app/cib/bo/txn/TimeDeposit.hbm.xml</value>
+        <value>app/cib/bo/txn/TransferBank.hbm.xml</value>
+        <value>app/cib/bo/txn/TransferMacau.hbm.xml</value>
+        <value>app/cib/bo/txn/TransferOversea.hbm.xml</value>
+        <value>app/cib/bo/txn/TxnLimitUsage.hbm.xml</value>
+        <value>app/cib/bo/txn/TxnSignData.hbm.xml</value>
+        <value>app/cib/bo/enq/HsWireInInfo.hbm.xml</value>
+        <value>app/cib/bo/bat/Payroll.hbm.xml</value>
+        <value>app/cib/bo/bat/PayrollRec.hbm.xml</value>
+        <value>app/cib/bo/bat/ScheduleTransfer.hbm.xml</value>
+        <value>app/cib/bo/bat/ScheduleTransferHis.hbm.xml</value>
+        <value>app/cib/bo/bat/ScheduleTransferBatch.hbm.xml</value>
+        <value>app/cib/bo/bat/FileRequest.hbm.xml</value>
+        <value>app/cib/bo/bat/TransferBankStm.hbm.xml</value>
+        <value>app/cib/bo/bat/TransferMacauStm.hbm.xml</value>
+        <value>app/cib/bo/bat/TransferOverseaStm.hbm.xml</value>
+        <value>app/cib/bo/srv/ReqBankDraft.hbm.xml</value>
+        <value>app/cib/bo/srv/ReqCashierOrder.hbm.xml</value>
+        <value>app/cib/bo/srv/ReqChequeProtection.hbm.xml</value>
+        <value>app/cib/bo/srv/ReqStopCheque.hbm.xml</value>
+        <value>app/cib/bo/rpt/ApproverSuspendReport.hbm.xml</value>
+        <!-- add by xyf 20081222 -->
+        <value>app/cib/bo/sys/PinMailer.hbm.xml</value>
+        <!-- add by long_zg 2014-12-18 for CR192 bob batch -->
+        <value>app/cib/bo/txn/AutopayAuthorization.hbm.xml</value>
+        <value>app/cib/bo/srv/ChequeBookRequest.hbm.xml</value>
+		<value>app/cib/bo/txn/AutopayAuthorizationHis.hbm.xml</value>        
+	    <value>app/cib/bo/txn/AutopayMerchantInfo.hbm.xml</value>
+		<value>app/cib/bo/txn/AutopayMerchantName.hbm.xml</value>
+		<value>app/cib/bo/txn/Autopay.hbm.xml</value>
+		<value>app/cib/bo/bnk/SetCurrency.hbm.xml</value>
+		<value>app/cib/bo/bnk/SetCurrencyHis.hbm.xml</value>
+		<!-- add by linrui 20191012 -->
+		<value>app/cib/bo/srv/TxnPrompt.hbm.xml</value>
+      </list>
+    </property>
+  </bean>
+  <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+  <bean id="defaultTransactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="jdbcTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+     <property name="dataSource">
+        <ref bean="dataSource"/>
+     </property>
+  </bean>
+  <!-- DAO begin-->
+  <bean id="genericJdbcDao" class="com.neturbo.set.database.GenericJdbcDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="genericHibernateDao" class="com.neturbo.set.database.GenericHibernateDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="idGeneratorJdbcDao" class="app.cib.core.IdGeneratorJdbcDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+    <property name="transactionManager">
+       <ref bean="jdbcTransactionManager"/>
+     </property>
+  </bean>
+  <bean id="bankUserDao" class="app.cib.dao.bnk.BankUserDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+    <bean id="bankUserHisDao" class="app.cib.dao.bnk.BankUserHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="corpUserDao" class="app.cib.dao.sys.CorpUserDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="corpUserHisDao" class="app.cib.dao.sys.CorpUserHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="userGroupDao" class="app.cib.dao.sys.UserGroupDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="userGroupHisDao" class="app.cib.dao.sys.UserGroupHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="corpPermissionDao" class="app.cib.dao.sys.CorpPermissionDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="EmailNotificationDao" class="app.cib.dao.sys.EmailNotificationDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+
+  <!-- add by hjs 2006-07-17 -->
+  <bean id="BillPaymentDao" class="app.cib.dao.txn.BillPaymentDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="TimeDepositDao" class="app.cib.dao.txn.TimeDepositDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="ExchangeRatesDao" class="app.cib.dao.enq.ExchangeRatesDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="CorpAccountDao" class="app.cib.dao.sys.CorpAccountDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="CorpAccountHisDao" class="app.cib.dao.sys.CorpAccountHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="CorpPreferenceDao" class="app.cib.dao.sys.CorpPreferenceDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="TxnLimitDao" class="app.cib.dao.bnk.TxnLimitDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="HsWireInInfoDao" class="app.cib.dao.enq.HsWireInInfoDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="InterestRatesDao" class="app.cib.dao.enq.InterestRatesDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="PayrollDao" class="app.cib.dao.bat.PayrollDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="PayrollRecDao" class="app.cib.dao.bat.PayrollRecDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="SchTxnBatchDao" class="app.cib.dao.bat.SchTxnBatchDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="SchTxnHisDao" class="app.cib.dao.bat.SchTxnHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="PdfDownloadDao" class="app.cib.dao.srv.PdfDownloadDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="UserReportDao" class="app.cib.dao.rpt.UserReportDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="SchTransferDao" class="app.cib.dao.bat.SchTransferDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="ApproverSuspendReportDao" class="app.cib.dao.rpt.ApproverSuspendReportDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="EStatementDao" class="app.cib.dao.srv.EStatementDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="EAdviceDao" class="app.cib.dao.srv.EAdviceDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="EReportsDao" class="app.cib.dao.srv.EReportsDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="EFormsDao" class="app.cib.dao.srv.EFormsDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="DaylightSavingTimeDao" class="app.cib.dao.enq.DaylightSavingTimeDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <!-- hjs Dao end -->
+  <!-- add by lzg 20181129 -->
+  <bean id="FindBankByNameService" class="com.jsax.service.txn.FindBankByNameService">
+  	<property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- add by lzg end -->
+  <!-- add by zsd 2006-07-23 -->
+  <!-- modify by hgh 2006-08-14 -->
+  <bean id="CorporationDao" class="app.cib.dao.bnk.CorporationDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="CorporationHisDao" class="app.cib.dao.bnk.CorporationHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- add by jet 2006-08-05 -->
+  <bean id="ApproveRuleDao" class="app.cib.dao.sys.ApproveRuleDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- jet add end -->
+  <bean id="CorpSubsidiaryDao" class="app.cib.dao.bnk.CorpSubsidiaryDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- huang_gh begin -->
+  <bean id="BatchFileDao" class="app.cib.dao.srv.BatchFileDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+   <!-- huang_gh end -->
+  <!-- pan_wy begin -->
+  <bean id="MessageDao" class="app.cib.dao.srv.MessageDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="MessageUserDao" class="app.cib.dao.srv.MessageUserDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="MessageUserJdbcDao" class="app.cib.dao.srv.MessageUserJdbcDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <bean id="FlowWorkDao" class="app.cib.dao.flow.FlowWorkDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="FlowProcessDao" class="app.cib.dao.flow.FlowProcessDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="FlowWorkHisDao" class="app.cib.dao.flow.FlowWorkHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="FlowProcessHisDao" class="app.cib.dao.flow.FlowProcessHisDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="TxnSubtypeDao" class="app.cib.dao.sys.TxnSubtypeDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="TxnLimitUsageDao" class="app.cib.dao.txn.TxnLimitUsageDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="txnSignDataDao" class="app.cib.dao.txn.TxnSignDataDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- pan_wy end -->
+  <!-- add by mxl 2006-07-19 -->
+  <bean id="RequestDao" class="app.cib.dao.srv.RequestDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="TransferDao" class="app.cib.dao.txn.TransferDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- add by mxl 2006-07-19 -->
+  <bean id="TransferTemplateDao" class="app.cib.dao.txn.TransferTemplateDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- add by mxl 2006-07-21 -->
+  <bean id="AccountDao" class="app.cib.dao.enq.AccountDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- add by mxl 2006-08-02 -->
+  <bean id="CorpTransferDao" class="app.cib.dao.txn.CorpTransferDao">
+    <property name="sessionFactory">
+      <ref local="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- Jet -->
+  <bean id="AccountAuthorizationDao" class="app.cib.dao.sys.AccountAuthorizationDao">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+  <!-- Jet end -->
+  <!-- add by xyf 20081222 start -->
+  <bean id="pinMailerDao" class="app.cib.dao.sys.PinMailerDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- add by xyf 20081222 end -->
+  
+  <!-- add by long_zg 2014-12-18 for CR192 bob batch -->
+  <bean id="autopayAuthorizationDao" class="app.cib.dao.txn.AutopayAuthorizationDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="chequeBookRequestDao" class="app.cib.dao.srv.ChequeBookRequestDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <bean id="setCurrencyDao" class="app.cib.dao.bnk.SetCurrencyDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- add by linrui 20191012 -->
+  <bean id="TransferPromptDao" class="app.cib.dao.srv.TransferPromptDao">
+    <property name="sessionFactory">
+      <ref bean="defaultSessionFactory"/>
+    </property>
+  </bean>
+  <!-- DAO end-->
+  <!-- Service begin-->
+  <bean id="corpUserService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="corpUserServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="corpUserServiceImpl" class="app.cib.service.sys.CorpUserServiceImpl">
+    <property name="corpUserDao">
+      <ref local="corpUserDao"/>
+    </property>
+    <property name="userGroupDao">
+      <ref local="userGroupDao"/>
+    </property>
+    <property name="corpPermissionDao">
+      <ref local="corpPermissionDao"/>
+    </property>
+    <property name="corporationDao">
+      <ref local="CorporationDao"/>
+    </property>
+    <property name="corpUserHisDao">
+      <ref local="corpUserHisDao"/>
+    </property>
+    <property name="pinMailerDao">
+      <ref local="pinMailerDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="bankUserService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="bankUserServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="bankUserServiceImpl" class="app.cib.service.bnk.BankUserServiceImpl">
+    <property name="bankUserDao">
+      <ref local="bankUserDao"/>
+    </property>
+    <property name="corpPermissionDao">
+      <ref local="corpPermissionDao"/>
+    </property>
+    <property name="bankUserHisDao">
+      <ref local="bankUserHisDao"/>
+    </property>
+  </bean>
+
+  <!-- add by hjs 2006-07-18 -->
+  <bean id="BillPaymentService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="BillPaymentServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="process*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="view*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="is*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="BillPaymentServiceImpl" class="app.cib.service.txn.BillPaymentServiceImpl">
+    <property name="billPaymentDao">
+      <ref local="BillPaymentDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+    <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+    <property name="uploadFileName">
+      <value>BOBUBBP.O[datetime]</value>
+    </property>
+  </bean>
+
+  <bean id="TemplatePaymentService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TemplatePaymentServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="edit*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TemplatePaymentServiceImpl" class="app.cib.service.txn.TemplatePaymentServiceImpl">
+    <property name="billPaymentDao">
+      <ref local="BillPaymentDao"/>
+    </property>
+  </bean>
+
+  <bean id="TimeDepositService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TimeDepositServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="withdraw*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TimeDepositServiceImpl" class="app.cib.service.txn.TimeDepositServiceImpl">
+    <property name="timeDepositDao">
+      <ref local="TimeDepositDao"/>
+    </property>
+    <property name="corpAccountDao">
+      <ref local="CorpAccountDao"/>
+    </property>
+    <property name="corpPermissionDao">
+      <ref local="corpPermissionDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="ExchangeRatesService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="ExchangeRatesServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ExchangeRatesServiceImpl" class="app.cib.service.enq.ExchangeRatesServiceImpl">
+    <property name="exchangeRatesDao">
+      <ref local="ExchangeRatesDao"/>
+    </property>
+  </bean>
+
+  <bean id="InterestRateService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="InterestRateServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="InterestRateServiceImpl" class="app.cib.service.enq.InterestRateServiceImpl">
+    <property name="interestRatesDao">
+      <ref local="InterestRatesDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="CorpAccountService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CorpAccountServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="getNew*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="update*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="validate*">PROPAGATION_REQUIRED, -NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CorpAccountServiceImpl" class="app.cib.service.sys.CorpAccountServiceImpl">
+    <property name="corpAccountDao">
+      <ref local="CorpAccountDao"/>
+    </property>
+    <property name="corpAccountHisDao">
+      <ref local="CorpAccountHisDao"/>
+    </property>
+    <property name="corpPreferenceDao">
+      <ref local="CorpPreferenceDao"/>
+    </property>
+    <property name="corpPermissionDao">
+      <ref local="corpPermissionDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="CorpPreferenceService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CorpPreferenceServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="new*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED, -NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CorpPreferenceServiceImpl" class="app.cib.service.sys.CorpPreferenceServiceImpl">
+    <property name="corpPreferenceDao">
+      <ref local="CorpPreferenceDao"/>
+    </property>
+  </bean>
+
+  <bean id="TxnLimitService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TxnLimitServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="check*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="update*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="set*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="new*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="add*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED, -NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TxnLimitServiceImpl" class="app.cib.service.bnk.TxnLimitServiceImpl">
+    <property name="txnLimitDao">
+      <ref local="TxnLimitDao"/>
+    </property>
+    <property name="corpPreferenceDao">
+      <ref local="CorpPreferenceDao"/>
+    </property>
+    <property name="corpAccountDao">
+      <ref local="CorpAccountDao"/>
+    </property>
+    <property name="txnLimitUsageDao">
+      <ref local="TxnLimitUsageDao"/>
+    </property>
+  </bean>
+
+  <bean id="HsWireInInfoService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="HsWireInInfoServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="HsWireInInfoServiceImpl" class="app.cib.service.enq.HsWireInInfoServiceImpl">
+    <property name="hsWireInInfoDao">
+      <ref local="HsWireInInfoDao"/>
+    </property>
+  </bean>
+
+  <bean id="PayrollService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="PayrollServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="parse*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="is*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="add*">PROPAGATION_REQUIRED, -NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="PayrollServiceImpl" class="app.cib.service.bat.PayrollServiceImpl">
+    <property name="payrollDao">
+      <ref local="PayrollDao"/>
+    </property>
+    <property name="payrollRecDao">
+      <ref local="PayrollRecDao"/>
+    </property>
+    <property name="corpAccountDao">
+      <ref local="CorpAccountDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+    <property name="uploadFileName">
+      <value>BOBUPAR.O[datetime]</value>
+    </property>
+  </bean>
+
+  <bean id="SchTxnBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="SchTxnBatchServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="SchTxnBatchServiceImpl" class="app.cib.service.bat.SchTxnBatchServiceImpl">
+    <property name="schBatchDao">
+      <ref local="SchTxnBatchDao"/>
+    </property>
+    <property name="jdao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="PdfDownloadService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="PdfDownloadServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="PdfDownloadServiceImpl" class="app.cib.service.srv.PdfDownloadServiceImpl">
+    <property name="pdfDownloadDao">
+      <ref local="PdfDownloadDao"/>
+    </property>
+  </bean>
+
+  <bean id="UserReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="UserReportServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="UserReportServiceImpl" class="app.cib.service.rpt.UserReportServiceImpl">
+    <property name="userReportDao">
+      <ref local="UserReportDao"/>
+    </property>
+  </bean>
+
+  <bean id="CutOffTimeService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CutOffTimeServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="check*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CutOffTimeServiceImpl" class="app.cib.service.sys.CutOffTimeServiceImpl">
+    <property name="dao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="UtilService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="UtilServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="check*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="UtilServiceImpl" class="app.cib.service.utl.UtilServiceImpl">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="ApproverSuspendReportService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="ApproverSuspendReportServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ApproverSuspendReportServiceImpl" class="app.cib.service.rpt.ApproverSuspendReportServiceImpl">
+    <property name="reportDao">
+      <ref local="ApproverSuspendReportDao"/>
+    </property>
+  </bean>
+
+  <bean id="EStatementService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="EStatementServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="EStatementServiceImpl" class="app.cib.service.srv.EStatementServiceImpl">
+    <property name="estatementDao">
+      <ref local="EStatementDao"/>
+    </property>
+  </bean>
+
+  <bean id="EAdviceService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="EAdviceServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="EAdviceServiceImpl" class="app.cib.service.srv.EAdviceServiceImpl">
+    <property name="eadviceDao">
+      <ref local="EAdviceDao"/>
+    </property>
+  </bean>
+
+  <bean id="EReportsService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="EReportsServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="EReportsServiceImpl" class="app.cib.service.srv.EReportsServiceImpl">
+    <property name="ereportsDao">
+      <ref local="EReportsDao"/>
+    </property>
+  </bean>
+
+  <bean id="EFormsService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="EFormsServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="EFormsServiceImpl" class="app.cib.service.srv.EFormsServiceImpl">
+    <property name="eformsDao">
+      <ref local="EFormsDao"/>
+    </property>
+  </bean>
+
+  <bean id="DaylightSavingTimeService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="DaylightSavingTimeServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="check*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="DaylightSavingTimeServiceImpl" class="app.cib.service.enq.DaylightSavingTimeServiceImpl">
+    <property name="daylightSavingTimeDao">
+      <ref local="DaylightSavingTimeDao"/>
+    </property>
+  </bean>
+
+  <bean id="TransAmountService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransAmountServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="check*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransAmountServiceImpl" class="app.cib.service.sys.TransAmountServiceImpl">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="ConfigCheckingService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="ConfigCheckingServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="check*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ConfigCheckingServiceImpl" class="app.cib.service.bnk.ConfigCheckingServiceImpl">
+    <property name="txnLimitDao">
+      <ref local="TxnLimitDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- hjs Service end -->
+
+  <!-- add by zsd 2006-07-23 -->
+  <!-- modify by hgh 2006-08-14 -->
+  <bean id="CorporationService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CorporationServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="get*">PROPAGATION_REQUIRED</prop>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CorporationServiceImpl" class="app.cib.service.bnk.CorporationServiceImpl">
+    <property name="corporationDao">
+      <ref local="CorporationDao"/>
+    </property>
+    <property name="corporationHisDao">
+      <ref local="CorporationHisDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- add by jet 2006-08-05 -->
+  <bean id="ApproveRuleService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="ApproveRuleServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+        <prop key="set*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ApproveRuleServiceImpl" class="app.cib.service.sys.ApproveRuleServiceImpl">
+    <property name="approveRuleDao">
+      <ref local="ApproveRuleDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- jet add end -->
+  <bean id="CorpSubsidiaryService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CorpSubsidiaryServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CorpSubsidiaryServiceImpl" class="app.cib.service.bnk.CorpSubsidiaryServiceImpl">
+    <property name="corpSubsidiaryDao">
+      <ref local="CorpSubsidiaryDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  
+  <bean id="ViewerAccessListService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="ViewerAccessListServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+        <prop key="get*">PROPAGATION_REQUIRED</prop>
+        <prop key="is*">PROPAGATION_REQUIRED</prop>
+        <prop key="insert*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ViewerAccessListServiceImpl" class="app.cib.service.bnk.ViewerAccessListServiceImpl">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  
+  <!-- huang_gh begin -->
+  <bean id="MailService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="MailServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="to*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="MailServiceImpl" class="app.cib.service.sys.MailServiceImpl">
+    <property name="corpUserDao">
+      <ref local="corpUserDao"/>
+    </property>
+    <property name="bankUserDao">
+      <ref local="bankUserDao"/>
+    </property>
+    <property name="emailDao">
+      <ref local="EmailNotificationDao"/>
+    </property>
+  </bean>
+
+    <bean id="UploadFileService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="UploadFileServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="UploadFileServiceImpl" class="app.cib.service.srv.UploadFileServiceImpl">
+    <property name="batchFileDao">
+      <ref local="BatchFileDao"/>
+    </property>
+  </bean>
+  <!-- huang_gh end -->
+  <!-- pan_wy begin -->
+  <bean id="MessageService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="MessageServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="MessageServiceImpl" class="app.cib.service.srv.MessageServiceImpl">
+    <property name="messageDao">
+      <ref local="MessageDao"/>
+    </property>
+  </bean>
+  <bean id="MessageUserService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="MessageUserServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="MessageUserServiceImpl" class="app.cib.service.srv.MessageUserServiceImpl">
+    <property name="messageUserDao">
+      <ref local="MessageUserDao"/>
+    </property>
+    <property name="messageUserJdbcDao">
+      <ref local="MessageUserJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="FlowEngineService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="FlowEngineServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+        <prop key="doWork">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="start*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="change*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="FlowEngineServiceImpl" class="app.cib.service.flow.FlowEngineServiceImpl">
+    <property name="flowProcessDao">
+      <ref local="FlowProcessDao"/>
+    </property>
+    <!-- add by lzg for GAPMC-EB-001-0040 -->
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+    <!-- add by lzg end -->
+    <property name="flowWorkDao">
+      <ref local="FlowWorkDao"/>
+    </property>
+    <property name="flowProcessHisDao">
+      <ref local="FlowProcessHisDao"/>
+    </property>
+    <property name="flowWorkHisDao">
+      <ref local="FlowWorkHisDao"/>
+    </property>
+    <property name="txnSubtypeDao">
+      <ref local="TxnSubtypeDao"/>
+    </property>
+    <property name="corpUserDao">
+      <ref local="corpUserDao"/>
+    </property>
+  </bean>
+
+   <bean id="TxnSubtypeService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TxnSubtypeServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TxnSubtypeServiceImpl" class="app.cib.service.srv.TxnSubtypeServiceImpl">
+    <property name="txnSubtypeDao">
+      <ref local="TxnSubtypeDao"/>
+    </property>
+  </bean>
+
+  <bean id="TransferLimitService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferLimitServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferLimitServiceImpl" class="app.cib.service.txn.TransferLimitServiceImpl">
+  <property name="txnLimitDao">
+      <ref local="TxnLimitDao"/>
+    </property>
+    <property name="txnLimitUsageDao">
+      <ref local="TxnLimitUsageDao"/>
+    </property>
+   </bean>
+
+    <!-- pan_wy end -->
+  <bean id="AccountEnqureService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="AccountEnqureServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED</prop>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="AccountEnqureServiceImpl" class="app.cib.service.enq.AccountEnqureServiceImpl">
+    <property name="accountDao">
+      <ref local="AccountDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+    
+  <bean id="AccountEnqureBankService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="AccountEnqureBankServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED</prop>
+        <prop key="list*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="AccountEnqureBankServiceImpl" class="app.cib.service.enq.AccountEnqureBankServiceImpl">
+    <property name="accountDao">
+      <ref local="AccountDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+ 
+  <!-- add by mxl 2006-07-18 -->
+  <bean id="TransferTemplateService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferTemplateServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferTemplateServiceImpl" class="app.cib.service.txn.TransferTemplateServiceImpl">
+    <property name="transferTemplateDao">
+      <ref local="TransferTemplateDao"/>
+    </property>
+  </bean>
+   <bean id="SchTransferService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="SchTransferServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="SchTransferServiceImpl" class="app.cib.service.bat.SchTransferServiceImpl">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+    <property name="schTransferDao">
+      <ref local="SchTransferDao"/>
+    </property>
+    <property name="schTxnHisDao">
+      <ref local="SchTxnHisDao"/>
+    </property>
+  </bean>
+  <bean id="TransferService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="transfer*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="edit*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="template*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="to*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferServiceImpl" class="app.cib.service.txn.TransferServiceImpl">
+    <property name="transferDao">
+      <ref local="TransferDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="RequestService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="RequestServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="RequestServiceImpl" class="app.cib.service.srv.RequestServiceImpl">
+    <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+   <bean id="BankDraftBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="BankDraftBatchServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="BankDraftBatchServiceImpl" class="app.cib.service.bat.BankDraftBatchServiceImpl">
+    <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+   <bean id="CashOrderBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CashOrderBatchServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CashOrderBatchServiceImpl" class="app.cib.service.bat.CashOrderBatchServiceImpl">
+    <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="ProtectionChequeBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="ProtectionChequeBatchServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="ProtectionChequeBatchServiceImpl" class="app.cib.service.bat.ProtectionChequeBatchServiceImpl">
+    <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="StopChequeBatchService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="StopChequeBatchServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="StopChequeBatchServiceImpl" class="app.cib.service.bat.StopChequeBatchServiceImpl">
+    <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+   <bean id="TransferBankStMService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferBankStMServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferBankStMServiceImpl" class="app.cib.service.bat.TransferBankStMServiceImpl">
+  <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+   <bean id="TransferBankMtSService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferBankMtSServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferBankMtSServiceImpl" class="app.cib.service.bat.TransferBankMtSServiceImpl">
+  <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="TransferMacauStMService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferMacauStMServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferMacauStMServiceImpl" class="app.cib.service.bat.TransferMacauStMServiceImpl">
+  <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+   <bean id="TransferOverseaStMService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferOverseaStMServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="clear*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="cancel*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferOverseaStMServiceImpl" class="app.cib.service.bat.TransferOverseaStMServiceImpl">
+  <property name="requestDao">
+      <ref local="RequestDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- add by YanLi 2006-07-31 -->
+  <bean id="GroupService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="groupServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="groupServiceImpl" class="app.cib.service.sys.GroupServiceImpl">
+    <property name="userGroupDao">
+      <ref local="userGroupDao"/>
+    </property>
+    <property name="corpAccountDao">
+      <ref local="CorpAccountDao"/>
+    </property>
+    <property name="corpPermissionDao">
+      <ref local="corpPermissionDao"/>
+    </property>
+    <property name="corpUserDao">
+      <ref local="corpUserDao"/>
+    </property>
+    <property name="userGroupHisDao">
+      <ref local="userGroupHisDao"/>
+    </property>
+  </bean>
+
+  <!-- add by mxl 2006-08-02 -->
+  <bean id="CorpTransferService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="CorpTransferServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="transfer*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="CorpTransferServiceImpl" class="app.cib.service.txn.CorpTransferServiceImpl">
+    <property name="corpTransferDao">
+      <ref local="CorpTransferDao"/>
+    </property>
+     <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="AccountAuthorizationService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="AccountAuthorizationServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="check*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="AccountAuthorizationServiceImpl" class="app.cib.service.sys.AccountAuthorizationServiceImpl">
+    <property name="accountAuthorizationDao">
+      <ref local="AccountAuthorizationDao"/>
+    </property>
+  </bean>
+  
+  <!-- wen_chy start 20090921 -->
+  <bean id="MerchantEnquiryService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="MerchantEnquiryServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="MerchantEnquiryServiceImpl" class="app.cib.service.enq.MerchantEnquiryServiceImpl">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- wen_chy start 20090921 -->
+  
+  <!-- add by long_zg 2014-12-18 for CR192 bob batch begin-->
+  <bean id="autopayAuthorizationService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="autopayAuthorizationServiceServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="delete*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="autopayAuthorizationServiceServiceImpl" class="app.cib.service.txn.AutopayAuthorizationServiceImpl">
+    <property name="autopayAuthorizationDao">
+      <ref local="autopayAuthorizationDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="chequeBookRequestService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="chequeBookRequestServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="list*">PROPAGATION_REQUIRED, readOnly</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="chequeBookRequestServiceImpl" class="app.cib.service.srv.ChequeBookRequestServiceImpl">
+    <property name="chequeBookRequestDao">
+      <ref local="chequeBookRequestDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- add by long_zg 2014-12-18 for CR192 bob batch end-->
+  
+  
+  
+  
+  
+  <!-- Service end-->
+
+  <!-- Jsax Service start -->
+  <!-- hjs start -->
+  <bean id="MerchantListService" class="com.jsax.service.txn.MerchantListService">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="EquivalentService" class="com.jsax.service.txn.EquivalentService">
+    <property name="exRatesService">
+      <ref local="ExchangeRatesService"/>
+    </property>
+  </bean>
+
+  <bean id="BillNoListService" class="com.jsax.service.txn.BillNoListService">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="CardCurrencyService" class="com.jsax.service.txn.CardCurrencyService">
+  </bean>
+
+  <bean id="CgdMacauService" class="com.jsax.service.txn.CgdMacauService">
+  </bean>
+
+  <bean id="CgdOverseaService" class="com.jsax.service.txn.CgdOverseaService">
+  </bean>
+  <bean id="MerchantWebsiteService" class="com.jsax.service.txn.MerchantWebsiteService">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="PeriodByCcyService" class="com.jsax.service.txn.PeriodByCcyService">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+
+  <bean id="JsriptLogService" class="com.jsax.service.log.JsriptLogService">
+  </bean>
+
+  <bean id="SubTotalCaculaterService" class="com.jsax.service.txn.SubTotalCaculaterService">
+  </bean>
+  <bean id="UserListService" class="com.jsax.service.approve.UserListService">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <bean id="AccountsService" class="com.jsax.service.sys.AccountsService">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- hjs end -->
+
+  <bean id="TxnInOverseaService" class="com.jsax.service.txn.TxnInOverseaService">
+  </bean>
+
+  <bean id="CorpAccListService" class="com.jsax.service.txn.CorpAccListService">
+  </bean>
+
+  <bean id="AccInTxnService" class="com.jsax.service.txn.AccInTxnService">
+    <property name="corpAccountService">
+      <ref local="CorpAccountService"/>
+    </property>
+    <property name="accEnqureService">
+      <ref local="AccountEnqureService"/>
+    </property>
+  </bean>
+  
+  <!-- add by linrui for control ccy 20190701 -->
+  <bean id="SetCurrencyService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="SetCurrencyServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="view*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="set*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="approve*">PROPAGATION_REQUIRED, -NTBException</prop>
+        <prop key="reject*">PROPAGATION_REQUIRED, -NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="SetCurrencyServiceImpl" class="app.cib.service.bnk.SetCurrencyServiceImpl">
+    <property name="setCurrencyDao">
+      <ref local="setCurrencyDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- add by linrui for control ccy 20190701 end-->
+  <!-- add by linrui 20191012 for tran prompt -->
+  <bean id="TransferPromptService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="TransferPromptServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="TransferPromptServiceImpl" class="app.cib.service.srv.TransferPromptServiceImpl">
+    <property name="transferPromptDao">
+      <ref local="TransferPromptDao"/>
+    </property>
+    <property name="genericHibernateDao">
+      <ref local="genericHibernateDao"/>
+    </property>
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- add by linrui end  -->
+  
+  <!-- add by lzg -->
+  <bean id="SwiftCodeEnqureService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+  <property name="transactionManager">
+      <ref local="defaultTransactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="SwiftCodeEnqureServiceImpl"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="update*">PROPAGATION_REQUIRED,-NTBException</prop>
+        <prop key="add*">PROPAGATION_REQUIRED,-NTBException</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="SwiftCodeEnqureServiceImpl" class="app.cib.service.enq.SwiftCodeEnqureServiceImpl">
+    <property name="genericJdbcDao">
+      <ref local="genericJdbcDao"/>
+    </property>
+  </bean>
+  <!-- end -->
+  
+  <!-- Add by heyongjiang 20100810 -->
+  <bean id="CheckNeedPurposeService" class="com.jsax.service.txn.CheckNeedPurposeService">
+  </bean>
+  <!-- Add by heyongjiang end -->
+  
+  <bean id="CorpUserAxService" class="com.jsax.service.sys.CorpUserAxService">
+  </bean>
+  
+   <!--Kevin.Wen 20130307  -->
+  <bean id="MultiApprovePbarService" class="com.jsax.service.txn.MultiApprovePbarService">
+  </bean>
+  
+  <!-- NaBai 20150402 -->
+  <bean id="OtpService" class="com.jsax.service.util.OtpService">
+  </bean>
+  <bean id="SMSOtpService" class="com.jsax.service.util.SMSOtpService">
+  </bean>
+  <!-- Chen_y CR204 -->
+  <bean id="TimeOutService" class="com.jsax.service.util.TimeOutService">
+  </bean>
+  
+  <!-- long_zg 2019-05-16 for otp login-->
+  <bean id="loginJsaxService" class="com.jsax.service.sys.LoginJsaxService">
+  </bean>
+   <!-- add by lzg for otp confirm -->
+  <bean id="OTPConfirmService" class="com.jsax.service.sys.OTPConfirmService">
+  </bean>
+   <!-- add by lzg for read check -->
+   <bean id="ReadCheckService" class="com.jsax.service.sys.ReadCheckService">
+   </bean>
+   <!-- add by lzg for Correspondent Bank  -->
+   <bean id="GetCorrespondentBank" class="com.jsax.service.sys.GetCorrespondentBank">
+   </bean>
+   <!-- add by lzg for CR0001-602 -->
+   <bean id="GetInterestRateList" class="com.jsax.service.sys.GetInterestRateList">
+   </bean>
+</beans>

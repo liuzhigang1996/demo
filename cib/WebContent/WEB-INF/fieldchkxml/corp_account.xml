@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="acc_load">
+		<field name="corpID" label="corp_Id" required="yes">
+			<format type="numonly" maxlen="12"/>
+		</field>
+	</group>
+	<group name="acc_add">
+		<field name="offlineAcc" label="not_online_account" required="yes">
+		</field>
+	</group>
+	<group name="acc_remove">
+		<field name="onlineAcc" label="online_account" required="yes">
+		</field>
+	</group>
+	<group name="all_limits_set">
+		<field name="allLimits" label="all_account_limits" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([allLimits]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+	</group>
+	<group name="limit_set">
+		<!-- Modify by long_zg 2019-05-22 UAT6-245 COB：四種轉賬的名稱需要更改 begin -->
+		<!--<field name="limit1" label="online_own_accounts" required="yes">-->
+		<field name="limit1" label="TO_MY_ACCOUNT" required="yes">
+		<!-- Modify by long_zg 2019-05-22 UAT6-245 COB：四種轉賬的名稱需要更改 end -->
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit1]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit2" label="accounts_in_bank" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit2]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit3" label="accounts_in_macau" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit3]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit4" label="accounts_in_overseas" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit4]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit5" label="corp_fund_allocation" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit5]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit6" label="bill_payment" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit6]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit7" label="time_deposit" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit7]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit8" label="payroll" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit8]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit9" label="bank_draft" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit9]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+		<field name="limit10" label="cashier_order" required="yes">
+			<format type="amount" maxlen="15"/>
+			<reject prompt="EXCEED_MAXIMUM_LIMIT">!([limit10]&lt;(Number([dailyLimit])+0.01))</reject>
+		</field>
+	</group>
+</fieldchecking>

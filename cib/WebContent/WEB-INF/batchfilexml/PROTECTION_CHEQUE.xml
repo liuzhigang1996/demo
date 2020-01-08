@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data-mapping table_header="FILE_REQUEST" table_detail="REQ_CHEQUE_PROTECTION" line_length="70">
+
+	<string name="RECORD_ID" length="1" encoding="ASCII" />
+	<sectionif name="BH" key="RECORD_ID" isvalue="H">
+	    <string name="COMPANY_NAME"   length="18" encoding="ASCII"/>
+		<skip name="FILLER"   length="51" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="BD" key="RECORD_ID" isvalue="D">
+	    <string name="ACCOUNT"   length="10" encoding="ASCII"/>
+		<string name="CHEQUE_STYLE"   length="5" encoding="ASCII"/>
+		<string name="CHEQUE_NUMBER"   length="6" encoding="ASCII"/>
+		<string name="CURRENCY"   length="3" encoding="ASCII"/>
+		<decimal name="AMOUNT"   length="13,2" encoding="ASCII"/>
+		<string name="ISSUE_DATE"   length="8" encoding="ASCII"/>     
+		<skip name="FILLER"   length="24" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="FT" key="RECORD_ID" isvalue="T">
+	<string name="END_OF_FILE"   length="1" encoding="ASCII"/>
+	<skip name="FILLER"   length="178" encoding="ASCII"/>         
+	</sectionif>
+			
+	    
+</data-mapping>

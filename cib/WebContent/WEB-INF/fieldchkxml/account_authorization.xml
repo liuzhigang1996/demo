@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="search">
+		<field name="Select_By" label="Select_By" required="yes">
+			<reject prompt="Account_Required">
+				[Select_By]=="1" &amp;&amp; [account]==""				
+			</reject>
+			<reject prompt="User_Required">
+				[Select_By]=="2" &amp;&amp; [authUser]==""				
+			</reject>
+		</field>
+	</group>
+	<group name="select">
+		<field name="Account_User" label="Account_User_Required" required="yes"></field>
+	</group>
+	<group name="input">
+		<field name="account" label="Account_Required" required="yes"></field>
+		<field name="authUser" label="User_Required" required="yes"></field>
+	</group>
+</fieldchecking>

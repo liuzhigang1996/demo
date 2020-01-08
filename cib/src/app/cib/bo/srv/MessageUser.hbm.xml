@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Aug 21 10:37:24 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.srv">
+
+    <class name="MessageUser" table="MESSAGE_USER">
+        <id name="muId" column="MU_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="readTime" column="READ_TIME" type="java.util.Date" />
+        <property name="deleteTime" column="DELETE_TIME" type="java.util.Date" />
+        <property name="muStatus" column="MU_STATUS" type="java.lang.String" />
+ 
+        <many-to-one name="message" column="MESSAGE_ID" class="Message" />
+    </class>
+    
+</hibernate-mapping>

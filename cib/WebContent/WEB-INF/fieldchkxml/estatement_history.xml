@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+   <group name="estatementHistory">
+		<field name="dateFrom" label="Begin_time" required="no">
+		     <format type="date" />
+		     <reject prompt="Date_Justify_Begin">document.getElementById("dateRange").selectedIndex == 0 &amp;&amp; [dateFrom]==""</reject>
+			<reject prompt="Date_Justify">document.getElementById("dateRange").selectedIndex == 0 &amp;&amp;[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "")|| (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject> 
+		</field>
+		<field name="dateTo" label="End_time" required="no">
+		     <format type="date" />
+		     <reject prompt="Date_Justify_End">document.getElementById("dateRange").selectedIndex == 0 &amp;&amp; [dateTo]==""</reject>
+		</field>
+	</group>
+	
+</fieldchecking>

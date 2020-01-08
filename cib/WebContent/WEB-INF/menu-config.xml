@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE menu-setting SYSTEM "neturbo-menu.dtd">
+<menu-setting resource="app.cib.resource.sys.menu">
+	<menu type="group" mid="main" target="mainFrame">
+	 
+		<menu type="group" mid="Authorization" label="Authorization" class="app.cib.util.MenuCorp">
+			<menu type="item" mid="PendingApproval" permission="aut.corp" label="Pending Approval List" path="/cib/approve.do?ActionMethod=list"/>
+			<menu type="item" mid="AuthStatus" permission="aut.corp" label="Outstanding Authorizations" path="/cib/approve.do?ActionMethod=statusEnquiry&amp;procStatus=P"/>
+			<menu type="item" mid="AuthHistory" permission="aut.corp" label="Authorization History Enquiry" path="/cib/approve.do?ActionMethod=historyEnquiryLoad"/>
+		</menu>
+		<menu type="group" mid="TransationExecution" label="Transaction Execution">
+			<menu type="item" mid="PendingExecuction" permission="aut.exec" label="Pending Execution List" path="/cib/approve.do?ActionMethod=list"/>
+		</menu>
+		<menu type="group" mid="AuthorizationBank" label="Authorization">
+			<menu type="item" mid="PendingApprovalBank" permission="bnk.aut" label="Pending Approval List" path="/cib/approve.do?ActionMethod=list"/>
+			<menu type="item" mid="AuthStatusBank" permission="bnk.aut" label="Outstanding Authorizations" path="/cib/approve.do?ActionMethod=statusEnquiry&amp;procStatus=P"/>
+			<menu type="item" mid="AuthHistoryBank" permission="bnk.aut" label="Authorization History Enquiry" path="/cib/approve.do?ActionMethod=historyEnquiryLoad"/>
+		</menu>
+		<menu type="group" mid="CorpPreferencesForSupervisor" label="Company Preferences">
+			<menu type="item" mid="CorporationList" permission="srv.bank.supervisor" label="Company List" path="/cib/corporationForSupervisor.do?ActionMethod=list"/>
+		 	<menu type="item" mid="ViewAccounts" permission="srv.bank.supervisor" label="Accounts" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=account"/>
+			<menu type="item" mid="ViewLimits" permission="srv.bank.supervisor" label="Transaction Limits" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=limit"/>
+			<menu type="item" mid="ViewUsers" permission="srv.bank.supervisor" label="Company Users" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=user"/>
+			<menu type="item" mid="ViewAuthPreferences" permission="srv.bank.supervisor" label="Authorization Preferences" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=auth"/>
+			<menu type="item" mid="SetSubsidiarys" permission="srv.bank.supervisor" label="Subsidiaries" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=subsidiary"/>
+			<menu type="item" mid="viewGroups" permission="srv.bank.supervisor" label="User Groups" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=group"/>
+			<menu type="item" mid="configChecking" permission="srv.bank.supervisor" label="Configuration Checking" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=checking"/>
+			<!--<menu type="item" mid="AccountAuth" permission="srv.bank.supervisor" label="Account Authorization" path="/cib/corporationForSupervisor.do?ActionMethod=prefEntry&amp;prefType=acctauth"/>-->
+		</menu>
+		
+        <!-- Jet 2007.09.27 end -->
+		<menu type="group" mid="AccountEnquiry" label="Own Accounts">
+			<menu type="item" mid="AccountSummary" permission="enq" class="app.cib.util.MenuCorp" label="Accounts Summary" path="/cib/accEnquiry.do?ActionMethod=listAccountSummary"/>
+			<menu type="item" mid="CurrentAccount" permission="enq" class="app.cib.util.MenuCorp" label="Current Accounts" path="/cib/accEnquiry.do?ActionMethod=listCurrentAccount"/>
+			<menu type="item" mid="SavingAccount" permission="enq" class="app.cib.util.MenuCorp" label="Savings Accounts" path="/cib/accEnquiry.do?ActionMethod=listSavingAccount"/>
+			<menu type="item" mid="TimeDeposits" permission="enq" class="app.cib.util.MenuCorp" label="Time Deposits" path="/cib/accEnquiry.do?ActionMethod=listTimeDeposit"/>
+			<!--<menu type="item" mid="OverdraftAccount" permission="enq" class="app.cib.util.MenuCorp" label="Overdraft Accounts" path="/cib/accEnquiry.do?ActionMethod=listOverdraftAccount"/>-->
+			<menu type="item" mid="LoanAccount" permission="enq" class="app.cib.util.MenuCorp" label="Loan Accounts" path="/cib/accEnquiry.do?ActionMethod=listLoanAccount"/>
+			<!--<menu type="item" mid="CreditAccount" permission="enq" class="app.cib.util.MenuCorp" label="Credit_Account" path="/cib/accEnquiry.do?ActionMethod=listCreditAccount"/>-->
+			<!--
+			
+			<menu type="item" mid="AuthStatusOper" permission="txn" label="Outstanding Authorizations" path="/cib/approve.do?ActionMethod=statusEnquiry&amp;procStatus=P"/>
+			--><menu type="item" mid="NameAccount" permission="enq.nameAcc" class="app.cib.util.MenuCorp" label="Name Account" path="/cib/corpAccount.do?ActionMethod=nameAccountLoad"/>
+			
+		</menu>
+		
+		<!--  Delete by long_zg 2019-05-22 UAT6-457 COB：company setting菜單項問題 begin  -->
+		<!--<menu type="group" mid="CorpInfo" label="Company Settings">
+			<menu type="item" mid="ViewAccounts" permission="sys.corpinfo" label="Account List" path="/cib/corpInfo.do?ActionMethod=viewAccInfoList"/>
+			<menu type="item" mid="ViewLimits" permission="sys.corpinfo" label="Transaction Limits" path="/cib/corpInfo.do?ActionMethod=viewAccLimitsList"/>
+			<menu type="item" mid="ViewAuthPreferences" permission="sys.corpinfo" label="Authorization Preferences" path="/cib/corpInfo.do?ActionMethod=viewAuthPrefList"/>
+			<menu type="item" mid="ViewCorpUser" permission="sys.corpinfo" label="Users" path="/cib/corpInfo.do?ActionMethod=viewCorpUserList"/>
+			<menu type="item" mid="NameAccount" permission="adm.nameacct" class="app.cib.util.MenuCorp" label="Name Account" path="/cib/corpAccount.do?ActionMethod=nameAccountLoad"/>
+		</menu>
+		--><!--  Delete by long_zg 2019-05-22 UAT6-457 COB：company setting菜單項問題 end  -->
+        <menu type="group" mid="Transfer" label="Transfers">
+        	<!--  Modify by long_zg 2019-05-22 UAT6-245 COB：四種轉賬的名稱需要更改 begin  -->
+			<!--
+			<menu type="item" mid="AccountsBANK" permission="txn.transfer" label="To Accounts in BANK" path="/cib/transferInBANK.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="AccountsBANK3rd" permission="txn.transfer" label="To Accounts in BANK 3rd" path="/cib/transferInBANK3rd.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="AccountsMacau" permission="txn.transfer" label="To Accounts in Other Banks in Macau" path="/cib/transferInMacau.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="AccountsOverseas" permission="txn.transfer" label="To Accounts in Banks Overseas" path="/cib/transferInOversea.do?ActionMethod=addLoad"/>
+			-->
+			<menu type="item" mid="AccountsBANK" permission="txn.transfer" label="To My Account" path="/cib/transferInBANK.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="AccountsBANKMDB" permission="txn.transfer" label="To MDB Bank Account" path="/cib/transferInBANK3rd.do?ActionMethod=addLoad3rd&amp;ownerAccFlag=N"/>
+			<menu type="item" mid="AccountsMacau" permission="txn.transfer" label="To Local Bank Account" path="/cib/transferInMacau.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="AccountsOverseas" permission="txn.transfer" label="To Overseas Bank Account" path="/cib/transferInOversea.do?ActionMethod=addLoad"/>
+			<!--  Modify by long_zg 2019-05-22 UAT6-245 COB：四種轉賬的名稱需要更改 end  -->
+			<menu type="item" mid="TransferTemplate" permission="txn.transfer" label="Transfer Templates" path="/cib/transferTemplate.do?ActionMethod=listTemplate"/>
+			<menu type="item" mid="TransferHistory" permission="txn.transfer" label="Transfer History" path="/cib/transferHistory.do?ActionMethod=listLoad"/>
+		</menu>
+		<!-- modified by lzg 20190611 -->
+	    <!--<menu type="group" mid="BatchTransfer" label="Batch Transfers">
+			<menu type="item" mid="AccountsBankStM" permission="txn.transfer" label="Single To Multi Accounts in BANK" path="/cib/transferInBankStM.do?ActionMethod=uploadFileLoad"/>
+			<menu type="item" mid="AccountsBankMtS" permission="txn.transfer" label="Multi To Single Accounts in BANK" path="/cib/transferInBankMtS.do?ActionMethod=uploadFileLoad"/>
+			
+			<menu type="item" mid="AccountsMacauStM" permission="txn.transfer" label="Single To Multi Accounts in Macau" path="/cib/transferInMacauStM.do?ActionMethod=uploadFileLoad"/>
+			<menu type="item" mid="AccountsOverseaStM" permission="txn.transfer" label="Single To Multi Accounts Overseas" path="/cib/transferInOverseaStM.do?ActionMethod=uploadFileLoad"/>
+		    
+		</menu>	
+		--><!-- modified by lzg 20190611 -->	  
+		<!-- mod by linrui for oracle 
+        	<menu type="group" mid="CorpFundAllocation" label="Fund Allocation" class="app.cib.util.MenuCorp">
+			<menu type="item" mid="Delivery" permission="txn.corp" label="Delivery To Subsidiary" path="/cib/corpDelivery.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="BetweenSubsidiary" permission="txn.corp"  label="Transfer Between Subsidiaries" path="/cib/corpSubsidiaryTransfer.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="Repatriate" permission="txn.corp"  label="Repatriate From Subsidiary" path="/cib/corpRepatriate.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="FundAllocationHistory" permission="txn.corp" label="Fund Allocation History" path="/cib/corpHistory.do?ActionMethod=listLoad"/>
+		</menu>
+        -->
+        <!-- mod by linrui for oracle
+		<menu type="group" mid="PayBills" label="Bill Payment">
+			<menu type="item" mid="FrequentPaymentList" permission="txn.pay" label="Frequent Payment List" path="/cib/templatePayment.do?ActionMethod=listTemplate"/>
+			<menu type="item" mid="GeneralPayment" permission="txn.pay" label="General Payment" path="/cib/billPayment.do?ActionMethod=generalPaymentLoad"/>
+			<menu type="item" mid="CreditCard" permission="txn.pay" label="Credit Card Payment" path="/cib/billPayment.do?ActionMethod=cardPaymentLoad"/>
+			<menu type="item" mid="Tax" permission="txn.pay" class="app.cib.util.MenuCorp" label="Tax" path="/cib/billPayment.do?ActionMethod=taxPaymentLoad"/>
+			
+			<menu type="item" mid="AutopayInstructionList" permission="txn.pay" class="app.cib.util.MenuCorp" label="Autopay Instruction List" path="/cib/autopayAuthorization.do?ActionMethod=listAutopay"/>
+			
+			<menu type="item" mid="PaymentHistory" permission="txn.pay" label="Bill Payment History" path="/cib/billPayment.do?ActionMethod=listLoad"/>
+			<menu type="item" mid="BatchPaymentHistory" permission="txn.pay" label="Batch Payment History" path="/cib/templatePayment.do?ActionMethod=listHistoryLoad"/>
+		</menu>	
+		-->	
+		<menu type="group" mid="TDTransaction" label="Time Deposits" class="app.cib.util.MenuCorp">
+			<menu type="item" mid="TDEnquirys" permission="txn.td" label="Time Deposit Enquiry" class="app.cib.util.MenuCorp" path="/cib/accEnquiry.do?ActionMethod=listTimeDeposit"/>
+			<menu type="item" mid="NewTD" permission="txn.td" label="New Time Deposit" path="/cib/timeDeposit.do?ActionMethod=addTimeDepositLoad"/>
+			<menu type="item" mid="TDWithdrawals" permission="txn.td" label="Time Deposit Withdrawal" class="app.cib.util.MenuCorp" path="/cib/timeDeposit.do?ActionMethod=listTimeDepositWithdrawal"/>
+			<menu type="item" mid="TDHistory" permission="txn.td" label="Time Deposit Transfer History" class="app.cib.util.MenuCorp" path="/cib/timeDeposit.do?ActionMethod=listLoad"/>
+		</menu>
+		
+		<!-- <menu type="group" mid="Payroll" label="Payroll">
+			<menu type="item" mid="UploadFile" permission="txn.payroll" label="Upload File" path="/cib/payroll.do?ActionMethod=uploadFileLoad"/>
+			<menu type="item" mid="UsePreviousFile" permission="txn.payroll" label="Use Previous File" path="/cib/payroll.do?ActionMethod=usePreviousFileLoad"/>
+			<menu type="item" mid="PayrollResults" permission="txn.payroll" label="Payroll Results Enquiry" path="/cib/payroll.do?ActionMethod=listHistoryLoad"/>
+		</menu> -->
+		<!-- modified by lzg 20190611 -->
+		<!--<menu type="group" mid="ScheduledTransfer" label="Scheduled Transfer">
+			<menu type="item" mid="ScheduleList" permission="txn.schetxn" label="Scheduled Transfer List" path="/cib/scheduleTransferBANK.do?ActionMethod=list"/>
+			<menu type="item" mid="NewSchedule" permission="txn.schetxn" label="New Transfer Schedule" path="/cib/scheduleTransferBANK.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="SchOptHistory" permission="txn.schetxn" label="Scheduled Transfer Maintenance History" path="/cib/schTransferHistory.do?ActionMethod=listOperationHistoryLoad"/>
+			<menu type="item" mid="SchBatchHistory" permission="txn.schetxn" label="Scheduled Transfer Transaction History" path="/cib/schTransferHistory.do?ActionMethod=listLoad"/>
+			
+		</menu>
+		--><!-- modified by lzg end -->
+		
+		<menu type="group" mid="UserGroup" label="User Group Management">
+			<menu type="item" mid="GroupList" permission="sys.group" label="User Group List" path="/cib/group.do?ActionMethod=groupList"/>
+			<menu type="item" mid="NewGroup" permission="sys.group" label="New User Group" path="/cib/group.do?ActionMethod=addGroupLoad"/>
+			<menu type="item" mid="GroupAssignment" permission="sys.group" label="User Group Assignment" path="/cib/group.do?ActionMethod=assignGroupLoad"/>
+		</menu>
+		<menu type="group" mid="CorpManagement" label="Company Management">
+			<menu type="item" mid="CorporationList" permission="bnk.corp" label="Company List" path="/cib/corporation.do?ActionMethod=list"/>
+			<menu type="item" mid="NewCorporation" permission="bnk.corp" label="Register New Company" path="/cib/corporation.do?ActionMethod=addLoad"/>
+		</menu>
+				
+		<menu type="group" mid="CorpPreferences" label="Company Preferences">				
+			<!-- linruilinrui<menu type="item" mid="SetAccounts" permission="bnk.corp" label="Set Accounts" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=account"/>	 --> 
+		 	<menu type="item" mid="ViewAccounts" permission="bnk.corp" label="Accounts" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=account"/>
+			<menu type="item" mid="SetLimits" permission="bnk.corp" label="Transaction Limits" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=limit"/>
+			<menu type="item" mid="SetUsers" permission="bnk.corp" label="Company Users" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=user"/>
+			<menu type="item" mid="SetAuthPreferences" permission="bnk.corp" label="Authorization Preferences" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=auth"/>
+			<menu type="item" mid="SetSubsidiarys" permission="bnk.corp" label="Subsidiaries" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=subsidiary"/>
+			<menu type="item" mid="viewGroups" permission="bnk.corp" label="User Groups" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=group"/>
+		<!-- linruilinrui	<menu type="item" mid="AccountAuth" permission="bnk.corp" label="Account Authorization" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=acctauth"/> -->
+			<menu type="item" mid="configChecking" permission="bnk.corp" label="Configuration Checking" path="/cib/corporation.do?ActionMethod=prefEntry&amp;prefType=checking"/>
+		</menu>
+		<menu type="group" mid="BankUserManagement" label="Bank User Management">
+			<menu type="item" mid="UserList1" permission="bnk.user" label="User List" path="/cib/bankUser.do?ActionMethod=list"/>
+			<menu type="item" mid="NewUser1" permission="bnk.user" label="New User" path="/cib/bankUser.do?ActionMethod=addLoad"/>
+			<menu type="item" mid="UserOperationHistory" permission="bnk.user" label="User Maintenance History" path="/cib/bankUser.do?ActionMethod=listOperationHistoryLoad"/>
+		</menu>
+		<!-- mod by linrui for oracle 
+		<menu type="group" mid="ReportsForApprover" label="Reports">
+			<menu type="item" mid="TxnReport" permission="rpt.txn" label="Transaction Report" path="/cib/txnReport.do?ActionMethod=listTransferReportLoad"/>			
+			<menu type="item" mid="PayrollReport" permission="rpt.txn" label="Payroll Report" path="/cib/payrollReport.do?ActionMethod=listReportLoad"/>
+			<menu type="item" mid="ScheduledTxnReport" permission="rpt.txn" label="Scheduled Transfer Report" path="/cib/schTxnReport.do?ActionMethod=listReport"/>
+			<menu type="item" mid="ApprovalReport" permission="rpt.aut" label="Authorization History Report" path="/cib/approvalReport.do?ActionMethod=listApprovalReportLoad"/>
+			<menu type="item" mid="PendingStatusReport" permission="rpt.aut" label="Pending Status Report" path="/cib/approvalReport.do?ActionMethod=listPendingStatusReportLoad"/>						
+			<menu type="item" mid="PayReport" permission="rpt.txn" label="Bill Pay Report" path=""/>
+			<menu type="item" mid="FAReport" permission="rpt.txn" label="Corporate Fund Allocation" path=""/>			
+		</menu>
+		-->
+		<!--mod by linrui
+		<menu type="group" mid="ReportsForAdministrator" label="Reports">
+			<menu type="item" mid="UserActivityReport" permission="rpt.adm" label="User Activity Log Report" path="/cib/userReport.do?ActionMethod=listActivityLogReportLoad"/>
+			
+			<menu type="item" mid="ARTSReport" permission="rpt.adm" label="Approver Related Transaction Suspend Report" path="/cib/approvalReport.do?ActionMethod=listSuspendReport"/>
+			
+		</menu>
+		end-->
+		<!--Functions of Phrase 2
+		<menu type="group" mid="Report" label="Report">
+			<menu type="item" mid="UserManagementReport" permission="rpt.corp.user" label="User Management Log Report" path=""/>
+			<menu type="item" mid="UserStatusReport" permission="rpt.corp.user" label="User Status Report" path=""/>
+			<menu type="item" mid="UserActivityReport" permission="rpt.corp.user" label="User Activity Log Report" path=""/>
+			<menu type="item" mid="ARTSReport" permission="rpt.corp.user" label="Approver Related Transaction Suspend Report" path=""/>
+		</menu>
+		-->
+		<!--Functions of Phrase 2
+		<menu type="group" mid="Report" label="Report">
+			<menu type="item" mid="UserManagementReport1" permission="rpt.bank.user" label="User Management Log Report" path=""/>
+			<menu type="item" mid="UserStatusReport1" permission="rpt.bank.user" label="User Status Report" path=""/>
+			<menu type="item" mid="UserActivityReport1" permission="rpt.bank.user" label="User Activity Log Report" path=""/>
+		</menu>
+		-->
+
+        <!-- Jet 2007.09.27 -->
+		<menu type="group" mid="AccountEnquiryBank" label="Company Accounts">
+			<menu type="item" mid="AccountEnquiryBank" permission="srv.bank.enq" label="Company Accounts No Br" path="/cib/accountEnqBank.do?ActionMethod=prefEntry&amp;prefType=summary"/>
+			<menu type="item" mid="CurrencyManagement" permission="srv.bank.enq" label="Currency Management" path="/cib/setCurrency.do?ActionMethod=setCurrencyLoad"/>
+		    
+		</menu>
+
+		<menu type="group" mid="ViewerAccessList" label="Viewer Access List">
+			<menu type="item" mid="ViewerAccessList" permission="srv.bank" label="Viewer Acccess List No Br" path="/cib/viewerAccessList.do?ActionMethod=listLoad"/>
+		</menu>
+
+		<menu type="group" mid="ServiceBank" label="Services">
+			<menu type="item" mid="MessageBroadcast" permission="srv.bank" label="Message Broadcast" path="/cib/messageManage.do?ActionMethod=listByBank"/>
+			<menu type="item" mid="Message" permission="srv.bank.message" label="Message" path="/cib/messageManage.do?ActionMethod=listByBankSupervisor"/>
+			<menu type="item" mid="ChangePIN" permission="srv.bank.util" label="Change PIN" path="/cib/bankUser.do?ActionMethod=setPasswordLoad"/>
+			<menu type="item" mid="PrintPassword" permission="srv.bank.util" label="Print Password" path="/cib/messageManage.do?ActionMethod=listPrintPassword"/>
+			<!-- add by lzg -->
+			<menu type="item" permission="bnk.corp"  mid="TransferPrompt"  label="Transfer_Prompt" path="/cib/transferPrompt.do?ActionMethod=load"/>	
+		</menu>
+
+		<!-- Jet modify: move the requests transaction to independent menu 20071022 -->		
+		<menu type="group" mid="Requests" permission="srv.corp.req" label="Requests">
+		    <!-- Modify by long_zg UAT6-462 COB：申請支票和掛失支票菜單對調下位置 begin -->
+		    <!--
+		    <menu type="item" mid="StopChequeRequest" permission="srv.corp.req" label="Stop Cheque Request" path="/cib/stopChequeRequest.do?ActionMethod=stopLoad"/>
+			-->
+			<!-- Modify by long_zg UAT6-462 COB：申請支票和掛失支票菜單對調下位置 end -->
+			
+			<!-- mod by linrui for oracle 
+			<menu type="item" mid="ChequeProtection" permission="srv.corp.req" label="Cheque Protection" path="/cib/protectionChequeRequest.do?ActionMethod=protectionLoad"/>
+			-->
+			<!-- mod by linrui for oracle
+			<menu type="item" mid="BankDraftRequest" permission="srv.corp.req" label="Bank Draft Request" path="/cib/bankRequest.do?ActionMethod=addLoad"/>	        
+	        <menu type="item" mid="CashOrderRequest" permission="srv.corp.req" label="Cashier Order Request" path="/cib/cashOrderRequest.do?ActionMethod=addLoad"/>
+	        -->
+	        <!-- add by long_zg 2014-12-16 for CR192 bob batch -->
+	        <menu type="item" mid="ChequeBookRequest" permission="srv.corp.req" label="Cheque Book Request" path="/cib/chequeBookRequest.do?ActionMethod=addLoad"/>
+	        <!-- add by lzg 20190722 -->
+	        <menu type="item" mid="ChequeRequestHistroy" permission="srv.corp.req" label="Cheque Request History" path="/cib/chequeBookRequest.do?ActionMethod=listLoad"/>
+	         <!-- Add by long_zg UAT6-462 COB：申請支票和掛失支票菜單對調下位置 begin -->
+		    <menu type="item" mid="StopChequeRequest" permission="srv.corp.req" label="Stop Cheque Request" path="/cib/stopChequeRequest.do?ActionMethod=stopLoad"/>
+			<!-- Add by long_zg UAT6-462 COB：申請支票和掛失支票菜單對調下位置 end -->
+	        <menu type="item" mid="RequestHistroy" permission="srv.corp.req" label="Request History" path="/cib/bankRequest.do?ActionMethod=listLoad"/>
+	        
+		</menu>
+		<!-- change position -->
+		<menu type="group" mid="CorpAccount" label="Subsidiaries Accounts" class="app.cib.util.MenuCorp">
+			<menu type="item" mid="AccountSummary1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Accounts Summary" path="/cib/subsidiaryAcc.do?ActionMethod=listAccountSummary"/>
+			<menu type="item" mid="CurrentAccount1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Current Accounts" path="/cib/subsidiaryAcc.do?ActionMethod=listCurrentAccount"/>
+			<menu type="item" mid="SavingAccount1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Savings Accounts" path="/cib/subsidiaryAcc.do?ActionMethod=listSavingAccount"/>
+			<menu type="item" mid="TimeDeposit1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Time Deposits" path="/cib/subsidiaryAcc.do?ActionMethod=listTimeDeposit"/>
+			<!--<menu type="item" mid="OverdraftAccount1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Overdraft Accounts" path="/cib/subsidiaryAcc.do?ActionMethod=listOverdraftAccount"/>-->
+			<menu type="item" mid="LoanAccount1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Loan Accounts" path="/cib/subsidiaryAcc.do?ActionMethod=listLoanAccount"/>
+			<!--<menu type="item" mid="CreditAccount1" permission="enq.corp" class="app.cib.util.MenuCorp" label="Credit_Account" path="/cib/subsidiaryAcc.do?ActionMethod=listCreditAccount"/>-->
+		</menu>
+		
+		
+		<!-- wen_chy start:  20090921 -->
+		<!-- mod by linrui for oracle 		
+		<menu type="group" mid="MerchantEnquiry" class="app.cib.util.MenuCorp" permission="enq" label="Merchant Enquiry">
+		    <menu type="item" mid="SummaryInformationEnquiry" class="app.cib.util.MenuCorp" permission="enq" label="Summary Information Enquiry" path="/cib/merchantEnquiry.do?ActionMethod=listSummary"/>
+			<menu type="item" mid="DetailInformationEnquiry" class="app.cib.util.MenuCorp" permission="enq" label="Detail Information Enquiry" path="/cib/merchantEnquiry.do?ActionMethod=listDetail"/>
+		</menu>
+		-->
+		<!-- wen_chy end:  20090921 -->	
+		
+		<!--  Add by long_zg 2019-05-30 UAT6-457 COB：company setting菜單項問題 begin  -->
+		<menu type="group" mid="CorpInfo" label="Company Settings">
+			<menu type="item" mid="ViewAccounts" permission="sys.corpinfo" label="Account List" path="/cib/corpInfo.do?ActionMethod=viewAccInfoList"/>
+			<menu type="item" mid="ViewLimits" permission="sys.corpinfo" label="Transaction Limits" path="/cib/corpInfo.do?ActionMethod=viewAccLimitsList"/>
+			<menu type="item" mid="ViewAuthPreferences" permission="sys.corpinfo" label="Authorization Preferences" path="/cib/corpInfo.do?ActionMethod=viewAuthPrefList"/>
+			<menu type="item" mid="ViewCorpUser" permission="sys.corpinfo" label="Users" path="/cib/corpInfo.do?ActionMethod=viewCorpUserList"/>
+			<menu type="item" mid="NameAccount" permission="adm.nameacct" class="app.cib.util.MenuCorp" label="Name Account" path="/cib/corpAccount.do?ActionMethod=nameAccountLoad"/>
+		</menu>
+		<!-- add by lzg 20190904 -->
+		<menu type="group" mid="estatement" label="Estatement" class="app.cib.util.MenuCorp">
+			<menu type="item" permission="txn.estatement"  mid="estatement"  label="Estatement" path="/cib/estatement.do?ActionMethod=listLoad"/>	
+		</menu>
+		<!-- add by lzg end -->
+		<!--  Add by long_zg 2019-05-30 UAT6-457 COB：company setting菜單項問題 end  -->
+		<menu type="group" mid="Service" permission="srv.corp" label="Services">
+			<menu type="item" mid="Message" permission="srv.corp" label="Messages" path="/cib/message.do?ActionMethod=list"/>
+			<!--<menu type="item" mid="WireInOnTheWay"  class="app.cib.util.MenuCorp" permission="srv.corp.wirein" label="Wire-in Enquiry" path="/cib/wireInInfo.do?ActionMethod=listWireInInfo"/>
+			<menu type="item" mid="AccountAuthorization" permission="srv.corp.acctauth" label="Account Authorization" path="/cib/accountAuthorization.do?ActionMethod=listAccountAuthorizationCorp"/>-->
+			<menu type="item" mid="ChangePIN" permission="srv.corp.util" label="Change PIN" path="/cib/corpUser.do?ActionMethod=setPasswordLoad"/>
+			<menu type="item" mid="ChangeSecurityCode" class="app.cib.util.MenuCorp" permission="srv.corp.util" label="Change Security Code" path="/cib/corpUser.do?ActionMethod=setSecurityCodeLoad"/>
+			<menu type="item" mid="AuthStatusOper" permission="txn" label="Outstanding Authorizations" path="/cib/approve.do?ActionMethod=statusEnquiry&amp;procStatus=P"/>
+			<!-- <menu type="item" mid="DocArchive" permission="srv.corp.util" label="Document Archive" path="/cib/estatement.do?ActionMethod=listDocLoad"/> -->
+			<!--Removed
+			<menu type="item" mid="UpLoadFile" permission="txn.transfer" label="UpLoad File" path="/cib/uploadFile.do?ActionMethod=load"/>
+			-->
+		</menu>
+		
+	</menu>
+	<menu type="group" mid="bottom" target="_blank">
+			<!--<menu type="item" mid="InterestRate" class="app.cib.util.MenuCorp" permission="" label="Interest Rate" path="/cib/interestRates.do?ActionMethod=listInterestRates"/>
+			<menu type="item" mid="ExchangeRate" class="app.cib.util.MenuCorp" permission="" label="Exchange Rate" path="/cib/exchangeRates.do?ActionMethod=listExchangeRates"/>
+			<menu type="item" mid="ContactUs" permission="" label="Contact Us" path=""/>
+			<menu type="item" mid="MacauHoliday" permission="" label="Macau Holiday" path="http://www.bank.com.mo/en/for_bank_online/holidays/holidays.htm"/>
+			<menu type="item" mid="ServiceSchedule" permission="" label="Service Schedule" path="/cib/common/docs/BOB_business_hours.pdf"/>
+			<menu type="item" mid="FormsDownload" permission="" label="Forms Download" path="http://www.bank.com.mo/en/for_bob/forms_download/forms.htm"/>
+	--></menu>
+</menu-setting>

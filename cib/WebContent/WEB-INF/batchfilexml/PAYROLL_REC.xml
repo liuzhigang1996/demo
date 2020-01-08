@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-mapping table="PAYROLL_REC">
+        <!--<skip name="FILLER"   length="2" encoding="ASCII"/> -->
+        <string name="TRANS_ID"   length="16" encoding="ASCII"/> 
+        <skip name="CCY"   length="3" encoding="ASCII"/> 
+        <skip name="AMT"   length="16" encoding="ASCII"/> 
+        <skip name="FROM_ACCT"   length="32" encoding="ASCII"/> 
+        <skip name="TO_ACCT"   length="32" encoding="ASCII"/> 
+        <string name="STATUS"   length="1" encoding="ASCII"/> 		
+        <string name="ERROR_MSG"   length="6" encoding="ASCII"/> 		  
+	    <skip name="EFFECTIVE_DATE"   length="8" encoding="ASCII"/>    
+		<skip name="FILLER"   length="9" encoding="ASCII"/>         
+</data-mapping>
+

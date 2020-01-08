@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+    
+    <group name="transferInBankStM">
+	<field name="uploadFile" label="choose_file" required="yes">
+	</field>	
+	</group>
+	<group name="transferInBankMtS">
+	<field name="uploadFile" label="choose_file" required="yes">
+	</field>	
+	</group>
+	<group name="transferInMacauStM">
+	<field name="uploadFile" label="choose_file" required="yes">
+	</field>	
+	</group>
+	<group name="transferInOverseaStM">
+	<field name="uploadFile" label="choose_file" required="yes">
+	</field>	
+	</group>
+</fieldchecking>

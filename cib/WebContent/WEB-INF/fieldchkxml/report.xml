@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="approver_report">
+		<field name="dateFrom" label="Date_From" >
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "")|| (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+		</field>
+	</group>
+	<group name="user_actitity_report">
+		<field name="dateFrom" label="date_from" >
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "")|| (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+		</field>
+	</group>
+	<group name="sch_report">
+		<field name="batchId" label="batch_id" required="yes">
+		</field>
+	</group>
+</fieldchecking>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+    <group name="corpHistory">
+		<field name="fromAccount" label="Account_Number" required="yes">
+			<format type="numonly" />
+		</field>
+		<field name="fromCorporation" label="Corporation" required="yes">
+			<format type="string" />
+		</field>
+		<field name="dateFrom" label="date_from" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "") || (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+        </field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+		</field>
+	</group>
+	<group name="corpDelivery">
+		<field name="fromAccount" label="From_Account" required="yes">
+			<format type="numonly" />
+		</field>
+		<field name="toAccount" label="To_Account" required="yes">
+			<format type="numonly" />
+			<reject prompt="From Account can not be the same as to Account">[fromAccount]==[toAccount]</reject>
+		</field>
+		<field name="toCorporation" label="To_Corporation" required="yes">
+			<format type="string" />
+		</field>
+		<field name="transferAmount" label="To_Amount" >
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;0 &amp;&amp; [debitAmount]&lt;0 </reject>
+		</field>
+		<field name="debitAmount" label="Transfer_Amount_Info2" >
+			<format type="amount" />
+		</field>		
+	</group>
+	<group name="corpSubsidiary">
+		<field name="fromCorporation" label="From_Corporation" required="yes">
+			<format type="string" />
+		</field>
+		<field name="fromAccount" label="From_Account" required="yes">
+			<format type="numonly" />
+		</field>
+		<field name="toCorporation" label="To_Corporation" required="yes">
+			<format type="string" />
+		</field>
+		<field name="toAccount" label="To_Account" required="yes">
+			<format type="numonly" />
+			<reject prompt="From Account can not be the same as to Account">[fromAccount]==[toAccount]</reject>
+		</field>
+		<field name="transferAmount" label="To_Amount" >
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;0 &amp;&amp; [debitAmount]&lt;0 </reject>
+		</field>
+		<field name="debitAmount" label="Transfer_Amount_Info2" >
+			<format type="amount" />
+		</field>		
+	</group>
+	<group name="corpRepatriate">
+		<field name="fromCorporation" label="From_Corporation" required="yes">
+			<format type="string" />
+		</field>
+		<field name="fromAccount" label="From_Account" required="yes">
+			<format type="numonly" />
+		</field>
+		<field name="toAccount" label="To_Account" required="yes">
+			<format type="numonly" />
+			<reject prompt="From Account can not be the same as to Account">[fromAccount]==[toAccount]</reject>
+		</field>
+		<field name="transferAmount" label="To_Amount" >
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;0 &amp;&amp; [debitAmount]&lt;0 </reject>
+		</field>
+		<field name="debitAmount" label="Transfer_Amount_Info2" >
+			<format type="amount" />
+		</field>		
+	</group>
+</fieldchecking>

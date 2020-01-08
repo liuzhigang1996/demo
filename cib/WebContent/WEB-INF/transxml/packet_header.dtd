@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Williams (501) -->
+<!ELEMENT packet_common_part (packet_to_format, packet_to_parse)>
+<!ATTLIST packet_common_part
+	service_name CDATA #IMPLIED
+	server_ip CDATA "127.0.0.1"
+	server_port CDATA "2035"
+>
+<!ELEMENT packet_to_format (header)>
+<!ATTLIST packet_to_format
+	buffer_length CDATA #REQUIRED
+	fixed_length CDATA "true"
+>
+<!ELEMENT packet_to_parse (header)>
+<!ATTLIST packet_to_parse
+	buffer_length CDATA #REQUIRED
+	fixed_length CDATA "true"
+>
+<!ELEMENT header (field*, loop*)>
+<!ATTLIST header
+	head_length CDATA #IMPLIED
+	format_length_field CDATA ""
+	format_count_field CDATA ""
+	format_length_rule CDATA "0"
+	format_count_rule CDATA "0"
+	parse_length_field_position CDATA "0"
+	parse_length_field_len CDATA "0"
+>
+<!ELEMENT field (format)>
+<!ATTLIST field
+	name CDATA #REQUIRED
+	default_value CDATA #IMPLIED
+>
+<!ELEMENT format (#PCDATA)>
+<!ATTLIST format
+	skip CDATA "0"
+	skip_after CDATA "0"
+	length CDATA "0"
+	delimiter CDATA #IMPLIED
+	pic (l|r|9|0|b) "l"
+	signed CDATA "no"
+	hidden_decimal CDATA "yes"
+	decimal CDATA "0"
+>
+<!ELEMENT loop (field+)>
+<!ATTLIST loop
+	name CDATA #REQUIRED
+	count CDATA #IMPLIED
+>

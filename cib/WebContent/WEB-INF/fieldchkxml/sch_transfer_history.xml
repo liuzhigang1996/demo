@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="schTransferHistory">
+		<field name="beneficiaryType" label="Schedule_Business_type" required="yes">
+			<format type="string" />
+		</field>
+		<field name="dateFrom" label="date_from" required="no">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "") || (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+        </field>
+		<field name="dateTo" label="date_to" required="no">
+			<format type="date"/>
+		</field>
+	</group>
+</fieldchecking>

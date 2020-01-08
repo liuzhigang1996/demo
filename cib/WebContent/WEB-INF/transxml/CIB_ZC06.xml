@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE packet SYSTEM "packet.dtd">-->
+<transaction>
+	<packet-to-host>
+		<string name="FIELD_PRESENT_BYTE1" length="1" encoding="ASCII" default="0B00000001"/> 
+		<string name="FIELD_PRESENT_BYTE2" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE3" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE4" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE5" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE6" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE7" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE8" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE9" length="1" encoding="ASCII" default="0B00000000"/> 
+		<string name="FIELD_PRESENT_BYTE10" length="1" encoding="ASCII" default="0B00100000"/>
+		<number name="DEBIT_ACC_NO" comp3length="12" encoding="COMP3"/> 
+		<decimal name="TOTAL_DEBIT_AMT" comp3length="15,2" encoding="COMP3"/>
+		<number name="DEBIT_CCY" comp3length="3" encoding="COMP3"/> 
+		<number name="NO_OF_CASHIER_ORDER" comp3length="3" encoding="COMP3"/>
+		<number name="CHRG_ACC" comp3length="12" encoding="COMP3"/>
+		<sectionloop name="CHRG_ACC_LIST" countfield="NO_OF_CASHIER_ORDER">  
+			<string name="NAME_ON_CASHIER_ORDER" length="35" encoding="EBCDIC"/> 
+			<string name="NAME_ON_CASHIER_ORDER1" length="35" encoding="EBCDIC"/> 
+			<string name="NAME_ON_CASHIER_ORDER2" length="35" encoding="EBCDIC"/> 
+			<decimal name="CASHIER_ORDER_AMT" comp3length="15,2" encoding="COMP3"/>
+			<decimal name="CASHIER_ORDER_CHRG_AMT" comp3length="15,2" encoding="COMP3"/>
+			<!-- add by lw 20100904 -->
+			<string name="PURPOSE_CODE" length="2" encoding="EBCDIC"/>
+			<string name="OTHER_PURPOSE" length="35" encoding="EBCDIC"/>
+			<string name="PROOF_OF_PURPOSE" length="1" encoding="EBCDIC"/>
+			<!-- add by lw end -->
+		</sectionloop>
+		<string name="TRANSACTIONS_TIME" length="6" encoding="EBCDIC"/> 	
+		<string name="CORPORATION_ID" length="10" encoding="EBCDIC"/> 
+		<string name="EBANKING_ID" length="12" encoding="EBCDIC"/> 
+		<string name="LANGUAGE_CODE" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSACTION_NATURE" length="1" encoding="EBCDIC"/> 
+		<string name="TRANSFER2ACC_TYPE" length="1" encoding="EBCDIC"/> 	 
+		<string name="LOCAL_TRANSACTION_REF" length="18" encoding="EBCDIC"/> 
+		<string name="51_TRANSACTION_FLAG" length="1" encoding="EBCDIC"/> 
+	</packet-to-host>
+	<packet-from-host>
+ 	</packet-from-host>
+</transaction>

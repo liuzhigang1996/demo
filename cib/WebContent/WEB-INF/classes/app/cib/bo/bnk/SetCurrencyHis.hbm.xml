@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="app.cib.bo.bnk">
+
+    <class name="SetCurrencyHis" table="AVAILABLE_CURRENCIES_HIS">
+        <id name="ccyCode" column="CCY_CODE" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+        <property name="availableFlag" column="AVAILABLE_FLAG" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+
+    </class>
+    
+</hibernate-mapping>

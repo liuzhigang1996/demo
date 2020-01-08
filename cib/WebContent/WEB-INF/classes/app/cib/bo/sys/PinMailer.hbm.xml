@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Mon Nov 17 12:47:30 CST 2008                         -->
+<hibernate-mapping package="app.cib.bo.sys">
+
+    <class name="PinMailer" table="PIN_MAILER">
+        <id name="seqNo" column="SEQ_NO" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="referenceNo" column="REFERENCE_NO" type="java.lang.String" />
+        <property name="password" column="PASSWORD" type="java.lang.String" />
+        <property name="created" column="CREATED" type="java.util.Date" />
+        <property name="confirmed" column="CONFIRMED" type="java.util.Date" />
+    </class>
+    
+</hibernate-mapping>

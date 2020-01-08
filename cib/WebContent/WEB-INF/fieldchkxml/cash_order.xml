@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+  <group name="cash_order_history">
+	    <field name="fromAccount" label="Account_Number" required="yes">
+			<format type="numonly" />
+		</field>
+		<field name="begin_time" label="Begin_time">
+		     <format type="date" />
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([begin_time])>getDateValue([end_time]) &amp;&amp; [end_time] != "")|| (([begin_time]=="") &amp;&amp; ([end_time]=="")))</reject>
+		</field>
+		<field name="end_time" label="End_time">
+		     <format type="date" />
+		</field>
+	</group>
+	<group name="cash_order_requst">
+	<field name="fromAccount" label="Account_Number" required="yes">
+		<format type="numonly" />
+	</field>
+	<field name="toCurrency" label="Currency" required="yes">
+		<format type="string" />
+	</field>
+	<field name="totalNumber" label="Cash_Number" required="yes">
+		<format type="numonly" />
+		<reject prompt="totalNumber_justify">
+				([totalNumber]&lt;1 || [totalNumber]&gt;4)
+			</reject>
+	</field>
+	<field name="toAmount" label="Total_Amount" required="yes">
+		<format type="amount" />
+	</field>
+	<field name="chargeBy" label="Charges_From" required="yes">
+		 <format type="string" />
+		 <reject prompt="OtherAccount_Justify">[chargeBy]=="2" &amp;&amp; [chargeAccount]==""</reject>
+	</field>	
+		
+	</group>
+	
+	<group name="cash_order_detail">
+	<field name="fromAccount" label="Account_Number" required="yes">
+		<format type="numonly" />
+	</field>
+	</group>
+</fieldchecking>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="bankuser">
+		<field name="userId" label="User_Id" required="yes">
+			<format type="string" />
+		</field>
+		<field name="userName" label="User_Name" required="yes">
+			<format type="string"/>
+		</field>
+		<field name="email" label="Email" required="yes">
+			<format type="email"/>
+		</field>
+		
+		<field name="userPassword" label="PIN" required="yes">
+			<format type="string" minlen="6" maxlen="12"/>
+		</field>
+	</group>
+</fieldchecking>

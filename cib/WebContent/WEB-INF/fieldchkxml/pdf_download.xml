@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="enquiry">
+		<field name="category" label="pdf_type" required="yes">
+			<format type="string"/>
+			<reject prompt="category_seleted">[category]=="0"</reject>
+		</field>
+		<field name="dateFrom" label="date_from" required="yes">
+			<format type="date"/>
+			<reject prompt="Date_Justify">[date_range]=="range" &amp;&amp; ((getDateValue([dateFrom])>getDateValue([dateTo]) &amp;&amp; [dateTo] != "")|| (([dateFrom]=="") &amp;&amp; ([dateTo]=="")))</reject>
+		</field>
+		<field name="dateTo" label="date_to" required="yes">
+			<format type="date"/>
+		</field>
+	</group>
+</fieldchecking>

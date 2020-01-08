@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data-mapping table_header="FILE_REQUEST" table_detail="REQ_STOP_CHEQUE" line_length="150">
+
+	<string name="RECORD_ID" length="1" encoding="ASCII" />
+	<sectionif name="BH" key="RECORD_ID" isvalue="H">
+		<string name="ORDER_DATE"   length="8" encoding="ASCII"/> 
+		<decimal name="TOTAL_NUMBER"   length="5" encoding="ASCII"/>
+		<string name="CORP_ID"   length="11" encoding="ASCII"/>
+		<string name="BATCH_REFERENCE"   length="20" encoding="ASCII"/>     
+		<skip name="FILLER"   length="144" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="BD" key="RECORD_ID" isvalue="D">
+	    <string name="CURRENT_ACCOUNT"   length="10" encoding="ASCII"/>
+		<string name="CHEQUE_NUMBER"   length="6" encoding="ASCII"/>
+		<string name="ISSUE_DATE"   length="8" encoding="ASCII"/>  
+		<decimal name="AMOUNT"   length="13,2" encoding="ASCII"/>
+		<string name="EXPIRY_DATE"   length="8" encoding="ASCII"/>
+		<string name="BENEFICIARY_NAME"  length="40" encoding="ASCII"/>  
+		<string name="STOP_REASON"  length="40" encoding="ASCII"/>
+		<skip name="FILLER"   length="23" encoding="ASCII"/>         
+	</sectionif>
+	<sectionif name="FT" key="RECORD_ID" isvalue="T">
+	<string name="END_OF_FILE"   length="1" encoding="ASCII"/>
+	<skip name="FILLER"   length="178" encoding="ASCII"/>         
+	</sectionif>
+			
+	    
+</data-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="schedule_bank">
+	    <field name="scheduleName" label="Schedule_Name" required="yes">
+			<format type="String" />
+		</field>
+		<field name="dayType" label="Frequence" required="yes">
+			<reject prompt="Weekly_Justify">
+				[dayType]=="2" &amp;&amp; [frequenceWeekDays]==null
+			</reject>
+			<reject prompt="Monthly_Justify">
+				[dayType]=="3" &amp;&amp; [month_type]==null
+			</reject>
+			<reject prompt="monthly_designed_day_format_error">
+				[dayType]=="3" &amp;&amp; [month_type]==0 &amp;&amp;
+				([designed_day]&lt;1 || [designed_day]&gt;31)
+			</reject>
+			<reject prompt="Days_per_month_Justify">
+				[dayType]=="4" &amp;&amp; [days_per_month]==""
+			</reject>
+		</field>
+		<field name="fromAccount" label="From Account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="fromCurrency" label="From Currency" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromCurrency").selectedIndex == 0</reject>
+		</field>
+		<field name="toAccount" label="To Account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("toAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="toCurrency" label="To Currency" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("toCurrency").selectedIndex == 0</reject>
+		</field>
+		<field name="transferAmount" label="To_Amount">
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;10 &amp;&amp; [debitAmount]&lt;10 </reject>			
+		</field>
+		<field name="debitAmount" label="Transfer_Info1" >
+			<format type="amount" />
+		</field>
+		<!-- add by linrui 20190531 -->
+		<field name="endDate" label="Transfer_End_Date" required="yes">
+			<format type="date"/>
+		</field>
+	</group>
+</fieldchecking>

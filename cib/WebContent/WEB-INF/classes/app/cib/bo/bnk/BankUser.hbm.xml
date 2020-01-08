@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Mar 01 15:52:11 CST 2007                         -->
+<hibernate-mapping package="app.cib.bo.bnk">
+
+    <class name="BankUser" table="BANK_USER">
+        <id name="userId" column="USER_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="prefId" column="PREF_ID" type="java.lang.String" />
+        <property name="userPassword" column="USER_PASSWORD" type="java.lang.String" />
+        <property name="userName" column="USER_NAME" type="java.lang.String" />
+        <property name="roleId" column="ROLE_ID" type="java.lang.String" />
+        <property name="email" column="EMAIL" type="java.lang.String" />
+        <property name="userDesc" column="USER_DESC" type="java.lang.String" />
+        <property name="loginStatus" column="LOGIN_STATUS" type="java.lang.String" />
+        <property name="loginTimes" column="LOGIN_TIMES" type="java.lang.Integer" />
+        <property name="loginFailTimes" column="LOGIN_FAIL_TIMES" type="java.lang.Integer" />
+        <property name="currLoginIp" column="CURR_LOGIN_IP" type="java.lang.String" />
+        <property name="currLoginTime" column="CURR_LOGIN_TIME" type="java.util.Date" />
+        <property name="prevLoginIp" column="PREV_LOGIN_IP" type="java.lang.String" />
+        <property name="prevLoginTime" column="PREV_LOGIN_TIME" type="java.util.Date" />
+        <property name="pervLoginStatus" column="PERV_LOGIN_STATUS" type="java.lang.String" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="blockReason" column="BLOCK_REASON" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="updateId" column="UPDATE_ID" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+    </class>
+    
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="add">
+		<field name="apsCode" label="PAYMENT_TYPE" required="true" />
+		<field name="card_merchant" label="card_merchant" required="false"/>
+		<field name="contractNo" label="CONTRACT_NUMBER_OR_CREDIT_CARD_NO" required="true">
+			<format maxlen="16" />
+			<!--<reject prompt="Contract_No_Format">[apsCode]!=[card_merchant]</reject>-->
+			<reject prompt="Credit_Card_Format">
+			[apsCode]==[card_merchant] &amp;&amp; 
+			(
+			([contractNo].charAt(0) == '3' &amp;&amp; [contractNo].length != 15)
+			||
+			([contractNo].charAt(0) != '3' &amp;&amp; [contractNo].length != 16)
+			)
+			</reject>
+		</field>
+		<field name="payOption" label="Pay_Option" required="true" />
+		<field name="paymentLimit" label="Input_Amout" required="true" >
+			<format type="autopay" maxlen="10"/>
+			<reject prompt="AUTOPAY_NOT_ZERO">[paymentLimit]==0</reject>
+			<reject prompt="AUTOPAY_NOT_DECIMAL">/^\+?(\d*\.\d*)$/.test([paymentLimit])  &amp;&amp; ! isNaN([paymentLimit])</reject>
+			<!--<reject prompt="Input_Amout">[payOption]=="P"</reject>
+		--></field>
+		<field name="payAcct" label="PAYMENT_ACCOUNT" required="true"/>
+	</group>
+	<group name="list">
+		<field name="status" label="">
+			<reject prompt="Autopay_Status_Format">
+				[status]!="0"
+			</reject>
+		</field>
+	</group>
+</fieldchecking>

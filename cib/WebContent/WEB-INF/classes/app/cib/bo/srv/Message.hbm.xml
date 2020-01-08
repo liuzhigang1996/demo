@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Sep 26 18:43:48 CST 2006                         -->
+<hibernate-mapping package="app.cib.bo.srv">
+
+    <class name="Message" table="MESSAGE">
+        <id name="messageId" column="MESSAGE_ID" type="java.lang.String">
+            <generator class="assigned"/>
+        </id>
+ 
+        <property name="msgTitle" column="MSG_TITLE" type="java.lang.String" />
+        <property name="msgContent" column="MSG_CONTENT" type="java.lang.String" />
+        <property name="userId" column="USER_ID" type="java.lang.String" />
+        <property name="corpId" column="CORP_ID" type="java.lang.String" />
+        <property name="submitTime" column="SUBMIT_TIME" type="java.util.Date" />
+        <property name="fromDate" column="FROM_DATE" type="java.util.Date" />
+        <property name="toDate" column="TO_DATE" type="java.util.Date" />
+        <property name="operation" column="OPERATION" type="java.lang.String" />
+        <property name="status" column="STATUS" type="java.lang.String" />
+        <property name="authStatus" column="AUTH_STATUS" type="java.lang.String" />
+        <property name="lastUpdateTime" column="LAST_UPDATE_TIME" type="java.util.Date" />
+        <property name="requester" column="REQUESTER" type="java.lang.String" />
+ 
+        <set name="messageUserSet" inverse="true">
+            <key column="MESSAGE_ID"/>
+            <one-to-many class="MessageUser"/>
+        </set>
+    </class>
+    
+</hibernate-mapping>

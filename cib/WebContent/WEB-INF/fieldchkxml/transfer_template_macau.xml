@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fieldchecking SYSTEM "fieldchecking.dtd">
+<fieldchecking>
+	<group name="templateInMacau">
+		<field name="fromAccount" label="From_Account" required="no">
+			<format type="numonly" />
+			<reject prompt="Required">document.getElementById("fromAccount").selectedIndex == 0</reject>
+		</field>
+		<field name="fromCurrency" label="From_ccy" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("fromCurrency").selectedIndex == 0</reject>
+			<reject prompt="fromCurrency_Justify_1">document.getElementById("fromCurrency").value=="CNY"</reject>
+		</field>
+		<field name="toCurrency" label="To_Currency" required="no">
+			<format type="string" />
+			<reject prompt="Required">document.getElementById("toCurrency").selectedIndex == 0</reject>
+			<!-- add by lzg 20190613 -->
+			<reject prompt="toCurrency_Justify">document.getElementById("toCurrency").selectedIndex != 0&amp;&amp;document.getElementById("toCurrency").value != "MOP" &amp;&amp; document.getElementById("toCurrency").value != "HKD" &amp;&amp; document.getElementById("toCurrency").value != "USD" &amp;&amp; document.getElementById("toCurrency").value != "EUR"</reject>
+			<!-- add by lzg end -->
+		</field>
+		<field name="transferAmount" label="Amount_Justify_lable" >
+			<format type="amount" />
+			<reject prompt="Amount_Justify">([transferAmount]=="" &amp;&amp; [debitAmount]=="") || ([transferAmount]== 0 &amp;&amp; [debitAmount]== 0)</reject>
+			<reject prompt="Amount_Justify_1">[transferAmount]&lt;10 &amp;&amp; [debitAmount]&lt;10 </reject>
+		</field>
+		<field name="beneficiaryBank" label="Beneficiary_Bank" required="yes">
+			<format type="string" />
+		</field>
+		<field name="toAccount" label="Beneficiary_Account" required="yes">
+			<format type="common" />
+			<reject prompt="Account_Justify">[fromAccount]==[toAccount]</reject>
+		</field>
+		<field name="requestType" label="Transfer_Date" required="yes">
+			<format type="string" />
+		</field>
+		<field name="transferDateString" label="Transfer_Date">
+			<format type="date" />
+			<reject prompt="Date_Justify">[requestType]=='2' &amp;&amp; [transferDateString] == ''</reject><!--mod by linrui for mul-language 20171123  -->
+		</field>
+		<field name="debitAmount" label="Transfer_Info1" >
+			<format type="amount" />
+		</field>
+		<!-- <field name="chareBy" label="Charges_By" required="yes">
+			<format type="string" />
+		</field> -->
+		<field name="beneficiaryName1" label="Beneficiary_Name">
+			<format type="common" />
+		</field>
+		<field name="beneficiaryName2" label="Beneficiary_Name">
+			<format type="common" />
+			<reject prompt="Beneficiary_Justify">([beneficiaryName1]=="" &amp;&amp; [beneficiaryName2]=="")</reject>
+		</field>
+		<field name="beneJustify" label="Beneficiary_Name">
+			<format type="string" />
+			<reject prompt="Beneficiary_Name_Justify">[beneJustify]=='Y'</reject>
+		</field>
+		<!-- <field name="chargeBy" label="Commission_charges_by" required="yes">
+			<format type="string" />
+		</field> -->
+		<field name="messsage" label="Message_Send">
+			<format type="common" />
+		</field>
+		<field name="messsage2" label="Message_Send">
+			<format type="common" />
+		</field>
+		<field name="messsage3" label="Message_Send">
+			<format type="common" />
+		</field>
+		
+		<!--<field name="remark" label="Remark" >
+			<format type="common" />
+		</field>
+		-->
+		<!-- add by linrui 20191008 -->  
+		<field name="chargeAccount" label="Deduct_Charge_from_Account" required="no">
+			<reject prompt="Required">document.getElementsByName('chargeBy')[0].checked != true &amp;&amp; document.getElementById("chargeAccount").selectedIndex == 0 </reject>
+		</field> 
+		<!-- add by linrui end -->
+		<!-- add by lzg 20190602 -->
+		<field name="purposeCode" label="Purpose" required="no">
+			<reject prompt="Required">document.getElementById("purposeCode").selectedIndex == 0</reject>
+		</field>
+		<!-- add by lzg end -->
+		</group>
+</fieldchecking>
